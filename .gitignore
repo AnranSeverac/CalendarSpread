@@ -3,6 +3,7 @@
 execution_candidates_latest.csv
 execution_candidates_latest.json
 logs/
+execution_log.jsonl
 __pycache__/
 .cursor/
 *.pyc
