@@ -30,16 +30,16 @@ source .venv/bin/activate
 pip install --upgrade pip
 pip install -r requirements.txt
 
-echo "Checking .env..."
-if [ ! -f .env ]; then
-  echo "  WARNING: .env not found. Copy .env.example to .env and add your keys:"
-  echo "    cp .env.example .env"
-  echo "    nano .env"
+echo "Checking config/.env..."
+if [ ! -f config/.env ]; then
+  echo "  WARNING: config/.env not found. Copy config/.env.example and add your keys:"
+  echo "    cp config/.env.example config/.env"
+  echo "    nano config/.env"
 else
-  echo "  .env exists."
+  echo "  config/.env exists."
 fi
 
-echo "Done. To run the live loop (after editing .env):"
+echo "Done. To run the live loop (after editing config/.env):"
 echo "  cd $HOME/$DIR"
 echo "  source .venv/bin/activate"
 echo "  nohup python3 live_execution.py --execute-live --loop-seconds 300 > live.log 2>&1 &"

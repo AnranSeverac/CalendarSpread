@@ -92,14 +92,14 @@ _MONTH_MAP = {
 
 _DATE_PATTERNS = [
     re.compile(
-        r"\b(?:by|before|in)\s+([A-Za-z]+)\s+(\d{1,2}),?\s+(\d{4})",
+        r"\b(?:by|before|in|on|at)\s+([A-Za-z]+)\s+(\d{1,2}),?\s+(\d{4})",
         re.IGNORECASE,
     ),
     re.compile(
-        r"\b(?:by|before)\s+([A-Za-z]+)\s+(\d{1,2})\b(?!\s*,?\s*\d{4})",
+        r"\b(?:by|before|on|at)\s+([A-Za-z]+)\s+(\d{1,2})\b(?!\s*,?\s*\d{4})",
         re.IGNORECASE,
     ),
-    re.compile(r"\bin\s+(\d{4})\b", re.IGNORECASE),
+    re.compile(r"\b(?:in|on)\s+(\d{4})\b", re.IGNORECASE),
     re.compile(r"\bbefore\s+(\d{4})\b", re.IGNORECASE),
 ]
 
@@ -124,10 +124,13 @@ def _parse_deadline_from_question(question: str) -> Optional[dt.date]:
         month = _MONTH_MAP.get(month_str.lower())
         if month:
             now = dt.date.today()
-            candidate = dt.date(now.year, month, int(day_str))
-            if candidate < now:
-                candidate = dt.date(now.year + 1, month, int(day_str))
-            return candidate
+            try:
+                candidate = dt.date(now.year, month, int(day_str))
+                if candidate < now:
+                    candidate = dt.date(now.year + 1, month, int(day_str))
+                return candidate
+            except ValueError:
+                pass
 
     m = _DATE_PATTERNS[2].search(question)
     if m:
@@ -189,9 +192,16 @@ def build_deadline_market_universe(
     min_distinct_dates: int = 2,
     include_closed: bool = False,
 ) -> pd.DataFrame:
-    title_has_by = lambda s: isinstance(s, str) and ("by" in s.lower())
-    market_deadline_like = lambda s: isinstance(s, str) and any(
-        k in s.lower() for k in [" by ", "before", " in "]
+    # Only ".. by [date]" or ".. before [date]" style deadline markets (term structure).
+    # Exclude " in / on / at " so we don't get one-off events (e.g. "Match on 2026-03-09").
+    question_deadline_phrase = lambda s: isinstance(s, str) and (
+        " by " in s.lower() or "before " in s.lower()
+    )
+    # Event title should indicate a "by date" style question (e.g. "Will X by Y").
+    title_has_by = lambda s: isinstance(s, str) and "by" in s.lower()
+    # Exclude sports / one-off: "Team A vs Team B", match outcomes.
+    looks_like_sports_or_oneoff = lambda s: isinstance(s, str) and (
+        " vs. " in s or " vs " in s
     )
 
     events = fetch_events(max_events=max_events, active=True, closed=False)
@@ -205,15 +215,18 @@ def build_deadline_market_universe(
         event_slug = event.get("slug", "")
         if not title_has_by(event_title):
             continue
+        if looks_like_sports_or_oneoff(event_title):
+            continue
         for market in event.get("markets", []):
             question = market.get("question", "")
-            if not market_deadline_like(question):
+            if looks_like_sports_or_oneoff(question):
                 continue
+            if not question_deadline_phrase(question):
+                continue
+            parsed_end = _parse_datetime_maybe(market.get("endDate", ""))
             deadline = _parse_deadline_from_question(question)
-            if deadline is None:
-                parsed_end = _parse_datetime_maybe(market.get("endDate", ""))
-                if parsed_end is not None:
-                    deadline = parsed_end.date() if isinstance(parsed_end, dt.datetime) else parsed_end
+            if deadline is None and parsed_end is not None:
+                deadline = parsed_end.date() if isinstance(parsed_end, dt.datetime) else parsed_end
             yes_token = _extract_yes_token_id(market)
             if deadline is None or yes_token is None:
                 continue

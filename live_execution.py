@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
@@ -31,24 +32,65 @@ from curve_pipeline import (
 )
 
 
+def _env_int(name: str, default: int) -> int:
+    raw = os.getenv(name)
+    if raw is None or raw.strip() == "":
+        return default
+    try:
+        return int(raw)
+    except ValueError:
+        return default
+
+
+def _env_float(name: str, default: float) -> float:
+    raw = os.getenv(name)
+    if raw is None or raw.strip() == "":
+        return default
+    try:
+        return float(raw)
+    except ValueError:
+        return default
+
+
+def _env_bool(name: str, default: bool) -> bool:
+    raw = os.getenv(name)
+    if raw is None:
+        return default
+    return raw.strip().lower() in {"1", "true", "yes", "y", "on"}
+
+
+def _env_optional_int(name: str, default: Optional[int]) -> Optional[int]:
+    raw = os.getenv(name)
+    if raw is None or raw.strip() == "":
+        return default
+    if raw.strip().lower() == "none":
+        return None
+    try:
+        return int(raw)
+    except ValueError:
+        return default
+
+
 # -----------------------------
 # Fast live-run configuration
 # -----------------------------
-MAX_EVENTS = 1200
-MAX_MARKETS = 600
-INCLUDE_CLOSED = True
-UNIVERSE_REFRESH_MINUTES = 120
+MAX_EVENTS = _env_int("MAX_EVENTS", 10000)
+MAX_MARKETS = _env_optional_int("MAX_MARKETS", None)  # None = no cap
+INCLUDE_CLOSED = _env_bool("INCLUDE_CLOSED", False)
+UNIVERSE_REFRESH_MINUTES = _env_int("UNIVERSE_REFRESH_MINUTES", 120)
 
 INTERVAL = "1h"
-FREQUENCY_MINUTES = 60
-LOOKBACK_HOURS = 96
-FETCH_WORKERS = 16
+FREQUENCY_MINUTES = _env_int("FREQUENCY_MINUTES", 60)
+# Dynamic lookback keeps enough bars for latest scoring while avoiding over-fetch.
+LOOKBACK_MIN_HOURS = _env_int("LOOKBACK_MIN_HOURS", 12)
+LOOKBACK_BUFFER_HOURS = _env_int("LOOKBACK_BUFFER_HOURS", 2)
+FETCH_WORKERS = _env_int("FETCH_WORKERS", 16)
 
 STATIC_POLY_DEGREE = 2
 STATIC_MIN_NODES = 2
 STATIC_LAG = 1
 REF_SMOOTH_BARS = 10
-STATIC_THRESHOLD = 0.12
+STATIC_THRESHOLD = _env_float("STATIC_THRESHOLD", 0.12)
 
 MAX_WEIGHT_PER_LEG = 1.5
 MAX_GROSS_HEDGE = 5.0
@@ -66,13 +108,21 @@ PLACED_LIMIT_ORDERS_PATH = LOG_DIR / "placed_limit_orders.json"
 POSITIONS_PATH = LOG_DIR / "positions.json"
 
 # Live execution controls
-MAX_DISLOCATED_SHARES = 500.0
-MIN_EXECUTABLE_SHARES = 1.0
-MAX_FROM_TOP = 0.01
-HEARTBEAT_EVERY_N_RUNS = 3
+MAX_DISLOCATED_SHARES = _env_float("MAX_DISLOCATED_SHARES", 300.0)
+MIN_EXECUTABLE_SHARES = _env_float("MIN_EXECUTABLE_SHARES", 1.0)
+MAX_FROM_TOP = _env_float("MAX_FROM_TOP", 0.01)
+# Reject books with spread wider than this for executable signal updates (5c = 0.05).
+MAX_BOOK_SPREAD_FOR_SIGNAL = _env_float("MAX_BOOK_SPREAD_FOR_SIGNAL", 0.05)
+HEARTBEAT_EVERY_N_RUNS = _env_int("HEARTBEAT_EVERY_N_RUNS", 3)
+ASSUME_FILLED_WHEN_NOT_OPEN = _env_bool("ASSUME_FILLED_WHEN_NOT_OPEN", False)
+USE_CLOSED_BARS_ONLY = _env_bool("USE_CLOSED_BARS_ONLY", True)
+VERBOSE_DIAGNOSTICS = _env_bool("VERBOSE_DIAGNOSTICS", False)
 
 # Exit: assume we exit when |residual| drops to this (matches backtest EXIT_THRESHOLD).
-EXIT_THRESHOLD = 0.03
+EXIT_THRESHOLD = _env_float("EXIT_THRESHOLD", 0.03)
+
+# Max total notional per trade (sum of shares * price across dislocated + hedge legs).
+MAX_NOTIONAL_PER_TRADE = _env_float("MAX_NOTIONAL_PER_TRADE", 10.0)
 
 
 def top_of_book_liquidity_within_1c(
@@ -99,7 +149,12 @@ def conservative_spread_size(
     hedge_weights_by_deadline: Dict[object, float],
     max_dislocated_shares: float,
 ) -> float:
-    """Feasible dislocated-leg shares under hedge liquidity constraints."""
+    """Floor of executable size at each node: only shares within 1c of top of book.
+
+    Feasible dislocated-leg shares = min(dislocated_liq, max_dislocated_shares,
+    hedge_liq_i / |w_i| for each hedge). E.g. main has 100 shares, hedge needs 20
+    but only has 10 → cap at 10/0.4 = 25 dislocated (order 25, 10).
+    """
     caps = [float(dislocated_liq), float(max_dislocated_shares)]
     for dd, w in hedge_weights_by_deadline.items():
         req = abs(float(w))
@@ -108,6 +163,29 @@ def conservative_spread_size(
         liq = float(hedge_liq_by_deadline.get(dd, 0.0))
         caps.append(liq / req)
     return max(0.0, float(min(caps)))
+
+
+def cap_size_by_notional(
+    q_dis: float,
+    dis_price: Optional[float],
+    hedge_abs_w: Dict[str, float],
+    hedge_price_by_token: Dict[str, float],
+    max_notional: float,
+) -> float:
+    """Cap dislocated shares so total notional (dis + hedges) <= max_notional."""
+    if dis_price is None or max_notional <= 0:
+        return q_dis
+    notional_per_share = float(dis_price)
+    for token_id, abs_w in hedge_abs_w.items():
+        p = hedge_price_by_token.get(token_id)
+        if p is not None:
+            notional_per_share += abs(float(abs_w)) * float(p)
+        else:
+            notional_per_share += abs(float(abs_w)) * 0.5
+    if notional_per_share <= 0:
+        return q_dis
+    max_q = max_notional / notional_per_share
+    return max(0.0, min(q_dis, max_q))
 
 
 def _book_levels(book: object, side: str) -> List[Tuple[float, float]]:
@@ -121,7 +199,20 @@ def _book_levels(book: object, side: str) -> List[Tuple[float, float]]:
             sz = lvl.get("size")
         if px is None or sz is None:
             continue
-        out.append((float(px), float(sz)))
+        try:
+            pxf = float(px)
+            szf = float(sz)
+        except (TypeError, ValueError):
+            continue
+        if not np.isfinite(pxf) or not np.isfinite(szf) or szf <= 0:
+            continue
+        out.append((pxf, szf))
+    # Do not assume API level ordering. Normalize to true top-of-book ordering.
+    # buy-side consumers read asks (lowest first); sell-side consumers read bids (highest first).
+    if side == "buy":
+        out.sort(key=lambda x: x[0])
+    else:
+        out.sort(key=lambda x: x[0], reverse=True)
     return out
 
 
@@ -131,13 +222,91 @@ def _cap_price_from_book(book: object, side: str, max_from_top: float) -> Option
         return None
     best = float(levels[0][0])
     if side == "buy":
-        return min(0.9999, best + max_from_top)
-    return max(0.0001, best - max_from_top)
+        # Keep display/logic consistent with actual order placement clamp.
+        return min(0.99, best + max_from_top)
+    return max(0.01, best - max_from_top)
+
+
+def _is_tradeable_book(best_bid: Optional[float], best_ask: Optional[float]) -> bool:
+    """Basic sanity checks for executable signal usage.
+
+    Spread is on the YES token only: best_ask - best_bid from the YES token's
+    order book (we never use YES−NO or combined outcome spread).
+    """
+    if best_bid is None or best_ask is None:
+        return False
+    if best_bid <= 0.0 or best_ask >= 1.0:
+        return False
+    if best_ask < best_bid:
+        return False
+    return (best_ask - best_bid) <= MAX_BOOK_SPREAD_FOR_SIGNAL
+
+
+def _truncate_panel_for_latest_signal(
+    panel: pd.DataFrame,
+    lag_bars: int,
+    ref_smooth_bars: int,
+) -> pd.DataFrame:
+    """Keep only the minimum timestamp window needed to score latest bar per event."""
+    if panel.empty:
+        return panel
+    min_hist = int(lag_bars) + int(ref_smooth_bars) - 1
+    keep_n = max(2, min_hist + 1)
+    ts_keep = (
+        panel[["event_id", "timestamp"]]
+        .drop_duplicates()
+        .sort_values(["event_id", "timestamp"])
+        .groupby("event_id", as_index=False, group_keys=False)
+        .tail(keep_n)
+    )
+    return panel.merge(ts_keep, on=["event_id", "timestamp"], how="inner")
+
+
+def _required_lookback_hours() -> int:
+    """Minimum history window needed for latest-bar scoring + safety buffer."""
+    bars_needed = max(2, int(STATIC_LAG) + int(REF_SMOOTH_BARS) + 1)
+    hours_per_bar = max(1.0, float(FREQUENCY_MINUTES) / 60.0)
+    dyn_hours = int(np.ceil(bars_needed * hours_per_bar)) + int(LOOKBACK_BUFFER_HOURS)
+    return max(int(LOOKBACK_MIN_HOURS), dyn_hours)
+
+
+def _get_recent_filled_order_ids(executor: "PolymarketExecutor") -> Optional[set]:
+    """Best-effort filled order IDs from trade/fill history endpoints.
+
+    Returns:
+      - set() / non-empty set when fill info endpoint is reachable (known state)
+      - None when no fill source is reachable (unknown state)
+    """
+    methods = ["get_trades", "get_fills", "get_orders_history"]
+    for name in methods:
+        fn = getattr(executor.client, name, None)
+        if fn is None:
+            continue
+        try:
+            raw = fn()
+        except Exception:  # noqa: BLE001
+            continue
+        items = raw if isinstance(raw, list) else raw.get("data", []) if isinstance(raw, dict) else []
+        out = set()
+        for it in items:
+            if not isinstance(it, dict):
+                continue
+            oid = it.get("order_id") or it.get("orderID") or it.get("orderId")
+            if oid:
+                out.add(str(oid))
+        return out
+    return None
 
 
 class PolymarketExecutor:
     def __init__(self) -> None:
-        load_dotenv()
+        # Load from config/.env first, then root .env
+        for _env_path in [Path(__file__).resolve().parent / "config" / ".env", Path.cwd() / "config" / ".env", Path.cwd() / ".env"]:
+            if _env_path.exists():
+                load_dotenv(dotenv_path=_env_path, override=True)
+                break
+        else:
+            load_dotenv(override=True)
         self.host = os.getenv("POLYMARKET_HOST", "https://clob.polymarket.com")
         self.chain_id = int(os.getenv("POLYMARKET_CHAIN_ID", "137"))
         self.private_key = os.getenv("POLYMARKET_PRIVATE_KEY", "").strip()
@@ -200,13 +369,18 @@ class PolymarketExecutor:
         self._book_cache.clear()
 
     def get_balance(self) -> Dict[str, object]:
-        """Return USDC (collateral) balance info for logging."""
+        """Return USDC (collateral) balance info for logging. Omits allowances."""
         try:
             bal = self.client.get_balance_allowance(
                 BalanceAllowanceParams(asset_type=AssetType.COLLATERAL)
             )
             if hasattr(bal, "__dict__"):
-                return {k: str(v) if hasattr(v, "isoformat") else v for k, v in bal.__dict__.items()}
+                out = {
+                    k: str(v) if hasattr(v, "isoformat") else v
+                    for k, v in bal.__dict__.items()
+                    if k != "allowances"
+                }
+                return out
             return {"raw": str(bal)}
         except Exception as e:  # noqa: BLE001
             return {"error": str(e)}
@@ -345,9 +519,10 @@ def build_recent_panel(universe: pd.DataFrame, now_utc: pd.Timestamp) -> pd.Data
             ]
         )
 
+    lookback_hours = _required_lookback_hours()
     end_ts = int(now_utc.timestamp())
-    start_ts = int((now_utc - pd.Timedelta(hours=LOOKBACK_HOURS)).timestamp())
-    min_ts = now_utc - pd.Timedelta(hours=LOOKBACK_HOURS)
+    start_ts = int((now_utc - pd.Timedelta(hours=lookback_hours)).timestamp())
+    min_ts = now_utc - pd.Timedelta(hours=lookback_hours)
 
     rows: List[pd.DataFrame] = []
     with ThreadPoolExecutor(max_workers=FETCH_WORKERS) as ex:
@@ -397,7 +572,9 @@ def _executable_residuals_live_slice(
 ) -> pd.DataFrame:
     """Overwrite ts_residual and direction using executable (bid/ask) prices.
 
-    For each node: executable price = best_ask if we'd buy (last-trade below fair) else best_bid.
+    All books are for the YES token only (yes_token_id). Spread used for
+    _is_tradeable_book is the YES token bid-ask spread, not YES−NO.
+    For each node: executable price = best_ask if we'd buy else best_bid.
     Residual = executable_price - fair; then cross-sectionally demeaned per event.
     Falls back to last-trade residual when book is missing or empty.
     """
@@ -432,28 +609,50 @@ def _executable_residuals_live_slice(
             list(pool.map(_prefetch, unique_tokens))
 
     resid_list: List[float] = []
+    base_resid: List[float] = []
+    book_valid: List[bool] = []
     for i, (_, row) in enumerate(out.iterrows()):
         tid = token_ids[i]
         fair = float(row["ts_predicted_prob"])
         last_p = float(row["probability_yes"])
+        orig_resid = float(row["ts_residual"])
+        base_resid.append(orig_resid)
         if tid is None:
-            resid_list.append(float(row["ts_residual"]))
+            resid_list.append(np.nan)
+            book_valid.append(False)
             continue
         try:
             book = executor.get_order_book(tid)
             best_bid, best_ask = _best_bid_ask(book)
+            if not _is_tradeable_book(best_bid, best_ask):
+                resid_list.append(np.nan)
+                book_valid.append(False)
+                continue
             exec_price = best_ask if last_p < fair else best_bid
-            resid_list.append(exec_price - fair if exec_price is not None else float(row["ts_residual"]))
+            resid_list.append(exec_price - fair if exec_price is not None else np.nan)
+            book_valid.append(True)
         except Exception:  # noqa: BLE001
-            resid_list.append(float(row["ts_residual"]))
+            resid_list.append(np.nan)
+            book_valid.append(False)
 
     out["_exec_resid_raw"] = resid_list
+    out["_base_resid"] = base_resid
+    out["_exec_book_valid"] = book_valid
     grouped = out.groupby(["event_id", "timestamp"])["_exec_resid_raw"]
-    mean_map = grouped.transform(lambda s: np.nanmean(np.where(np.isfinite(s), s, np.nan)))
-    mean_map = mean_map.fillna(0.0)
-    out["ts_residual"] = out["_exec_resid_raw"] - mean_map
+    def _finite_mean_or_zero(s: pd.Series) -> float:
+        arr = np.asarray(s, dtype=float)
+        arr = arr[np.isfinite(arr)]
+        if arr.size == 0:
+            return 0.0
+        return float(arr.mean())
+    mean_map = grouped.transform(_finite_mean_or_zero)
+    out["ts_residual"] = np.where(
+        out["_exec_book_valid"],
+        out["_exec_resid_raw"] - mean_map,
+        out["_base_resid"],
+    )
     out["direction"] = np.where(out["ts_residual"] < 0, "BUY", "SELL")
-    out = out.drop(columns=["_exec_resid_raw"], errors="ignore")
+    out = out.drop(columns=["_exec_resid_raw", "_base_resid"], errors="ignore")
     return out
 
 
@@ -461,8 +660,9 @@ def latest_signals(
     panel: pd.DataFrame,
     executor: Optional["PolymarketExecutor"] = None,
 ) -> Tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
+    panel_for_score = _truncate_panel_for_latest_signal(panel, STATIC_LAG, REF_SMOOTH_BARS)
     static_df = score_time_shifted_dislocations(
-        panel,
+        panel_for_score,
         lag_bars=STATIC_LAG,
         min_nodes=STATIC_MIN_NODES,
         poly_degree=STATIC_POLY_DEGREE,
@@ -479,7 +679,16 @@ def latest_signals(
     else:
         live_slice["direction"] = np.where(live_slice["ts_residual"] < 0, "BUY", "SELL")
     signals = live_slice[live_slice["ts_residual"].abs() >= STATIC_THRESHOLD].copy()
-    signals = signals.sort_values("ts_residual", key=lambda s: s.abs(), ascending=False).reset_index(drop=True)
+    if executor is not None and "_exec_book_valid" in live_slice.columns:
+        signals = signals[signals["_exec_book_valid"]].copy()
+    if not signals.empty:
+        # Backtest allows at most one concurrent trade per event. Keep only the
+        # single best dislocated node per event (by |ts_residual|).
+        signals = (
+            signals.sort_values("ts_residual", key=lambda s: s.abs(), ascending=False)
+            .drop_duplicates(subset=["event_id"], keep="first")
+            .reset_index(drop=True)
+        )
     return static_df, signals, live_slice
 
 
@@ -501,19 +710,23 @@ def build_execution_candidates(signals: pd.DataFrame, panel: pd.DataFrame) -> pd
         )
 
     event_deadlines = panel.groupby("event_id")["deadline_date"].apply(lambda x: sorted(x.unique())).to_dict()
+    snapshots: Dict[Tuple[object, object], pd.DataFrame] = {
+        (eid, ts): grp
+        for (eid, ts), grp in panel.groupby(["event_id", "timestamp"], sort=False)
+    }
     out: List[dict] = []
 
-    for _, sig in signals.iterrows():
-        eid = sig["event_id"]
-        dd = sig["deadline_date"]
-        ts = sig["timestamp"]
-        direction = sig["direction"]
+    for sig in signals.itertuples(index=False):
+        eid = sig.event_id
+        dd = sig.deadline_date
+        ts = sig.timestamp
+        direction = sig.direction
 
         deadlines = event_deadlines.get(eid, [])
         if dd not in deadlines:
             continue
-        entry_snap = panel[(panel["event_id"] == eid) & (panel["timestamp"] == ts)]
-        if entry_snap.empty:
+        entry_snap = snapshots.get((eid, ts))
+        if entry_snap is None or entry_snap.empty:
             continue
         tau_map = entry_snap.groupby("deadline_date")["tau_days"].first()
         available = [(i, d) for i, d in enumerate(deadlines) if d in tau_map.index]
@@ -543,6 +756,7 @@ def build_execution_candidates(signals: pd.DataFrame, panel: pd.DataFrame) -> pd
             continue
         hedge_by_deadline = {str(deadlines_local[i]): float(w) for i, w in hedge_idx_weights.items()}
         hedge_by_token = {str(token_map.get(deadlines_local[i])): float(w) for i, w in hedge_idx_weights.items()}
+        hedge_deadline_by_token = {str(token_map.get(deadlines_local[i])): str(deadlines_local[i]) for i in hedge_idx_weights}
         dis_token_id = token_map.get(dd)
         if dis_token_id is None:
             continue
@@ -550,15 +764,17 @@ def build_execution_candidates(signals: pd.DataFrame, panel: pd.DataFrame) -> pd
         out.append(
             {
                 "event_id": str(eid),
-                "question": str(sig["question"]),
+                "question": str(sig.question),
                 "timestamp": ts,
                 "dis_node": str(dd),
                 "direction": direction,
-                "static_resid": float(sig["ts_residual"]),
+                "static_resid": float(sig.ts_residual),
+                "fair_value_dis": float(sig.ts_predicted_prob),
                 "n_nodes": int(len(deadlines_local)),
                 "dis_token_id": str(dis_token_id),
                 "hedge_weights_by_deadline": hedge_by_deadline,
                 "hedge_weights_by_token": hedge_by_token,
+                "hedge_deadline_by_token": hedge_deadline_by_token,
             }
         )
 
@@ -659,16 +875,29 @@ def manage_order_lifecycle(
 
     Returns (n_cancelled, n_exits_placed, positions).
     One network call for open orders, one disk read/write for state.
+
+    If one leg of a spread has already closed (e.g. that market resolved): we skip
+    that leg when building exit orders (no book or it's settled), submit exit
+    orders for the remaining legs only, and when those exit orders fill we clear
+    the position. The closed leg is already settled; we do not try to "close" it.
     """
     state = _load_placed_orders_state()
     open_ids = _get_open_order_ids(executor)
+    filled_ids = _get_recent_filled_order_ids(executor)
+    fill_info_available = filled_ids is not None
     positions = _load_positions()
 
     valid_entry_keys = set()
     if not signals.empty and "ts_residual" in signals.columns:
         for _, row in signals.iterrows():
             if abs(float(row["ts_residual"])) >= STATIC_THRESHOLD:
-                valid_entry_keys.add((str(row["event_id"]), str(row["direction"]).upper()))
+                valid_entry_keys.add(
+                    (
+                        str(row["event_id"]),
+                        str(row["direction"]).upper(),
+                        _norm_deadline(row.get("deadline_date")),
+                    )
+                )
 
     # --- Pass 1: cancel stale entries, promote filled entries ---
     n_cancelled = 0
@@ -680,6 +909,7 @@ def manage_order_lifecycle(
         is_exit = bool(group.get("exit"))
         event_id = str(group.get("event_id", ""))
         direction = str(group.get("direction", "")).upper()
+        dis_deadline = _norm_deadline(group.get("dis_deadline_date"))
         still_open = [oid for oid in order_ids if oid in open_ids]
 
         if is_exit:
@@ -693,7 +923,17 @@ def manage_order_lifecycle(
             legs = group.get("legs")
             dis_token_id = group.get("dis_token_id")
             dis_deadline_date = group.get("dis_deadline_date")
-            if legs and dis_token_id and dis_deadline_date is not None:
+            if fill_info_available:
+                was_filled = any(str(oid) in filled_ids for oid in order_ids)
+            else:
+                # Unknown fill state (endpoint unavailable): either keep pending for
+                # re-check next cycle, or fall back to legacy assumption via config.
+                if ASSUME_FILLED_WHEN_NOT_OPEN:
+                    was_filled = True
+                else:
+                    new_state.append(group)
+                    continue
+            if was_filled and legs and dis_token_id and dis_deadline_date is not None:
                 positions.append({
                     "event_id": event_id,
                     "direction": direction,
@@ -703,7 +943,7 @@ def manage_order_lifecycle(
                 })
             continue
 
-        key = (event_id, direction)
+        key = (event_id, direction, dis_deadline)
         if key in valid_entry_keys:
             new_state.append(group)
         else:
@@ -716,7 +956,11 @@ def manage_order_lifecycle(
 
     # --- Pass 2: place exit orders for positions meeting exit criteria ---
     pending_exit_keys = {
-        (str(g.get("event_id", "")), str(g.get("direction", "")).upper())
+        (
+            str(g.get("event_id", "")),
+            str(g.get("direction", "")).upper(),
+            _norm_deadline(g.get("dis_deadline_date")),
+        )
         for g in new_state if g.get("exit")
     }
     n_exits = 0
@@ -724,9 +968,9 @@ def manage_order_lifecycle(
         for pos in positions:
             event_id = str(pos.get("event_id", ""))
             direction = str(pos.get("direction", "")).upper()
-            if (event_id, direction) in pending_exit_keys:
-                continue
             dis_deadline = _norm_deadline(pos.get("dis_deadline_date"))
+            if (event_id, direction, dis_deadline) in pending_exit_keys:
+                continue
             legs = pos.get("legs") or []
             if not legs:
                 continue
@@ -739,6 +983,7 @@ def manage_order_lifecycle(
             resid = float(row["ts_residual"].iloc[0])
             if abs(resid) >= EXIT_THRESHOLD:
                 continue
+            # Build exit legs. If one leg already resolved/closed, we skip it and exit the rest.
             exit_legs: List[Dict[str, object]] = []
             for leg in legs:
                 token_id = str(leg.get("token_id", ""))
@@ -760,12 +1005,27 @@ def manage_order_lifecycle(
                     continue
             if not exit_legs:
                 continue
+            if len(exit_legs) < len(legs):
+                _log_execution({
+                    "event_id": event_id, "direction": direction,
+                    "action": "exit_partial_legs",
+                    "n_legs": len(legs), "n_exit_legs": len(exit_legs),
+                    "message": "One or more legs already closed/resolved; exiting the rest.",
+                })
             try:
                 responses = executor.post_limit_orders_batch(exit_legs)
                 exit_order_ids = _order_ids_from_response(responses)
                 if exit_order_ids:
-                    new_state.append({"order_ids": exit_order_ids, "event_id": event_id, "direction": direction, "exit": True})
-                    pending_exit_keys.add((event_id, direction))
+                    new_state.append(
+                        {
+                            "order_ids": exit_order_ids,
+                            "event_id": event_id,
+                            "direction": direction,
+                            "dis_deadline_date": dis_deadline,
+                            "exit": True,
+                        }
+                    )
+                    pending_exit_keys.add((event_id, direction, dis_deadline))
                 n_exits += 1
                 _log_execution({"event_id": event_id, "direction": direction, "action": "exit_orders_placed", "legs": exit_legs, "response": responses})
             except Exception as e:  # noqa: BLE001
@@ -834,18 +1094,39 @@ def compute_opportunity_per_candidate(
 ) -> List[Dict[str, object]]:
     """For each candidate: max tradeable size (within 1c of top of book), entry price, and
     estimated gross $ opportunity assuming exit when |residual| drops to EXIT_THRESHOLD.
-    Returns one dict per candidate (same order): max_shares, entry_price_dis, est_gross_dollars.
+    Also returns fair value (model) and order book levels (bid/ask) for display.
+    Returns one dict per candidate (same order): max_shares, entry_price_dis, est_gross_dollars,
+    fair_value_dis, best_bid_dis, best_ask_dis.
     """
     out: List[Dict[str, object]] = []
     for _, cand in candidates.iterrows():
-        rec = {"max_shares": 0.0, "entry_price_dis": None, "est_gross_dollars": 0.0}
+        rec = {
+            "max_shares": 0.0,
+            "entry_price_dis": None,
+            "est_gross_dollars": 0.0,
+            "fair_value_dis": cand.get("fair_value_dis"),
+            "best_bid_dis": None,
+            "best_ask_dis": None,
+        }
         try:
             dis_token_id = str(cand["dis_token_id"])
             direction = str(cand["direction"]).upper()
             dis_side = BUY if direction == "BUY" else SELL
             resid = abs(float(cand["static_resid"]))
+            if cand.get("fair_value_dis") is not None:
+                rec["fair_value_dis"] = float(cand["fair_value_dis"])
 
             dis_book = executor.get_order_book(dis_token_id)
+            best_bid, best_ask = _best_bid_ask(dis_book)
+            if best_bid is not None:
+                rec["best_bid_dis"] = float(best_bid)
+            if best_ask is not None:
+                rec["best_ask_dis"] = float(best_ask)
+            dis_exec_price: Optional[float]
+            if dis_side == BUY:
+                dis_exec_price = float(best_ask) if best_ask is not None else None
+            else:
+                dis_exec_price = float(best_bid) if best_bid is not None else None
             dis_levels = _book_levels(dis_book, "buy" if dis_side == BUY else "sell")
             dis_liq = top_of_book_liquidity_within_1c(
                 dis_levels,
@@ -861,6 +1142,8 @@ def compute_opportunity_per_candidate(
 
             hedge_liq: Dict[str, float] = {}
             hedge_abs_w: Dict[str, float] = {}
+            hedge_cap_price: Dict[str, float] = {}
+            hedge_executable_price: Dict[str, float] = {}
             for token_id, w in hedge_by_token.items():
                 w = float(w)
                 position_sign = w if direction == "BUY" else -w
@@ -877,6 +1160,17 @@ def compute_opportunity_per_candidate(
                     liq = 0.0
                 hedge_liq[str(token_id)] = liq
                 hedge_abs_w[str(token_id)] = abs(w)
+                if cap is not None:
+                    hedge_cap_price[str(token_id)] = cap
+                h_bid, h_ask = _best_bid_ask(book)
+                if side == BUY and h_ask is not None:
+                    hedge_executable_price[str(token_id)] = float(h_ask)
+                elif side == SELL and h_bid is not None:
+                    hedge_executable_price[str(token_id)] = float(h_bid)
+                elif h_ask is not None:
+                    hedge_executable_price[str(token_id)] = float(h_ask)
+                elif h_bid is not None:
+                    hedge_executable_price[str(token_id)] = float(h_bid)
 
             q_dis = conservative_spread_size(
                 dislocated_liq=dis_liq,
@@ -889,10 +1183,35 @@ def compute_opportunity_per_candidate(
                 "buy" if dis_side == BUY else "sell",
                 MAX_FROM_TOP,
             )
+            notional_dis_price = dis_exec_price if dis_exec_price is not None else dis_cap
+            hedge_notional_price = dict(hedge_cap_price)
+            hedge_notional_price.update(hedge_executable_price)
+            q_dis = cap_size_by_notional(
+                q_dis, notional_dis_price, hedge_abs_w, hedge_notional_price, MAX_NOTIONAL_PER_TRADE
+            )
             rec["max_shares"] = float(q_dis)
             rec["entry_price_dis"] = float(dis_cap) if dis_cap is not None else None
             # Gross $: assume exit when |residual| = EXIT_THRESHOLD; profit per share ≈ |resid| - EXIT_THRESHOLD (prob space ≈ $).
             rec["est_gross_dollars"] = max(0.0, (resid - EXIT_THRESHOLD) * q_dis)
+            # Legs breakdown and total notional: use actual top-of-book executable prices (not clamped limit)
+            legs_breakdown: List[Dict[str, object]] = []
+            dis_price_for_legs = float(notional_dis_price) if notional_dis_price is not None else 0.0
+            legs_breakdown.append({"leg": "dis", "deadline": str(cand["dis_node"]), "shares": q_dis, "price": dis_price_for_legs})
+            hedge_dd_by_token = cand.get("hedge_deadline_by_token")
+            if isinstance(hedge_dd_by_token, str):
+                try:
+                    hedge_dd_by_token = json.loads(hedge_dd_by_token)
+                except (json.JSONDecodeError, TypeError):
+                    hedge_dd_by_token = {}
+            if not isinstance(hedge_dd_by_token, dict):
+                hedge_dd_by_token = {}
+            for token_id, abs_w in hedge_abs_w.items():
+                dd_label = hedge_dd_by_token.get(token_id, token_id)
+                sh = q_dis * float(abs_w)
+                pr = float(hedge_executable_price.get(token_id, hedge_cap_price.get(token_id, 0.5)))
+                legs_breakdown.append({"leg": "hedge", "deadline": str(dd_label), "shares": sh, "price": pr})
+            rec["legs_breakdown"] = legs_breakdown
+            rec["total_notional"] = sum(float(l["shares"]) * float(l["price"]) for l in legs_breakdown)
         except Exception:  # noqa: BLE001
             pass
         out.append(rec)
@@ -909,6 +1228,7 @@ def execute_candidates(candidates: pd.DataFrame, executor: PolymarketExecutor) -
             direction = str(cand["direction"]).upper()
             dis_side = BUY if direction == "BUY" else SELL
             dis_book = executor.get_order_book(dis_token_id)
+            dis_best_bid, dis_best_ask = _best_bid_ask(dis_book)
             dis_levels = _book_levels(dis_book, "buy" if dis_side == BUY else "sell")
             dis_liq = top_of_book_liquidity_within_1c(
                 dis_levels,
@@ -926,6 +1246,7 @@ def execute_candidates(candidates: pd.DataFrame, executor: PolymarketExecutor) -
             hedge_abs_w: Dict[str, float] = {}
             hedge_exec_side: Dict[str, str] = {}
             hedge_cap_price: Dict[str, float] = {}
+            hedge_exec_price: Dict[str, float] = {}
             for token_id, w in hedge_by_token.items():
                 w = float(w)
                 # Direction flip to mirror backtest hedge PnL conventions.
@@ -946,12 +1267,31 @@ def execute_candidates(candidates: pd.DataFrame, executor: PolymarketExecutor) -
                 hedge_exec_side[str(token_id)] = side
                 if cap_price is not None:
                     hedge_cap_price[str(token_id)] = cap_price
+                h_bid, h_ask = _best_bid_ask(book)
+                if side == BUY and h_ask is not None:
+                    hedge_exec_price[str(token_id)] = float(h_ask)
+                elif side == SELL and h_bid is not None:
+                    hedge_exec_price[str(token_id)] = float(h_bid)
 
             q_dis = conservative_spread_size(
                 dislocated_liq=dis_liq,
                 hedge_liq_by_deadline=hedge_liq,
                 hedge_weights_by_deadline=hedge_abs_w,
                 max_dislocated_shares=MAX_DISLOCATED_SHARES,
+            )
+            dis_cap = _cap_price_from_book(
+                dis_book,
+                "buy" if dis_side == BUY else "sell",
+                MAX_FROM_TOP,
+            )
+            dis_exec_price = float(dis_best_ask) if dis_side == BUY and dis_best_ask is not None else (
+                float(dis_best_bid) if dis_side == SELL and dis_best_bid is not None else None
+            )
+            notional_dis_price = dis_exec_price if dis_exec_price is not None else dis_cap
+            hedge_notional_price = dict(hedge_cap_price)
+            hedge_notional_price.update(hedge_exec_price)
+            q_dis = cap_size_by_notional(
+                q_dis, notional_dis_price, hedge_abs_w, hedge_notional_price, MAX_NOTIONAL_PER_TRADE
             )
             if q_dis < MIN_EXECUTABLE_SHARES:
                 rows.append(
@@ -965,11 +1305,6 @@ def execute_candidates(candidates: pd.DataFrame, executor: PolymarketExecutor) -
                 )
                 continue
 
-            dis_cap = _cap_price_from_book(
-                dis_book,
-                "buy" if dis_side == BUY else "sell",
-                MAX_FROM_TOP,
-            )
             if dis_cap is None:
                 rows.append(
                     {
@@ -1042,22 +1377,48 @@ def execute_candidates(candidates: pd.DataFrame, executor: PolymarketExecutor) -
     return pd.DataFrame(rows)
 
 
-def run_once(execute_live: bool = False) -> pd.DataFrame:
+def run_once(
+    execute_live: bool = False,
+    executor: Optional["PolymarketExecutor"] = None,
+) -> pd.DataFrame:
     t0 = time.time()
-    executor: Optional[PolymarketExecutor] = PolymarketExecutor() if execute_live else None
+    if executor is None:
+        try:
+            executor = PolymarketExecutor()
+        except Exception:  # noqa: BLE001
+            executor = None
     if executor is not None:
         executor.clear_book_cache()
     now_utc = pd.Timestamp.utcnow()
     universe = load_or_refresh_universe(now_utc)
     panel = build_recent_panel(universe, now_utc)
+    if USE_CLOSED_BARS_ONLY and not panel.empty:
+        closed_cutoff = now_utc.floor(INTERVAL) - pd.Timedelta(minutes=FREQUENCY_MINUTES)
+        panel = panel[panel["timestamp"] <= closed_cutoff].copy()
     static_df, signals, live_slice = latest_signals(panel, executor=executor)
     candidates = build_execution_candidates(signals, panel)
+
+    # Diagnostic: where signals are dropped (executable-book filter vs threshold)
+    signal_debug: Dict[str, object] = {}
+    if VERBOSE_DIAGNOSTICS and not live_slice.empty:
+        signal_debug["live_slice_rows"] = len(live_slice)
+        signal_debug["above_threshold"] = int((live_slice["ts_residual"].abs() >= STATIC_THRESHOLD).sum())
+        if "_exec_book_valid" in live_slice.columns:
+            signal_debug["valid_book"] = int(live_slice["_exec_book_valid"].sum())
+            signal_debug["above_thresh_and_valid"] = int(
+                ((live_slice["ts_residual"].abs() >= STATIC_THRESHOLD) & live_slice["_exec_book_valid"]).sum()
+            )
+        signal_debug["median_abs_resid"] = float(live_slice["ts_residual"].abs().median())
 
     # Candidate output is the printed table below; no CSV/JSON files by default.
     executed = pd.DataFrame()
     balance: Dict[str, object] = {}
     first_book: Dict[str, object] = {}
     opportunity_per_candidate: List[Dict[str, object]] = []
+    # Fetch order books and sizing whenever we have executor (no need for --execute-live).
+    if not candidates.empty and executor is not None:
+        candidates_for_opp = candidates if execute_live else candidates.head(15).copy()
+        opportunity_per_candidate = compute_opportunity_per_candidate(candidates_for_opp, executor)
     if execute_live and executor is not None:
         try:
             balance = executor.get_balance()
@@ -1073,7 +1434,6 @@ def run_once(execute_live: bool = False) -> pd.DataFrame:
             with (LOG_DIR / "exit_orders_log.txt").open("a") as f:
                 f.write(f"{now_utc.isoformat()} placed exit orders for {n_exits} position(s)\n")
         if not candidates.empty:
-            opportunity_per_candidate = compute_opportunity_per_candidate(candidates, executor)
             executed = execute_candidates(candidates, executor)
             LOG_DIR.mkdir(parents=True, exist_ok=True)
             executed.to_csv(EXECUTION_ATTEMPTS_PATH, index=False)
@@ -1116,6 +1476,7 @@ def run_once(execute_live: bool = False) -> pd.DataFrame:
         "elapsed_s": round(elapsed, 2),
         "balance": balance,
         "first_candidate_book": first_book if first_book else None,
+        "signal_debug": signal_debug,
     }
     LOG_DIR.mkdir(parents=True, exist_ok=True)
     with CYCLE_LOG_PATH.open("a") as f:
@@ -1131,6 +1492,17 @@ def run_once(execute_live: bool = False) -> pd.DataFrame:
         f"  universe={len(universe)}  panel_rows={len(panel)}  "
         f"signals={len(signals)}  candidates={len(candidates)}"
     )
+    # When no signals: show why (threshold vs executable-book filter)
+    if len(signals) == 0 and not live_slice.empty:
+        above = int((live_slice["ts_residual"].abs() >= STATIC_THRESHOLD).sum())
+        valid = int(live_slice["_exec_book_valid"].sum()) if "_exec_book_valid" in live_slice.columns else None
+        msg = f"  (live_slice={len(live_slice)}  above |resid|>={STATIC_THRESHOLD}: {above}"
+        if valid is not None:
+            msg += f"  valid_book: {valid}"
+        msg += ")"
+        _out(msg)
+    if signal_debug:
+        _out(f"  signal_debug: {signal_debug}")
     if not candidates.empty:
         _out("  candidates (algo output):")
         for i, (_, row) in enumerate(candidates.head(15).iterrows(), 1):
@@ -1138,8 +1510,42 @@ def run_once(execute_live: bool = False) -> pd.DataFrame:
             direction = str(row["direction"]).upper()
             dis_node = str(row["dis_node"])
             resid = abs(float(row["static_resid"]))
+            fair = row.get("fair_value_dis")
             _out(f"    {i}. {q}  |resid|={resid:.4f}  nodes={int(row['n_nodes'])}")
             _out(f"        Trade: {direction} at node (deadline) {dis_node} (dislocated leg, 1 unit)")
+            if fair is not None:
+                _out(f"        Fair (model): {float(fair):.4f}")
+            if i <= len(opportunity_per_candidate):
+                opp = opportunity_per_candidate[i - 1]
+                bid = opp.get("best_bid_dis")
+                ask = opp.get("best_ask_dis")
+                entry_p = opp.get("entry_price_dis")
+                if bid is not None or ask is not None:
+                    bid_s = f"{float(bid):.4f}" if bid is not None else "—"
+                    ask_s = f"{float(ask):.4f}" if ask is not None else "—"
+                    exec_side = "ask" if direction == "BUY" else "bid"
+                    _out(f"        Book (dis leg): bid={bid_s}  ask={ask_s}  → executable ({exec_side})")
+                if entry_p is not None:
+                    _out(f"        Our limit (1c from top): {float(entry_p):.4f}")
+                legs_bd = opp.get("legs_breakdown") or []
+                for leg in legs_bd:
+                    sh = float(leg.get("shares", 0))
+                    pr = float(leg.get("price", 0))
+                    dd = leg.get("deadline", "")
+                    leg_type = leg.get("leg", "")
+                    n = sh * pr
+                    _out(f"        Leg {dd} ({leg_type}): {sh:.2f} shares @ {pr:.4f}  = ${n:.2f}")
+                tot = opp.get("total_notional")
+                if tot is not None:
+                    _out(f"        Total notional: ${float(tot):.2f}")
+                max_sh = opp.get("max_shares", 0.0)
+                gross = opp.get("est_gross_dollars", 0.0)
+                _out(f"        Opportunity: max_shares={max_sh:.1f} (within 1c of top)  est_gross_dollars=${gross:.2f} (exit when |resid|<{EXIT_THRESHOLD})")
+            else:
+                if fair is None:
+                    _out("        Fair (model): N/A")
+                _out("        Executable (book): N/A (set POLYMARKET_* env / .env for order book levels)")
+                _out("        Opportunity: N/A")
             hw = row.get("hedge_weights_by_deadline")
             if hw is not None and isinstance(hw, dict):
                 parts = [f"{d}: w={w:+.3f}" for d, w in sorted(hw.items())]
@@ -1151,18 +1557,6 @@ def run_once(execute_live: bool = False) -> pd.DataFrame:
                     _out(f"        Hedge weights by deadline: {', '.join(parts)}")
                 except (json.JSONDecodeError, TypeError):
                     _out(f"        Hedge: {hw}")
-            # Dollar opportunity: size within 1c of top of book, exit at EXIT_THRESHOLD
-            if i <= len(opportunity_per_candidate):
-                opp = opportunity_per_candidate[i - 1]
-                max_sh = opp.get("max_shares", 0.0)
-                entry_p = opp.get("entry_price_dis")
-                gross = opp.get("est_gross_dollars", 0.0)
-                if entry_p is not None:
-                    _out(f"        Opportunity: max_shares={max_sh:.1f} (within 1c of top)  entry_dis={entry_p:.3f}  est_gross_dollars=${gross:.2f} (exit when |resid|<{EXIT_THRESHOLD})")
-                else:
-                    _out(f"        Opportunity: max_shares={max_sh:.1f}  est_gross_dollars=${gross:.2f} (exit when |resid|<{EXIT_THRESHOLD})")
-            else:
-                _out("        Opportunity: N/A (run with --execute-live for tradeable size)")
         if len(candidates) > 15:
             _out(f"    ... and {len(candidates) - 15} more")
     else:
@@ -1178,24 +1572,36 @@ def run_once(execute_live: bool = False) -> pd.DataFrame:
                 f"shares={float(row['executed_shares']):.2f}  {details}"
             )
     if balance:
-        _out(f"  Account balance: {balance}")
-        # PnL since process start (when we have numeric balance)
-        current = None
+        # Parse balance: API often returns integer in 6-decimal units (USDC).
+        current_usdc = None
         if isinstance(balance, dict) and "error" not in balance:
             for key in ("balance", "amount", "size"):
                 raw = balance.get(key)
                 if raw is not None:
                     try:
-                        current = float(raw)
+                        v = float(raw)
+                        # If value looks like base units (e.g. 339539004), convert to USDC (÷1e6)
+                        current_usdc = v / 1e6 if v >= 1000 and v == int(v) else v
                         break
                     except (TypeError, ValueError):
                         continue
-        if current is not None:
+            # If balance was stringified in "raw" (e.g. "{'balance': '339539004', ...}")
+            if current_usdc is None and "raw" in balance:
+                raw_str = str(balance["raw"])
+                m = re.search(r"'balance'\s*:\s*'?(\d+)'?", raw_str)
+                if m:
+                    v = float(m.group(1))
+                    current_usdc = v / 1e6 if v >= 1000 else v
+        if current_usdc is not None:
+            _out(f"  Account balance: ${current_usdc:,.2f} USDC")
             global _start_balance
             if _start_balance is None:
-                _start_balance = current
-            pnl = current - _start_balance
-            _out(f"  Strategy PnL (since process start): ${pnl:+.2f} USDC")
+                _start_balance = current_usdc
+            pnl = current_usdc - _start_balance
+            _out(f"  Strategy PnL (since process start): ${pnl:+,.2f} USDC")
+        else:
+            # Show balance dict without allowances (already stripped in get_balance)
+            _out(f"  Account balance: {balance}")
     _out(f"  logs: {CYCLE_LOG_PATH} | {EXECUTION_LOG_PATH}" + (f" | {EXECUTION_ATTEMPTS_PATH}" if not executed.empty else ""))
     _out()
     return candidates
@@ -1211,13 +1617,20 @@ def main() -> None:
     )
     args = parser.parse_args()
 
+    # Create executor once so we don't re-auth every cycle.
+    _executor: Optional[PolymarketExecutor] = None
+    try:
+        _executor = PolymarketExecutor()
+    except Exception:  # noqa: BLE001
+        pass
+
     if args.loop_seconds <= 0:
-        run_once(execute_live=args.execute_live)
+        run_once(execute_live=args.execute_live, executor=_executor)
         return
 
     while True:
         try:
-            run_once(execute_live=args.execute_live)
+            run_once(execute_live=args.execute_live, executor=_executor)
         except Exception as exc:  # noqa: BLE001
             print(f"[run_once] error: {exc}", flush=True)
         time.sleep(args.loop_seconds)

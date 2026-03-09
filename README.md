@@ -4,24 +4,22 @@ Calendar-spread strategy: static dislocation signal, backtest + live execution.
 
 ## Essential files
 
-| File | Purpose |
-|------|--------|
+| File / folder | Purpose |
+|---------------|--------|
 | `curve_pipeline.py` | Core algorithm: universe, panel, signal, hedge weights, trade builder. |
 | `live_execution.py` | Fast live runner (signals + optional order placement). No backtest rerun. |
-| `curve_dislocation_backtest.ipynb` | Backtest: config, universe, panel, trades, dedup, summary. |
-| `analytics.ipynb` | Analytics, diagnostics, calibration. |
-| `ALGORITHM.md` | Full algorithm and runbook. |
+| `analytics/` | Backtest, analytics, and API notebooks. |
+| `config/.env.example` | Env template; copy to `config/.env` and fill for live trading. |
 | `requirements.txt` | Python deps. |
-| `.env.example` | Env template; copy to `.env` and fill for live trading. |
 
 ## Run
 
-- **Backtest:** Open `curve_dislocation_backtest.ipynb`, run all cells.
-- **Analytics:** Open `analytics.ipynb`, run as needed.
-- **Live (one shot):** `python3 live_execution.py`
-- **Live (loop):** `python3 live_execution.py --execute-live --loop-seconds 300`
+- **Backtest:** Open `analytics/curve_dislocation_backtest.ipynb`, run all cells.
+- **Analytics / API:** Open `analytics/analytics.ipynb` or `analytics/Api.ipynb` as needed.
+- **Live (one shot):** `python live_execution.py`
+- **Live (loop):** `python live_execution.py --execute-live --loop-seconds 300`
 
-Generated at runtime (gitignored): `.cache/`, `logs/` (cycle_log.jsonl, execution_log.jsonl, execution_attempts_latest.csv).
+Generated at runtime (gitignored): `.cache/`, `logs/` (cycle_log.jsonl, execution_log.jsonl, etc.).
 
 ---
 
@@ -97,11 +95,11 @@ Wait until it finishes. It’s just setting up Python and your project on this c
 The bot needs your Polymarket keys. On the same cloud computer, run:
 
 ```bash
-cp .env.example .env
-nano .env
+cp config/.env.example config/.env
+nano config/.env
 ```
 
-In the editor that opens, paste your real **API key**, **private key**, and **funder address** (same as in your local `.env`). Save and exit: press **Ctrl+O**, Enter, then **Ctrl+X**.
+In the editor that opens, paste your real **API key**, **private key**, and **funder address** (same as in your local `config/.env`). Save and exit: press **Ctrl+O**, Enter, then **Ctrl+X**.
 
 ---
 

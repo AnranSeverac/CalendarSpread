@@ -1,4 +1,5 @@
 .env
+config/.env
 .cache/
 execution_candidates_latest.csv
 execution_candidates_latest.json

@@ -1,5 +1,6 @@
 numpy
 pandas
+pyarrow
 requests
 python-dotenv
 py-clob-client
