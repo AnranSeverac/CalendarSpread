@@ -1,0 +1,246 @@
+market_id,micro_group_id,group_label,relationship,rank,confidence,rationale
+949492,business-finance-1,Fed rate cut by FOMC meeting (cumulative),IMPLIES,1,high,Same easing event; a cut by an earlier FOMC meeting implies a cut by every later meeting.
+949493,business-finance-1,Fed rate cut by FOMC meeting (cumulative),IMPLIES,2,high,Same easing event; a cut by an earlier FOMC meeting implies a cut by every later meeting.
+949494,business-finance-1,Fed rate cut by FOMC meeting (cumulative),IMPLIES,3,high,Same easing event; a cut by an earlier FOMC meeting implies a cut by every later meeting.
+949495,business-finance-1,Fed rate cut by FOMC meeting (cumulative),IMPLIES,4,high,Same easing event; a cut by an earlier FOMC meeting implies a cut by every later meeting.
+1439536,business-finance-1,Fed rate cut by FOMC meeting (cumulative),IMPLIES,5,high,Same easing event; a cut by an earlier FOMC meeting implies a cut by every later meeting.
+1439549,business-finance-1,Fed rate cut by FOMC meeting (cumulative),IMPLIES,6,high,Same easing event; a cut by an earlier FOMC meeting implies a cut by every later meeting.
+1439550,business-finance-1,Fed rate cut by FOMC meeting (cumulative),IMPLIES,7,high,Same easing event; a cut by an earlier FOMC meeting implies a cut by every later meeting.
+1439555,business-finance-1,Fed rate cut by FOMC meeting (cumulative),IMPLIES,8,high,Same easing event; a cut by an earlier FOMC meeting implies a cut by every later meeting.
+1808544,business-finance-2,Fed rate hike by FOMC meeting (cumulative),IMPLIES,1,high,Same tightening event; a hike by an earlier deadline implies a hike by every later deadline.
+1808545,business-finance-2,Fed rate hike by FOMC meeting (cumulative),IMPLIES,2,high,Same tightening event; a hike by an earlier deadline implies a hike by every later deadline.
+1808546,business-finance-2,Fed rate hike by FOMC meeting (cumulative),IMPLIES,3,high,Same tightening event; a hike by an earlier deadline implies a hike by every later deadline.
+1808547,business-finance-2,Fed rate hike by FOMC meeting (cumulative),IMPLIES,4,high,Same tightening event; a hike by an earlier deadline implies a hike by every later deadline.
+1808548,business-finance-2,Fed rate hike by FOMC meeting (cumulative),IMPLIES,5,high,Same tightening event; a hike by an earlier deadline implies a hike by every later deadline.
+908713,business-finance-2,Fed rate hike by FOMC meeting (cumulative),IMPLIES,6,high,Same tightening event; a hike by an earlier deadline implies a hike by every later deadline.
+690198,business-finance-3,Fed upper bound >= threshold before 2027,IMPLIES,1,high,Same indicator; reaching a higher upper-bound threshold implies reaching every lower one.
+690199,business-finance-3,Fed upper bound >= threshold before 2027,IMPLIES,2,high,Same indicator; reaching a higher upper-bound threshold implies reaching every lower one.
+690197,business-finance-3,Fed upper bound >= threshold before 2027,IMPLIES,3,high,Same indicator; reaching a higher upper-bound threshold implies reaching every lower one.
+690201,business-finance-3,Fed upper bound >= threshold before 2027,IMPLIES,4,high,Same indicator; reaching a higher upper-bound threshold implies reaching every lower one.
+690200,business-finance-3,Fed upper bound >= threshold before 2027,IMPLIES,5,high,Same indicator; reaching a higher upper-bound threshold implies reaching every lower one.
+690202,business-finance-3,Fed upper bound >= threshold before 2027,IMPLIES,6,high,Same indicator; reaching a higher upper-bound threshold implies reaching every lower one.
+690211,business-finance-4,Fed lower bound <= threshold before 2027,IMPLIES,1,high,Same indicator; reaching a lower easing threshold implies reaching every higher one.
+690210,business-finance-4,Fed lower bound <= threshold before 2027,IMPLIES,2,high,Same indicator; reaching a lower easing threshold implies reaching every higher one.
+690209,business-finance-4,Fed lower bound <= threshold before 2027,IMPLIES,3,high,Same indicator; reaching a lower easing threshold implies reaching every higher one.
+690208,business-finance-4,Fed lower bound <= threshold before 2027,IMPLIES,4,high,Same indicator; reaching a lower easing threshold implies reaching every higher one.
+690204,business-finance-4,Fed lower bound <= threshold before 2027,IMPLIES,5,high,Same indicator; reaching a lower easing threshold implies reaching every higher one.
+690205,business-finance-4,Fed lower bound <= threshold before 2027,IMPLIES,6,high,Same indicator; reaching a lower easing threshold implies reaching every higher one.
+690206,business-finance-4,Fed lower bound <= threshold before 2027,IMPLIES,7,high,Same indicator; reaching a lower easing threshold implies reaching every higher one.
+690207,business-finance-4,Fed lower bound <= threshold before 2027,IMPLIES,8,high,Same indicator; reaching a lower easing threshold implies reaching every higher one.
+690203,business-finance-4,Fed lower bound <= threshold before 2027,IMPLIES,9,high,Same indicator; reaching a lower easing threshold implies reaching every higher one.
+690212,business-finance-4,Fed lower bound <= threshold before 2027,IMPLIES,10,high,Same indicator; reaching a lower easing threshold implies reaching every higher one.
+690214,business-finance-4,Fed lower bound <= threshold before 2027,IMPLIES,11,high,Same indicator; reaching a lower easing threshold implies reaching every higher one.
+690215,business-finance-4,Fed lower bound <= threshold before 2027,IMPLIES,12,high,Same indicator; reaching a lower easing threshold implies reaching every higher one.
+690220,business-finance-4,Fed lower bound <= threshold before 2027,IMPLIES,13,high,Same indicator; reaching a lower easing threshold implies reaching every higher one.
+690221,business-finance-4,Fed lower bound <= threshold before 2027,IMPLIES,14,high,Same indicator; reaching a lower easing threshold implies reaching every higher one.
+690225,business-finance-4,Fed lower bound <= threshold before 2027,IMPLIES,15,high,Same indicator; reaching a lower easing threshold implies reaching every higher one.
+1115676,business-finance-5,Powell out of Fed Board by deadline,IMPLIES,1,high,Same event; Powell leaving by the earlier date implies leaving by the later date.
+1115677,business-finance-5,Powell out of Fed Board by deadline,IMPLIES,2,high,Same event; Powell leaving by the earlier date implies leaving by the later date.
+677028,business-finance-6,10y Treasury yield hits >= threshold before 2027,IMPLIES,1,high,Same indicator; hitting a higher yield implies hitting every lower yield.
+677027,business-finance-6,10y Treasury yield hits >= threshold before 2027,IMPLIES,2,high,Same indicator; hitting a higher yield implies hitting every lower yield.
+677026,business-finance-6,10y Treasury yield hits >= threshold before 2027,IMPLIES,3,high,Same indicator; hitting a higher yield implies hitting every lower yield.
+677025,business-finance-6,10y Treasury yield hits >= threshold before 2027,IMPLIES,4,high,Same indicator; hitting a higher yield implies hitting every lower yield.
+677024,business-finance-6,10y Treasury yield hits >= threshold before 2027,IMPLIES,5,high,Same indicator; hitting a higher yield implies hitting every lower yield.
+677023,business-finance-6,10y Treasury yield hits >= threshold before 2027,IMPLIES,6,high,Same indicator; hitting a higher yield implies hitting every lower yield.
+677022,business-finance-6,10y Treasury yield hits >= threshold before 2027,IMPLIES,7,high,Same indicator; hitting a higher yield implies hitting every lower yield.
+677021,business-finance-6,10y Treasury yield hits >= threshold before 2027,IMPLIES,8,high,Same indicator; hitting a higher yield implies hitting every lower yield.
+902298,business-finance-6,10y Treasury yield hits >= threshold before 2027,IMPLIES,9,high,Same indicator; hitting a higher yield implies hitting every lower yield.
+902299,business-finance-6,10y Treasury yield hits >= threshold before 2027,IMPLIES,10,high,Same indicator; hitting a higher yield implies hitting every lower yield.
+677142,business-finance-7,10y Treasury yield dips below threshold before 2027,IMPLIES,1,high,Same indicator; dipping below a lower yield implies dipping below every higher yield.
+677141,business-finance-7,10y Treasury yield dips below threshold before 2027,IMPLIES,2,high,Same indicator; dipping below a lower yield implies dipping below every higher yield.
+677140,business-finance-7,10y Treasury yield dips below threshold before 2027,IMPLIES,3,high,Same indicator; dipping below a lower yield implies dipping below every higher yield.
+677139,business-finance-7,10y Treasury yield dips below threshold before 2027,IMPLIES,4,high,Same indicator; dipping below a lower yield implies dipping below every higher yield.
+677143,business-finance-7,10y Treasury yield dips below threshold before 2027,IMPLIES,5,high,Same indicator; dipping below a lower yield implies dipping below every higher yield.
+677144,business-finance-7,10y Treasury yield dips below threshold before 2027,IMPLIES,6,high,Same indicator; dipping below a lower yield implies dipping below every higher yield.
+677145,business-finance-7,10y Treasury yield dips below threshold before 2027,IMPLIES,7,high,Same indicator; dipping below a lower yield implies dipping below every higher yield.
+677146,business-finance-7,10y Treasury yield dips below threshold before 2027,IMPLIES,8,high,Same indicator; dipping below a lower yield implies dipping below every higher yield.
+677138,business-finance-7,10y Treasury yield dips below threshold before 2027,IMPLIES,9,high,Same indicator; dipping below a lower yield implies dipping below every higher yield.
+680954,business-finance-8,2026 CPI inflation > threshold,IMPLIES,1,high,Same CPI measure; exceeding a higher inflation rate implies exceeding every lower one.
+680953,business-finance-8,2026 CPI inflation > threshold,IMPLIES,2,high,Same CPI measure; exceeding a higher inflation rate implies exceeding every lower one.
+680952,business-finance-8,2026 CPI inflation > threshold,IMPLIES,3,high,Same CPI measure; exceeding a higher inflation rate implies exceeding every lower one.
+680951,business-finance-8,2026 CPI inflation > threshold,IMPLIES,4,high,Same CPI measure; exceeding a higher inflation rate implies exceeding every lower one.
+2241741,business-finance-8,2026 CPI inflation > threshold,IMPLIES,5,high,Same CPI measure; exceeding a higher inflation rate implies exceeding every lower one.
+680950,business-finance-8,2026 CPI inflation > threshold,IMPLIES,6,high,Same CPI measure; exceeding a higher inflation rate implies exceeding every lower one.
+1665896,business-finance-8,2026 CPI inflation > threshold,IMPLIES,7,high,Same CPI measure; exceeding a higher inflation rate implies exceeding every lower one.
+680949,business-finance-8,2026 CPI inflation > threshold,IMPLIES,8,high,Same CPI measure; exceeding a higher inflation rate implies exceeding every lower one.
+1087313,business-finance-9,2026 US unemployment >= threshold,IMPLIES,1,high,Same U-3 measure; reaching a higher unemployment rate implies reaching every lower one.
+1087312,business-finance-9,2026 US unemployment >= threshold,IMPLIES,2,high,Same U-3 measure; reaching a higher unemployment rate implies reaching every lower one.
+1087311,business-finance-9,2026 US unemployment >= threshold,IMPLIES,3,high,Same U-3 measure; reaching a higher unemployment rate implies reaching every lower one.
+1087310,business-finance-9,2026 US unemployment >= threshold,IMPLIES,4,high,Same U-3 measure; reaching a higher unemployment rate implies reaching every lower one.
+1087309,business-finance-9,2026 US unemployment >= threshold,IMPLIES,5,high,Same U-3 measure; reaching a higher unemployment rate implies reaching every lower one.
+1125373,business-finance-10,S&P 500 hits >= price (HIGH) in June 2026,IMPLIES,1,high,Same index/window; hitting a higher S&P level implies hitting every lower level.
+2236208,business-finance-10,S&P 500 hits >= price (HIGH) in June 2026,IMPLIES,2,high,Same index/window; hitting a higher S&P level implies hitting every lower level.
+1125374,business-finance-10,S&P 500 hits >= price (HIGH) in June 2026,IMPLIES,3,high,Same index/window; hitting a higher S&P level implies hitting every lower level.
+2236358,business-finance-10,S&P 500 hits >= price (HIGH) in June 2026,IMPLIES,4,high,Same index/window; hitting a higher S&P level implies hitting every lower level.
+1125375,business-finance-10,S&P 500 hits >= price (HIGH) in June 2026,IMPLIES,5,high,Same index/window; hitting a higher S&P level implies hitting every lower level.
+1125376,business-finance-10,S&P 500 hits >= price (HIGH) in June 2026,IMPLIES,6,high,Same index/window; hitting a higher S&P level implies hitting every lower level.
+1125377,business-finance-10,S&P 500 hits >= price (HIGH) in June 2026,IMPLIES,7,high,Same index/window; hitting a higher S&P level implies hitting every lower level.
+1125378,business-finance-10,S&P 500 hits >= price (HIGH) in June 2026,IMPLIES,8,high,Same index/window; hitting a higher S&P level implies hitting every lower level.
+1125383,business-finance-11,S&P 500 hits <= price (LOW) in June 2026,IMPLIES,1,high,Same index/window; hitting a lower S&P level implies hitting every higher level.
+1125382,business-finance-11,S&P 500 hits <= price (LOW) in June 2026,IMPLIES,2,high,Same index/window; hitting a lower S&P level implies hitting every higher level.
+1125381,business-finance-11,S&P 500 hits <= price (LOW) in June 2026,IMPLIES,3,high,Same index/window; hitting a lower S&P level implies hitting every higher level.
+2236212,business-finance-11,S&P 500 hits <= price (LOW) in June 2026,IMPLIES,3,high,Same index/window; hitting a lower S&P level implies hitting every higher level.
+1125380,business-finance-11,S&P 500 hits <= price (LOW) in June 2026,IMPLIES,5,high,Same index/window; hitting a lower S&P level implies hitting every higher level.
+1125379,business-finance-11,S&P 500 hits <= price (LOW) in June 2026,IMPLIES,6,high,Same index/window; hitting a lower S&P level implies hitting every higher level.
+2236211,business-finance-11,S&P 500 hits <= price (LOW) in June 2026,IMPLIES,6,high,Same index/window; hitting a lower S&P level implies hitting every higher level.
+2236210,business-finance-11,S&P 500 hits <= price (LOW) in June 2026,IMPLIES,8,high,Same index/window; hitting a lower S&P level implies hitting every higher level.
+2236209,business-finance-11,S&P 500 hits <= price (LOW) in June 2026,IMPLIES,9,high,Same index/window; hitting a lower S&P level implies hitting every higher level.
+1335135,business-finance-12,EUR/USD hits >= level (High) in 2026,IMPLIES,1,high,Same pair; hitting a higher EUR/USD level implies hitting every lower level.
+1335136,business-finance-12,EUR/USD hits >= level (High) in 2026,IMPLIES,2,high,Same pair; hitting a higher EUR/USD level implies hitting every lower level.
+1335137,business-finance-12,EUR/USD hits >= level (High) in 2026,IMPLIES,3,high,Same pair; hitting a higher EUR/USD level implies hitting every lower level.
+1335138,business-finance-12,EUR/USD hits >= level (High) in 2026,IMPLIES,4,high,Same pair; hitting a higher EUR/USD level implies hitting every lower level.
+1335139,business-finance-12,EUR/USD hits >= level (High) in 2026,IMPLIES,5,high,Same pair; hitting a higher EUR/USD level implies hitting every lower level.
+1335140,business-finance-12,EUR/USD hits >= level (High) in 2026,IMPLIES,6,high,Same pair; hitting a higher EUR/USD level implies hitting every lower level.
+1335141,business-finance-12,EUR/USD hits >= level (High) in 2026,IMPLIES,7,high,Same pair; hitting a higher EUR/USD level implies hitting every lower level.
+1335147,business-finance-13,EUR/USD hits <= level (Low) in 2026,IMPLIES,1,high,Same pair; hitting a lower EUR/USD level implies hitting every higher level.
+1335146,business-finance-13,EUR/USD hits <= level (Low) in 2026,IMPLIES,2,high,Same pair; hitting a lower EUR/USD level implies hitting every higher level.
+1335145,business-finance-13,EUR/USD hits <= level (Low) in 2026,IMPLIES,3,high,Same pair; hitting a lower EUR/USD level implies hitting every higher level.
+1335144,business-finance-13,EUR/USD hits <= level (Low) in 2026,IMPLIES,4,high,Same pair; hitting a lower EUR/USD level implies hitting every higher level.
+1335143,business-finance-13,EUR/USD hits <= level (Low) in 2026,IMPLIES,5,high,Same pair; hitting a lower EUR/USD level implies hitting every higher level.
+1335142,business-finance-13,EUR/USD hits <= level (Low) in 2026,IMPLIES,6,high,Same pair; hitting a lower EUR/USD level implies hitting every higher level.
+2298932,business-finance-14,Stripe private valuation >= $B by June 30 2026,IMPLIES,1,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2298933,business-finance-14,Stripe private valuation >= $B by June 30 2026,IMPLIES,2,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2298934,business-finance-14,Stripe private valuation >= $B by June 30 2026,IMPLIES,3,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2298935,business-finance-14,Stripe private valuation >= $B by June 30 2026,IMPLIES,4,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2298936,business-finance-14,Stripe private valuation >= $B by June 30 2026,IMPLIES,5,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2298937,business-finance-14,Stripe private valuation >= $B by June 30 2026,IMPLIES,6,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2298938,business-finance-14,Stripe private valuation >= $B by June 30 2026,IMPLIES,7,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2298939,business-finance-14,Stripe private valuation >= $B by June 30 2026,IMPLIES,8,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2298940,business-finance-14,Stripe private valuation >= $B by June 30 2026,IMPLIES,9,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2298941,business-finance-14,Stripe private valuation >= $B by June 30 2026,IMPLIES,10,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2298942,business-finance-14,Stripe private valuation >= $B by June 30 2026,IMPLIES,11,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+656310,business-finance-15,OpenAI completes IPO by deadline,IMPLIES,1,high,Same OpenAI IPO; completing it by an earlier date implies completing it by every later date (Dec-2026 deadline equals 'before 2027').
+656311,business-finance-15,OpenAI completes IPO by deadline,IMPLIES,2,high,Same OpenAI IPO; completing it by an earlier date implies completing it by every later date (Dec-2026 deadline equals 'before 2027').
+2314474,business-finance-15,OpenAI completes IPO by deadline,IMPLIES,3,high,Same OpenAI IPO; completing it by an earlier date implies completing it by every later date (Dec-2026 deadline equals 'before 2027').
+2314378,business-finance-15,OpenAI completes IPO by deadline,IMPLIES,4,high,Same OpenAI IPO; completing it by an earlier date implies completing it by every later date (Dec-2026 deadline equals 'before 2027').
+2314379,business-finance-15,OpenAI completes IPO by deadline,IMPLIES,5,high,Same OpenAI IPO; completing it by an earlier date implies completing it by every later date (Dec-2026 deadline equals 'before 2027').
+656312,business-finance-15,OpenAI completes IPO by deadline,IMPLIES,6,high,Same OpenAI IPO; completing it by an earlier date implies completing it by every later date (Dec-2026 deadline equals 'before 2027').
+676785,business-finance-15,OpenAI completes IPO by deadline,IMPLIES,6,high,Same OpenAI IPO; completing it by an earlier date implies completing it by every later date (Dec-2026 deadline equals 'before 2027').
+2321568,business-finance-16,OpenAI files IPO registration (S-1) by deadline,IMPLIES,1,high,Same filing event; filing by an earlier date implies filing by every later date.
+2321569,business-finance-16,OpenAI files IPO registration (S-1) by deadline,IMPLIES,2,high,Same filing event; filing by an earlier date implies filing by every later date.
+2321570,business-finance-16,OpenAI files IPO registration (S-1) by deadline,IMPLIES,3,high,Same filing event; filing by an earlier date implies filing by every later date.
+2321571,business-finance-16,OpenAI files IPO registration (S-1) by deadline,IMPLIES,4,high,Same filing event; filing by an earlier date implies filing by every later date.
+2307904,business-finance-17,OpenAI private valuation >= $B by Dec 31 2026,IMPLIES,1,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2307896,business-finance-17,OpenAI private valuation >= $B by Dec 31 2026,IMPLIES,2,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2299984,business-finance-17,OpenAI private valuation >= $B by Dec 31 2026,IMPLIES,3,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2299985,business-finance-17,OpenAI private valuation >= $B by Dec 31 2026,IMPLIES,4,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2299986,business-finance-17,OpenAI private valuation >= $B by Dec 31 2026,IMPLIES,5,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2299987,business-finance-17,OpenAI private valuation >= $B by Dec 31 2026,IMPLIES,6,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2299988,business-finance-17,OpenAI private valuation >= $B by Dec 31 2026,IMPLIES,7,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2299989,business-finance-17,OpenAI private valuation >= $B by Dec 31 2026,IMPLIES,8,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2299990,business-finance-17,OpenAI private valuation >= $B by Dec 31 2026,IMPLIES,9,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2299991,business-finance-17,OpenAI private valuation >= $B by Dec 31 2026,IMPLIES,10,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2299992,business-finance-17,OpenAI private valuation >= $B by Dec 31 2026,IMPLIES,11,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2299993,business-finance-17,OpenAI private valuation >= $B by Dec 31 2026,IMPLIES,12,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2299994,business-finance-17,OpenAI private valuation >= $B by Dec 31 2026,IMPLIES,13,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2299995,business-finance-17,OpenAI private valuation >= $B by Dec 31 2026,IMPLIES,14,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2299996,business-finance-17,OpenAI private valuation >= $B by Dec 31 2026,IMPLIES,15,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2298768,business-finance-18,OpenAI private valuation >= $B by June 30 2026,IMPLIES,1,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2298769,business-finance-18,OpenAI private valuation >= $B by June 30 2026,IMPLIES,2,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2298770,business-finance-18,OpenAI private valuation >= $B by June 30 2026,IMPLIES,3,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2298771,business-finance-18,OpenAI private valuation >= $B by June 30 2026,IMPLIES,4,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2298772,business-finance-18,OpenAI private valuation >= $B by June 30 2026,IMPLIES,5,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2298773,business-finance-18,OpenAI private valuation >= $B by June 30 2026,IMPLIES,6,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2298774,business-finance-18,OpenAI private valuation >= $B by June 30 2026,IMPLIES,7,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2298775,business-finance-18,OpenAI private valuation >= $B by June 30 2026,IMPLIES,8,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2298776,business-finance-18,OpenAI private valuation >= $B by June 30 2026,IMPLIES,9,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2298777,business-finance-18,OpenAI private valuation >= $B by June 30 2026,IMPLIES,10,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2298778,business-finance-18,OpenAI private valuation >= $B by June 30 2026,IMPLIES,11,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2298779,business-finance-18,OpenAI private valuation >= $B by June 30 2026,IMPLIES,12,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+1298659,business-finance-19,OpenAI IPO closing market cap above $B,IMPLIES,1,high,Same IPO closing-cap metric; clearing a higher cap implies clearing every lower one.
+1298658,business-finance-19,OpenAI IPO closing market cap above $B,IMPLIES,2,high,Same IPO closing-cap metric; clearing a higher cap implies clearing every lower one.
+1298657,business-finance-19,OpenAI IPO closing market cap above $B,IMPLIES,3,high,Same IPO closing-cap metric; clearing a higher cap implies clearing every lower one.
+1298649,business-finance-19,OpenAI IPO closing market cap above $B,IMPLIES,4,high,Same IPO closing-cap metric; clearing a higher cap implies clearing every lower one.
+1298648,business-finance-19,OpenAI IPO closing market cap above $B,IMPLIES,5,high,Same IPO closing-cap metric; clearing a higher cap implies clearing every lower one.
+2307825,business-finance-20,Anthropic private valuation >= $B by Dec 31 2026,IMPLIES,1,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2307824,business-finance-20,Anthropic private valuation >= $B by Dec 31 2026,IMPLIES,2,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2299952,business-finance-20,Anthropic private valuation >= $B by Dec 31 2026,IMPLIES,3,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2299953,business-finance-20,Anthropic private valuation >= $B by Dec 31 2026,IMPLIES,4,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2299954,business-finance-20,Anthropic private valuation >= $B by Dec 31 2026,IMPLIES,5,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2299955,business-finance-20,Anthropic private valuation >= $B by Dec 31 2026,IMPLIES,6,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2299956,business-finance-20,Anthropic private valuation >= $B by Dec 31 2026,IMPLIES,7,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2299957,business-finance-20,Anthropic private valuation >= $B by Dec 31 2026,IMPLIES,8,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2299958,business-finance-20,Anthropic private valuation >= $B by Dec 31 2026,IMPLIES,9,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2299959,business-finance-20,Anthropic private valuation >= $B by Dec 31 2026,IMPLIES,10,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2299960,business-finance-20,Anthropic private valuation >= $B by Dec 31 2026,IMPLIES,11,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2299961,business-finance-20,Anthropic private valuation >= $B by Dec 31 2026,IMPLIES,12,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2299962,business-finance-20,Anthropic private valuation >= $B by Dec 31 2026,IMPLIES,13,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2298736,business-finance-21,Anthropic private valuation >= $B by June 30 2026,IMPLIES,1,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2298737,business-finance-21,Anthropic private valuation >= $B by June 30 2026,IMPLIES,2,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2298738,business-finance-21,Anthropic private valuation >= $B by June 30 2026,IMPLIES,3,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2298739,business-finance-21,Anthropic private valuation >= $B by June 30 2026,IMPLIES,4,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2298740,business-finance-21,Anthropic private valuation >= $B by June 30 2026,IMPLIES,5,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2298741,business-finance-21,Anthropic private valuation >= $B by June 30 2026,IMPLIES,6,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2298742,business-finance-21,Anthropic private valuation >= $B by June 30 2026,IMPLIES,7,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2298743,business-finance-21,Anthropic private valuation >= $B by June 30 2026,IMPLIES,8,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2298744,business-finance-21,Anthropic private valuation >= $B by June 30 2026,IMPLIES,9,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2298745,business-finance-21,Anthropic private valuation >= $B by June 30 2026,IMPLIES,10,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2298746,business-finance-21,Anthropic private valuation >= $B by June 30 2026,IMPLIES,11,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2298747,business-finance-21,Anthropic private valuation >= $B by June 30 2026,IMPLIES,12,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+1250581,business-finance-22,SpaceX completes IPO by deadline,IMPLIES,1,high,Same SpaceX IPO; completing it by an earlier date implies completing it by every later date (Dec-2026 deadline equals 'before 2027').
+1720967,business-finance-22,SpaceX completes IPO by deadline,IMPLIES,2,high,Same SpaceX IPO; completing it by an earlier date implies completing it by every later date (Dec-2026 deadline equals 'before 2027').
+1720968,business-finance-22,SpaceX completes IPO by deadline,IMPLIES,3,high,Same SpaceX IPO; completing it by an earlier date implies completing it by every later date (Dec-2026 deadline equals 'before 2027').
+1720969,business-finance-22,SpaceX completes IPO by deadline,IMPLIES,4,high,Same SpaceX IPO; completing it by an earlier date implies completing it by every later date (Dec-2026 deadline equals 'before 2027').
+1250582,business-finance-22,SpaceX completes IPO by deadline,IMPLIES,5,high,Same SpaceX IPO; completing it by an earlier date implies completing it by every later date (Dec-2026 deadline equals 'before 2027').
+1971078,business-finance-22,SpaceX completes IPO by deadline,IMPLIES,6,high,Same SpaceX IPO; completing it by an earlier date implies completing it by every later date (Dec-2026 deadline equals 'before 2027').
+1250583,business-finance-22,SpaceX completes IPO by deadline,IMPLIES,7,high,Same SpaceX IPO; completing it by an earlier date implies completing it by every later date (Dec-2026 deadline equals 'before 2027').
+1250584,business-finance-22,SpaceX completes IPO by deadline,IMPLIES,8,high,Same SpaceX IPO; completing it by an earlier date implies completing it by every later date (Dec-2026 deadline equals 'before 2027').
+676795,business-finance-22,SpaceX completes IPO by deadline,IMPLIES,8,high,Same SpaceX IPO; completing it by an earlier date implies completing it by every later date (Dec-2026 deadline equals 'before 2027').
+2308003,business-finance-23,SpaceX IPO closing market cap above $B,IMPLIES,1,high,Same IPO closing-cap metric; clearing a higher cap implies clearing every lower one.
+2308005,business-finance-23,SpaceX IPO closing market cap above $B,IMPLIES,2,high,Same IPO closing-cap metric; clearing a higher cap implies clearing every lower one.
+2308006,business-finance-23,SpaceX IPO closing market cap above $B,IMPLIES,3,high,Same IPO closing-cap metric; clearing a higher cap implies clearing every lower one.
+2308007,business-finance-23,SpaceX IPO closing market cap above $B,IMPLIES,4,high,Same IPO closing-cap metric; clearing a higher cap implies clearing every lower one.
+2308008,business-finance-23,SpaceX IPO closing market cap above $B,IMPLIES,5,high,Same IPO closing-cap metric; clearing a higher cap implies clearing every lower one.
+1326787,business-finance-23,SpaceX IPO closing market cap above $B,IMPLIES,6,high,Same IPO closing-cap metric; clearing a higher cap implies clearing every lower one.
+2308023,business-finance-23,SpaceX IPO closing market cap above $B,IMPLIES,7,high,Same IPO closing-cap metric; clearing a higher cap implies clearing every lower one.
+2308024,business-finance-23,SpaceX IPO closing market cap above $B,IMPLIES,8,high,Same IPO closing-cap metric; clearing a higher cap implies clearing every lower one.
+1326778,business-finance-23,SpaceX IPO closing market cap above $B,IMPLIES,9,high,Same IPO closing-cap metric; clearing a higher cap implies clearing every lower one.
+1326777,business-finance-23,SpaceX IPO closing market cap above $B,IMPLIES,10,high,Same IPO closing-cap metric; clearing a higher cap implies clearing every lower one.
+915770,business-finance-23,SpaceX IPO closing market cap above $B,IMPLIES,11,high,Same IPO closing-cap metric; clearing a higher cap implies clearing every lower one.
+915771,business-finance-23,SpaceX IPO closing market cap above $B,IMPLIES,12,high,Same IPO closing-cap metric; clearing a higher cap implies clearing every lower one.
+915769,business-finance-23,SpaceX IPO closing market cap above $B,IMPLIES,13,high,Same IPO closing-cap metric; clearing a higher cap implies clearing every lower one.
+909467,business-finance-23,SpaceX IPO closing market cap above $B,IMPLIES,14,high,Same IPO closing-cap metric; clearing a higher cap implies clearing every lower one.
+909468,business-finance-23,SpaceX IPO closing market cap above $B,IMPLIES,15,high,Same IPO closing-cap metric; clearing a higher cap implies clearing every lower one.
+909466,business-finance-23,SpaceX IPO closing market cap above $B,IMPLIES,16,high,Same IPO closing-cap metric; clearing a higher cap implies clearing every lower one.
+2298906,business-finance-24,SpaceX private valuation >= $B by June 30 2026,IMPLIES,1,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2298908,business-finance-24,SpaceX private valuation >= $B by June 30 2026,IMPLIES,2,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2298911,business-finance-24,SpaceX private valuation >= $B by June 30 2026,IMPLIES,3,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2298915,business-finance-24,SpaceX private valuation >= $B by June 30 2026,IMPLIES,4,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2298918,business-finance-24,SpaceX private valuation >= $B by June 30 2026,IMPLIES,5,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2298922,business-finance-24,SpaceX private valuation >= $B by June 30 2026,IMPLIES,6,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2298926,business-finance-24,SpaceX private valuation >= $B by June 30 2026,IMPLIES,7,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2298928,business-finance-24,SpaceX private valuation >= $B by June 30 2026,IMPLIES,8,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2298929,business-finance-24,SpaceX private valuation >= $B by June 30 2026,IMPLIES,9,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2298930,business-finance-24,SpaceX private valuation >= $B by June 30 2026,IMPLIES,10,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+2298931,business-finance-24,SpaceX private valuation >= $B by June 30 2026,IMPLIES,11,high,Same NPM valuation metric; reaching a higher valuation implies reaching every lower one.
+1296852,business-finance-25,Tesla-SpaceX merger announced by deadline,IMPLIES,1,high,Same event; announcement by the earlier date implies announcement by the later date.
+2252540,business-finance-25,Tesla-SpaceX merger announced by deadline,IMPLIES,2,high,Same event; announcement by the earlier date implies announcement by the later date.
+692245,business-finance-26,AI industry downturn by deadline,IMPLIES,1,high,Identical downturn definition; occurring by an earlier deadline implies occurring by every later one.
+691336,business-finance-26,AI industry downturn by deadline,IMPLIES,2,high,Identical downturn definition; occurring by an earlier deadline implies occurring by every later one.
+691340,business-finance-26,AI industry downturn by deadline,IMPLIES,3,high,Identical downturn definition; occurring by an earlier deadline implies occurring by every later one.
+1285274,business-finance-27,Gemini score >= % on Humanity's Last Exam,IMPLIES,1,high,Same model/benchmark; clearing a higher score implies clearing every lower score.
+1285273,business-finance-27,Gemini score >= % on Humanity's Last Exam,IMPLIES,2,high,Same model/benchmark; clearing a higher score implies clearing every lower score.
+1285272,business-finance-27,Gemini score >= % on Humanity's Last Exam,IMPLIES,3,high,Same model/benchmark; clearing a higher score implies clearing every lower score.
+1285271,business-finance-27,Gemini score >= % on Humanity's Last Exam,IMPLIES,4,high,Same model/benchmark; clearing a higher score implies clearing every lower score.
+1285270,business-finance-27,Gemini score >= % on Humanity's Last Exam,IMPLIES,5,high,Same model/benchmark; clearing a higher score implies clearing every lower score.
+1999854,business-finance-28,Claude score >= % on Humanity's Last Exam,IMPLIES,1,high,Same model/benchmark; clearing a higher score implies clearing every lower score.
+1999853,business-finance-28,Claude score >= % on Humanity's Last Exam,IMPLIES,2,high,Same model/benchmark; clearing a higher score implies clearing every lower score.
+1285586,business-finance-28,Claude score >= % on Humanity's Last Exam,IMPLIES,3,high,Same model/benchmark; clearing a higher score implies clearing every lower score.
+1285584,business-finance-28,Claude score >= % on Humanity's Last Exam,IMPLIES,4,high,Same model/benchmark; clearing a higher score implies clearing every lower score.
+1285583,business-finance-28,Claude score >= % on Humanity's Last Exam,IMPLIES,5,high,Same model/benchmark; clearing a higher score implies clearing every lower score.
+1280315,business-finance-29,Gemini score >= % on FrontierMath,IMPLIES,1,high,Same model/benchmark; clearing a higher score implies clearing every lower score.
+1280314,business-finance-29,Gemini score >= % on FrontierMath,IMPLIES,2,high,Same model/benchmark; clearing a higher score implies clearing every lower score.
+1280316,business-finance-29,Gemini score >= % on FrontierMath,IMPLIES,3,high,Same model/benchmark; clearing a higher score implies clearing every lower score.
+1280313,business-finance-29,Gemini score >= % on FrontierMath,IMPLIES,4,high,Same model/benchmark; clearing a higher score implies clearing every lower score.
+573829,business-finance-30,Grok 5 released by deadline,IMPLIES,1,high,Same model; release by an earlier date implies release by every later date.
+573830,business-finance-30,Grok 5 released by deadline,IMPLIES,2,high,Same model; release by an earlier date implies release by every later date.
+1301998,business-finance-30,Grok 5 released by deadline,IMPLIES,3,high,Same model; release by an earlier date implies release by every later date.
+676784,business-finance-31,Anduril IPO before 2027 (duplicate listings),EQUIVALENT,,high,Identical resolution criteria for the same company and deadline; the two listings resolve together.
+1321865,business-finance-31,Anduril IPO before 2027 (duplicate listings),EQUIVALENT,,high,Identical resolution criteria for the same company and deadline; the two listings resolve together.
+896056,business-finance-32,Warner Bros. Discovery acquisition,IMPLIES,1,high,Paramount closing the WBD acquisition entails an acquisition agreement for WBD by any entity.
+694933,business-finance-32,Warner Bros. Discovery acquisition,IMPLIES,2,high,Paramount closing the WBD acquisition entails an acquisition agreement for WBD by any entity.
+563650,business-finance-33,SCOTUS grants cert in sports-event-contract case by deadline,IMPLIES,1,high,Same event; cert granted by the earlier date implies cert granted by the later date.
+1231857,business-finance-33,SCOTUS grants cert in sports-event-contract case by deadline,IMPLIES,2,high,Same event; cert granted by the earlier date implies cert granted by the later date.
+1088912,business-finance-34,2026 meteor strike >= energy threshold,IMPLIES,1,high,Same bolide-energy metric; a higher-energy strike implies every lower-energy threshold.
+1073738,business-finance-34,2026 meteor strike >= energy threshold,IMPLIES,2,high,Same bolide-energy metric; a higher-energy strike implies every lower-energy threshold.
+1073747,business-finance-34,2026 meteor strike >= energy threshold,IMPLIES,3,high,Same bolide-energy metric; a higher-energy strike implies every lower-energy threshold.

@@ -1,0 +1,129 @@
+
+==============================================================================
+CHEAP_OPT GAP STRATEGY -- entry x exit grid backtest
+==============================================================================
+[cache hit] universe (1286 rows)
+[cache hit] panel (309,969 rows)
+[load] universe=1286 rows, panel=309,969 rows, spread_panel=260,455 rows, span 2026-04-28 13:00:00+00:00 -> 2026-05-28 13:00:00+00:00 (1s)
+[fees] fetched 119/119 new (cache=119 tokens)
+[fees] 119 candidate legs priced, 42 carry a fee (rates: [0.0, 0.1])
+[signals] raw candidate bars per max_spread: 0.015=2,179, 0.02=3,033, 0.03=5,150, 0.05=8,177
+
+==============================================================================
+PRIMARY GRID  (half_spread_mult = 1.0 = full displayed bid-ask both legs)
+==============================================================================
+ max_spread  exit_target  n_trades  n_closed  n_TP  n_FC  n_EOP  total_$  closed_$  pnl_per_trade_$  closed_ppt_$  hit_rate  median_hold_d  nbr_mean_ppt  nbr_std_ppt
+      0.015         0.06        19         9     9     0     10    291.0     337.0             15.3          37.4       1.0            5.9          16.1          1.9
+      0.015         0.08        24        12    12     0     12    449.0     539.0             18.7          44.9       1.0            3.0          18.6          2.1
+      0.015         0.10        25        12    12     0     13    490.0     569.0             19.6          47.4       1.0            6.1          18.9          0.8
+      0.015         0.15        27         9     9     0     18    475.0     547.0             17.6          60.7       1.0            5.9          19.5          1.2
+      0.015         0.20        28         8     8     0     20    587.0     663.0             21.0          82.8       1.0            7.8          20.2          1.9
+      0.020         0.06        24        13    13     0     11    345.0     412.0             14.4          31.7       1.0            4.3          15.9          3.0
+      0.020         0.08        30        17    17     0     13    626.0     736.0             20.9          43.3       1.0            2.7          18.6          2.2
+      0.020         0.10        30        15    15     0     15    584.0     667.0             19.5          44.5       1.0            5.6          19.8          0.6
+      0.020         0.15        32        12    12     0     20    635.0     722.0             19.8          60.2       1.0            5.8          20.7          2.4
+      0.020         0.20        33        10    10     0     23    730.0     812.0             22.1          81.2       1.0            6.6          22.1          2.2
+      0.030         0.06        29        18    18     0     11    379.0     465.0             13.1          25.8       1.0            3.5          14.7          3.0
+      0.030         0.08        37        23    23     0     14    728.0     862.0             19.7          37.5       1.0            2.4          18.2          2.7
+      0.030         0.10        37        21    21     0     16    703.0     825.0             19.0          39.3       1.0            3.9          20.3          2.2
+      0.030         0.15        40        19    19     0     21    983.0    1086.0             24.6          57.1       1.0            5.7          22.4          2.6
+      0.030         0.20        41        15    15     0     26   1054.0    1127.0             25.7          75.1       1.0            6.9          24.2          1.3
+      0.050         0.06        38        26    26     0     12    446.0     555.0             11.7          21.4       1.0            2.0          14.4          2.9
+      0.050         0.08        51        37    37     0     14    940.0    1125.0             18.4          30.4       1.0            2.1          17.1          3.2
+      0.050         0.10        53        37    37     0     16    994.0    1209.0             18.8          32.7       1.0            3.1          19.8          1.9
+      0.050         0.15        53        26    26     0     27   1221.0    1373.0             23.0          52.8       1.0            5.2          22.7          2.3
+      0.050         0.20        54        21    21     0     33   1312.0    1468.0             24.3          69.9       1.0            6.3          24.3          1.1
+
+PnL per trade ($, 500 sh)  (rows=max_spread entry, cols=exit_target)
+exit_target  0.06  0.08  0.10  0.15  0.20
+max_spread                               
+0.015        15.3  18.7  19.6  17.6  21.0
+0.020        14.4  20.9  19.5  19.8  22.1
+0.030        13.1  19.7  19.0  24.6  25.7
+0.050        11.7  18.4  18.8  23.0  24.3
+
+Total PnL ($)  (rows=max_spread entry, cols=exit_target)
+exit_target   0.06   0.08   0.10    0.15    0.20
+max_spread                                      
+0.015        291.0  449.0  490.0   475.0   587.0
+0.020        345.0  626.0  584.0   635.0   730.0
+0.030        379.0  728.0  703.0   983.0  1054.0
+0.050        446.0  940.0  994.0  1221.0  1312.0
+
+Trade count  (rows=max_spread entry, cols=exit_target)
+exit_target  0.06  0.08  0.10  0.15  0.20
+max_spread                               
+0.015          19    24    25    27    28
+0.020          24    30    30    32    33
+0.030          29    37    37    40    41
+0.050          38    51    53    53    54
+
+Hit rate (closed)  (rows=max_spread entry, cols=exit_target)
+exit_target  0.06  0.08  0.10  0.15  0.20
+max_spread                               
+0.015         1.0   1.0   1.0   1.0   1.0
+0.020         1.0   1.0   1.0   1.0   1.0
+0.030         1.0   1.0   1.0   1.0   1.0
+0.050         1.0   1.0   1.0   1.0   1.0
+
+==============================================================================
+HALF-SPREAD SENSITIVITY  (pnl_per_trade_$ across cost multipliers)
+==============================================================================
+
+mult=0.5x displayed market_spread  (rows=max_spread entry, cols=exit_target)
+exit_target  0.06  0.08  0.10  0.15  0.20
+max_spread                               
+0.015        19.6  23.4  21.8  20.7  27.1
+0.020        18.4  22.1  22.7  22.3  27.6
+0.030        16.0  21.5  22.7  28.2  30.9
+0.050        13.7  18.8  21.2  27.1  29.1
+
+mult=1.0x displayed market_spread  (rows=max_spread entry, cols=exit_target)
+exit_target  0.06  0.08  0.10  0.15  0.20
+max_spread                               
+0.015        15.3  18.7  19.6  17.6  21.0
+0.020        14.4  20.9  19.5  19.8  22.1
+0.030        13.1  19.7  19.0  24.6  25.7
+0.050        11.7  18.4  18.8  23.0  24.3
+
+mult=2.0x displayed market_spread  (rows=max_spread entry, cols=exit_target)
+exit_target  0.06  0.08  0.10  0.15  0.20
+max_spread                               
+0.015         5.7  10.0   8.9   8.8  17.1
+0.020         5.3  10.4   8.7  10.5  18.5
+0.030         5.7   9.9   8.9  13.8  19.2
+0.050         6.7   6.7  10.4  10.6  16.3
+
+Focused sensitivity (live point vs most-stable cell):
+        config  max_spread  exit_target  mult  n_trades  total_$  pnl_per_trade_$  hit_rate
+LIVE 0.02/0.06        0.02         0.06   0.5        31    571.0             18.4       1.0
+LIVE 0.02/0.06        0.02         0.06   1.0        24    345.0             14.4       1.0
+LIVE 0.02/0.06        0.02         0.06   2.0        15     80.0              5.3       1.0
+   MOST-STABLE        0.05         0.20   0.5        55   1600.0             29.1       1.0
+   MOST-STABLE        0.05         0.20   1.0        54   1312.0             24.3       1.0
+   MOST-STABLE        0.05         0.20   2.0        44    719.0             16.3       1.0
+
+==============================================================================
+LIVE CONFIG DIAGNOSTICS  (max_spread=0.02, exit_target=0.06, mult=1.0)
+==============================================================================
+  trades=24  status={'TP': 13, 'EOP': 11}
+  mean S_entry=0.0092  mean cost/share=0.0138  (base 0.0098 + fee 0.0040)
+  trades where cost >= target gain: 0%
+  EOP (pending mark-to-market, fictional): 11/24
+
+==============================================================================
+RESOLUTION CHECK  (is the optionality bet actually +EV, or is the 100% hit-rate
+a censoring artifact?)
+==============================================================================
+
+-- resolution observability: live 0.02/0.06 --
+   pairs with BOTH legs resolved (window outcome observable): 4/24
+   observed window outcome res_S (1=hit / 0=miss): {0.0: 4}
+   held-to-resolution EV (known n=16, censored/unresolved n=8): hit=13/16=81%  mean=4.79c/sh  total=$384
+
+-- resolution observability: widest entry 0.05/0.06 --
+   pairs with BOTH legs resolved (window outcome observable): 4/38
+   observed window outcome res_S (1=hit / 0=miss): {0.0: 4}
+   held-to-resolution EV (known n=29, censored/unresolved n=9): hit=26/29=90%  mean=3.63c/sh  total=$526
+
+CSVs: /Users/AnranSeverac/CalendarSpread/analytics/spread_output/gap_grid_full.csv , /Users/AnranSeverac/CalendarSpread/analytics/spread_output/gap_grid_mult1.csv , /Users/AnranSeverac/CalendarSpread/analytics/spread_output/gap_trades_live.csv

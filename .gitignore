@@ -7,4 +7,6 @@ logs/
 execution_log.jsonl
 __pycache__/
 .cursor/
+.claude/
+.venv/
 *.pyc

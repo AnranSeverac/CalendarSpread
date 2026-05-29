@@ -1,0 +1,767 @@
+market_id,micro_group_id,group_label,relationship,rank,confidence,rationale
+2132787,crypto-1,Bitcoin dip (down) thresholds [monthly],IMPLIES,0,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+2132786,crypto-1,Bitcoin dip (down) thresholds [monthly],IMPLIES,1,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+2132785,crypto-1,Bitcoin dip (down) thresholds [monthly],IMPLIES,2,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+2132784,crypto-1,Bitcoin dip (down) thresholds [monthly],IMPLIES,3,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+2132783,crypto-1,Bitcoin dip (down) thresholds [monthly],IMPLIES,4,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+2132782,crypto-1,Bitcoin dip (down) thresholds [monthly],IMPLIES,5,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+2132781,crypto-1,Bitcoin dip (down) thresholds [monthly],IMPLIES,6,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+2132780,crypto-1,Bitcoin dip (down) thresholds [monthly],IMPLIES,7,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+2132779,crypto-1,Bitcoin dip (down) thresholds [monthly],IMPLIES,8,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+2132778,crypto-1,Bitcoin dip (down) thresholds [monthly],IMPLIES,9,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+1343228,crypto-2,Bitcoin dip (down) thresholds [fixed-window],IMPLIES,0,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+1343220,crypto-2,Bitcoin dip (down) thresholds [fixed-window],IMPLIES,1,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+1057916,crypto-2,Bitcoin dip (down) thresholds [fixed-window],IMPLIES,2,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+1343219,crypto-2,Bitcoin dip (down) thresholds [fixed-window],IMPLIES,3,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701504,crypto-2,Bitcoin dip (down) thresholds [fixed-window],IMPLIES,4,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+1339769,crypto-2,Bitcoin dip (down) thresholds [fixed-window],IMPLIES,5,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701503,crypto-2,Bitcoin dip (down) thresholds [fixed-window],IMPLIES,6,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+1339768,crypto-2,Bitcoin dip (down) thresholds [fixed-window],IMPLIES,7,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701502,crypto-2,Bitcoin dip (down) thresholds [fixed-window],IMPLIES,8,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+1339767,crypto-2,Bitcoin dip (down) thresholds [fixed-window],IMPLIES,9,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701501,crypto-2,Bitcoin dip (down) thresholds [fixed-window],IMPLIES,10,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+1339746,crypto-2,Bitcoin dip (down) thresholds [fixed-window],IMPLIES,11,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701500,crypto-2,Bitcoin dip (down) thresholds [fixed-window],IMPLIES,12,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701499,crypto-2,Bitcoin dip (down) thresholds [fixed-window],IMPLIES,13,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701498,crypto-2,Bitcoin dip (down) thresholds [fixed-window],IMPLIES,14,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+2365496,crypto-3,Bitcoin reach (up) thresholds [monthly(from creation)],IMPLIES,0,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+2365497,crypto-3,Bitcoin reach (up) thresholds [monthly(from creation)],IMPLIES,1,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+2365498,crypto-3,Bitcoin reach (up) thresholds [monthly(from creation)],IMPLIES,2,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+2132768,crypto-4,Bitcoin reach (up) thresholds [monthly],IMPLIES,0,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+2132769,crypto-4,Bitcoin reach (up) thresholds [monthly],IMPLIES,1,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+2132770,crypto-4,Bitcoin reach (up) thresholds [monthly],IMPLIES,2,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+2132771,crypto-4,Bitcoin reach (up) thresholds [monthly],IMPLIES,3,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+2132772,crypto-4,Bitcoin reach (up) thresholds [monthly],IMPLIES,4,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+2132773,crypto-4,Bitcoin reach (up) thresholds [monthly],IMPLIES,5,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+2132774,crypto-4,Bitcoin reach (up) thresholds [monthly],IMPLIES,6,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+2132775,crypto-4,Bitcoin reach (up) thresholds [monthly],IMPLIES,7,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+2132776,crypto-4,Bitcoin reach (up) thresholds [monthly],IMPLIES,8,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+2132777,crypto-4,Bitcoin reach (up) thresholds [monthly],IMPLIES,9,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+1393070,crypto-5,Bitcoin reach (up) thresholds [fixed-window],IMPLIES,0,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+1393068,crypto-5,Bitcoin reach (up) thresholds [fixed-window],IMPLIES,1,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+1057883,crypto-5,Bitcoin reach (up) thresholds [fixed-window],IMPLIES,2,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701486,crypto-5,Bitcoin reach (up) thresholds [fixed-window],IMPLIES,3,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701487,crypto-5,Bitcoin reach (up) thresholds [fixed-window],IMPLIES,4,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701488,crypto-5,Bitcoin reach (up) thresholds [fixed-window],IMPLIES,5,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701489,crypto-5,Bitcoin reach (up) thresholds [fixed-window],IMPLIES,6,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701490,crypto-5,Bitcoin reach (up) thresholds [fixed-window],IMPLIES,7,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701491,crypto-5,Bitcoin reach (up) thresholds [fixed-window],IMPLIES,8,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701492,crypto-5,Bitcoin reach (up) thresholds [fixed-window],IMPLIES,9,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701493,crypto-5,Bitcoin reach (up) thresholds [fixed-window],IMPLIES,10,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701494,crypto-5,Bitcoin reach (up) thresholds [fixed-window],IMPLIES,11,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701495,crypto-5,Bitcoin reach (up) thresholds [fixed-window],IMPLIES,12,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701496,crypto-5,Bitcoin reach (up) thresholds [fixed-window],IMPLIES,13,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701497,crypto-5,Bitcoin reach (up) thresholds [fixed-window],IMPLIES,14,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+1345531,crypto-6,Bitcoin reach (up) thresholds [fixed-window],IMPLIES,0,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+1345530,crypto-6,Bitcoin reach (up) thresholds [fixed-window],IMPLIES,1,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+1345529,crypto-6,Bitcoin reach (up) thresholds [fixed-window],IMPLIES,2,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+1345526,crypto-6,Bitcoin reach (up) thresholds [fixed-window],IMPLIES,3,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+2132807,crypto-7,Ethereum dip (down) thresholds [monthly],IMPLIES,0,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+2132806,crypto-7,Ethereum dip (down) thresholds [monthly],IMPLIES,1,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+2132805,crypto-7,Ethereum dip (down) thresholds [monthly],IMPLIES,2,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+2132804,crypto-7,Ethereum dip (down) thresholds [monthly],IMPLIES,3,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+2132803,crypto-7,Ethereum dip (down) thresholds [monthly],IMPLIES,4,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+2132802,crypto-7,Ethereum dip (down) thresholds [monthly],IMPLIES,5,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+2132801,crypto-7,Ethereum dip (down) thresholds [monthly],IMPLIES,6,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+2132800,crypto-7,Ethereum dip (down) thresholds [monthly],IMPLIES,7,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+2132799,crypto-7,Ethereum dip (down) thresholds [monthly],IMPLIES,8,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+2132798,crypto-7,Ethereum dip (down) thresholds [monthly],IMPLIES,9,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701554,crypto-8,Ethereum dip (down) thresholds [fixed-window],IMPLIES,0,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701553,crypto-8,Ethereum dip (down) thresholds [fixed-window],IMPLIES,1,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701552,crypto-8,Ethereum dip (down) thresholds [fixed-window],IMPLIES,2,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701551,crypto-8,Ethereum dip (down) thresholds [fixed-window],IMPLIES,3,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701550,crypto-8,Ethereum dip (down) thresholds [fixed-window],IMPLIES,4,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+2132788,crypto-9,Ethereum reach (up) thresholds [monthly],IMPLIES,0,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+2132789,crypto-9,Ethereum reach (up) thresholds [monthly],IMPLIES,1,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+2132790,crypto-9,Ethereum reach (up) thresholds [monthly],IMPLIES,2,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+2132791,crypto-9,Ethereum reach (up) thresholds [monthly],IMPLIES,3,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+2132792,crypto-9,Ethereum reach (up) thresholds [monthly],IMPLIES,4,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+2132793,crypto-9,Ethereum reach (up) thresholds [monthly],IMPLIES,5,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+2132794,crypto-9,Ethereum reach (up) thresholds [monthly],IMPLIES,6,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+2132795,crypto-9,Ethereum reach (up) thresholds [monthly],IMPLIES,7,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+2132796,crypto-9,Ethereum reach (up) thresholds [monthly],IMPLIES,8,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+2132797,crypto-9,Ethereum reach (up) thresholds [monthly],IMPLIES,9,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701539,crypto-10,Ethereum reach (up) thresholds [fixed-window],IMPLIES,0,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701540,crypto-10,Ethereum reach (up) thresholds [fixed-window],IMPLIES,1,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701541,crypto-10,Ethereum reach (up) thresholds [fixed-window],IMPLIES,2,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701542,crypto-10,Ethereum reach (up) thresholds [fixed-window],IMPLIES,3,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701543,crypto-10,Ethereum reach (up) thresholds [fixed-window],IMPLIES,4,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701544,crypto-10,Ethereum reach (up) thresholds [fixed-window],IMPLIES,5,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701545,crypto-10,Ethereum reach (up) thresholds [fixed-window],IMPLIES,6,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701546,crypto-10,Ethereum reach (up) thresholds [fixed-window],IMPLIES,7,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701547,crypto-10,Ethereum reach (up) thresholds [fixed-window],IMPLIES,8,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701548,crypto-10,Ethereum reach (up) thresholds [fixed-window],IMPLIES,9,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701549,crypto-10,Ethereum reach (up) thresholds [fixed-window],IMPLIES,10,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+2132839,crypto-11,XRP dip (down) thresholds [monthly],IMPLIES,0,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+2132838,crypto-11,XRP dip (down) thresholds [monthly],IMPLIES,1,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+2132837,crypto-11,XRP dip (down) thresholds [monthly],IMPLIES,2,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+2132836,crypto-11,XRP dip (down) thresholds [monthly],IMPLIES,3,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+2132835,crypto-11,XRP dip (down) thresholds [monthly],IMPLIES,4,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+2132834,crypto-11,XRP dip (down) thresholds [monthly],IMPLIES,5,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701607,crypto-12,XRP dip (down) thresholds [fixed-window],IMPLIES,0,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701606,crypto-12,XRP dip (down) thresholds [fixed-window],IMPLIES,1,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701605,crypto-12,XRP dip (down) thresholds [fixed-window],IMPLIES,2,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701604,crypto-12,XRP dip (down) thresholds [fixed-window],IMPLIES,3,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701603,crypto-12,XRP dip (down) thresholds [fixed-window],IMPLIES,4,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701602,crypto-12,XRP dip (down) thresholds [fixed-window],IMPLIES,5,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701601,crypto-12,XRP dip (down) thresholds [fixed-window],IMPLIES,6,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701600,crypto-12,XRP dip (down) thresholds [fixed-window],IMPLIES,7,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701599,crypto-12,XRP dip (down) thresholds [fixed-window],IMPLIES,8,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701598,crypto-12,XRP dip (down) thresholds [fixed-window],IMPLIES,9,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+2132825,crypto-13,XRP reach (up) thresholds [monthly],IMPLIES,0,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+2132826,crypto-13,XRP reach (up) thresholds [monthly],IMPLIES,1,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+2132827,crypto-13,XRP reach (up) thresholds [monthly],IMPLIES,2,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+2132828,crypto-13,XRP reach (up) thresholds [monthly],IMPLIES,3,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+2132829,crypto-13,XRP reach (up) thresholds [monthly],IMPLIES,4,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+2132830,crypto-13,XRP reach (up) thresholds [monthly],IMPLIES,5,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+2132831,crypto-13,XRP reach (up) thresholds [monthly],IMPLIES,6,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+2132832,crypto-13,XRP reach (up) thresholds [monthly],IMPLIES,7,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+2132833,crypto-13,XRP reach (up) thresholds [monthly],IMPLIES,8,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701587,crypto-14,XRP reach (up) thresholds [fixed-window],IMPLIES,0,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701588,crypto-14,XRP reach (up) thresholds [fixed-window],IMPLIES,1,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701589,crypto-14,XRP reach (up) thresholds [fixed-window],IMPLIES,2,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701590,crypto-14,XRP reach (up) thresholds [fixed-window],IMPLIES,3,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701591,crypto-14,XRP reach (up) thresholds [fixed-window],IMPLIES,4,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701592,crypto-14,XRP reach (up) thresholds [fixed-window],IMPLIES,5,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701593,crypto-14,XRP reach (up) thresholds [fixed-window],IMPLIES,6,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701594,crypto-14,XRP reach (up) thresholds [fixed-window],IMPLIES,7,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701595,crypto-14,XRP reach (up) thresholds [fixed-window],IMPLIES,8,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701596,crypto-14,XRP reach (up) thresholds [fixed-window],IMPLIES,9,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701597,crypto-14,XRP reach (up) thresholds [fixed-window],IMPLIES,10,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+2132824,crypto-15,Solana dip (down) thresholds [monthly],IMPLIES,0,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+2132823,crypto-15,Solana dip (down) thresholds [monthly],IMPLIES,1,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+2132822,crypto-15,Solana dip (down) thresholds [monthly],IMPLIES,2,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+2132821,crypto-15,Solana dip (down) thresholds [monthly],IMPLIES,3,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+2132820,crypto-15,Solana dip (down) thresholds [monthly],IMPLIES,4,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+2132819,crypto-15,Solana dip (down) thresholds [monthly],IMPLIES,5,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+2132818,crypto-15,Solana dip (down) thresholds [monthly],IMPLIES,6,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+2132817,crypto-15,Solana dip (down) thresholds [monthly],IMPLIES,7,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701580,crypto-16,Solana dip (down) thresholds [fixed-window],IMPLIES,0,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701579,crypto-16,Solana dip (down) thresholds [fixed-window],IMPLIES,1,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701578,crypto-16,Solana dip (down) thresholds [fixed-window],IMPLIES,2,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701577,crypto-16,Solana dip (down) thresholds [fixed-window],IMPLIES,3,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701576,crypto-16,Solana dip (down) thresholds [fixed-window],IMPLIES,4,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701575,crypto-16,Solana dip (down) thresholds [fixed-window],IMPLIES,5,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+2132808,crypto-17,Solana reach (up) thresholds [monthly],IMPLIES,0,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+2132809,crypto-17,Solana reach (up) thresholds [monthly],IMPLIES,1,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+2132810,crypto-17,Solana reach (up) thresholds [monthly],IMPLIES,2,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+2132811,crypto-17,Solana reach (up) thresholds [monthly],IMPLIES,3,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+2132812,crypto-17,Solana reach (up) thresholds [monthly],IMPLIES,4,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+2132813,crypto-17,Solana reach (up) thresholds [monthly],IMPLIES,5,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+2132814,crypto-17,Solana reach (up) thresholds [monthly],IMPLIES,6,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+2132815,crypto-17,Solana reach (up) thresholds [monthly],IMPLIES,7,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+2132816,crypto-17,Solana reach (up) thresholds [monthly],IMPLIES,8,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701563,crypto-18,Solana reach (up) thresholds [fixed-window],IMPLIES,0,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701564,crypto-18,Solana reach (up) thresholds [fixed-window],IMPLIES,1,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701565,crypto-18,Solana reach (up) thresholds [fixed-window],IMPLIES,2,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701566,crypto-18,Solana reach (up) thresholds [fixed-window],IMPLIES,3,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701567,crypto-18,Solana reach (up) thresholds [fixed-window],IMPLIES,4,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701568,crypto-18,Solana reach (up) thresholds [fixed-window],IMPLIES,5,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701569,crypto-18,Solana reach (up) thresholds [fixed-window],IMPLIES,6,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701570,crypto-18,Solana reach (up) thresholds [fixed-window],IMPLIES,7,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701571,crypto-18,Solana reach (up) thresholds [fixed-window],IMPLIES,8,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701572,crypto-18,Solana reach (up) thresholds [fixed-window],IMPLIES,9,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701573,crypto-18,Solana reach (up) thresholds [fixed-window],IMPLIES,10,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701574,crypto-18,Solana reach (up) thresholds [fixed-window],IMPLIES,11,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+2143000,crypto-19,Hyperliquid dip (down) thresholds [monthly],IMPLIES,0,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+2142999,crypto-19,Hyperliquid dip (down) thresholds [monthly],IMPLIES,1,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+2142998,crypto-19,Hyperliquid dip (down) thresholds [monthly],IMPLIES,2,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+2142997,crypto-19,Hyperliquid dip (down) thresholds [monthly],IMPLIES,3,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701744,crypto-20,Hyperliquid dip (down) thresholds [fixed-window],IMPLIES,0,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701743,crypto-20,Hyperliquid dip (down) thresholds [fixed-window],IMPLIES,1,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701742,crypto-20,Hyperliquid dip (down) thresholds [fixed-window],IMPLIES,2,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701741,crypto-20,Hyperliquid dip (down) thresholds [fixed-window],IMPLIES,3,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701740,crypto-20,Hyperliquid dip (down) thresholds [fixed-window],IMPLIES,4,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701739,crypto-20,Hyperliquid dip (down) thresholds [fixed-window],IMPLIES,5,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701738,crypto-20,Hyperliquid dip (down) thresholds [fixed-window],IMPLIES,6,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+2142994,crypto-21,Hyperliquid reach (up) thresholds [monthly],IMPLIES,0,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+2142995,crypto-21,Hyperliquid reach (up) thresholds [monthly],IMPLIES,1,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+2142996,crypto-21,Hyperliquid reach (up) thresholds [monthly],IMPLIES,2,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701726,crypto-22,Hyperliquid reach (up) thresholds [fixed-window],IMPLIES,0,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701727,crypto-22,Hyperliquid reach (up) thresholds [fixed-window],IMPLIES,1,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701728,crypto-22,Hyperliquid reach (up) thresholds [fixed-window],IMPLIES,2,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701729,crypto-22,Hyperliquid reach (up) thresholds [fixed-window],IMPLIES,3,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701730,crypto-22,Hyperliquid reach (up) thresholds [fixed-window],IMPLIES,4,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701731,crypto-22,Hyperliquid reach (up) thresholds [fixed-window],IMPLIES,5,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701732,crypto-22,Hyperliquid reach (up) thresholds [fixed-window],IMPLIES,6,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701733,crypto-22,Hyperliquid reach (up) thresholds [fixed-window],IMPLIES,7,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701734,crypto-22,Hyperliquid reach (up) thresholds [fixed-window],IMPLIES,8,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701735,crypto-22,Hyperliquid reach (up) thresholds [fixed-window],IMPLIES,9,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701736,crypto-22,Hyperliquid reach (up) thresholds [fixed-window],IMPLIES,10,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701737,crypto-22,Hyperliquid reach (up) thresholds [fixed-window],IMPLIES,11,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+2132844,crypto-23,Dogecoin dip (down) thresholds [monthly],IMPLIES,0,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+2132843,crypto-23,Dogecoin dip (down) thresholds [monthly],IMPLIES,1,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701721,crypto-24,Dogecoin dip (down) thresholds [fixed-window],IMPLIES,0,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701720,crypto-24,Dogecoin dip (down) thresholds [fixed-window],IMPLIES,1,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701719,crypto-24,Dogecoin dip (down) thresholds [fixed-window],IMPLIES,2,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701718,crypto-24,Dogecoin dip (down) thresholds [fixed-window],IMPLIES,3,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+2132840,crypto-25,Dogecoin reach (up) thresholds [monthly],IMPLIES,0,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+2132841,crypto-25,Dogecoin reach (up) thresholds [monthly],IMPLIES,1,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+2132842,crypto-25,Dogecoin reach (up) thresholds [monthly],IMPLIES,2,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701708,crypto-26,Dogecoin reach (up) thresholds [fixed-window],IMPLIES,0,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701709,crypto-26,Dogecoin reach (up) thresholds [fixed-window],IMPLIES,1,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701710,crypto-26,Dogecoin reach (up) thresholds [fixed-window],IMPLIES,2,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701711,crypto-26,Dogecoin reach (up) thresholds [fixed-window],IMPLIES,3,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701712,crypto-26,Dogecoin reach (up) thresholds [fixed-window],IMPLIES,4,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701713,crypto-26,Dogecoin reach (up) thresholds [fixed-window],IMPLIES,5,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701714,crypto-26,Dogecoin reach (up) thresholds [fixed-window],IMPLIES,6,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701715,crypto-26,Dogecoin reach (up) thresholds [fixed-window],IMPLIES,7,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701716,crypto-26,Dogecoin reach (up) thresholds [fixed-window],IMPLIES,8,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701717,crypto-26,Dogecoin reach (up) thresholds [fixed-window],IMPLIES,9,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701907,crypto-27,Plasma dip (down) thresholds [fixed-window],IMPLIES,0,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701906,crypto-27,Plasma dip (down) thresholds [fixed-window],IMPLIES,1,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701905,crypto-27,Plasma dip (down) thresholds [fixed-window],IMPLIES,2,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701904,crypto-27,Plasma dip (down) thresholds [fixed-window],IMPLIES,3,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701903,crypto-27,Plasma dip (down) thresholds [fixed-window],IMPLIES,4,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+704314,crypto-28,Plasma dip (down) thresholds [fixed-window],IMPLIES,0,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+704313,crypto-28,Plasma dip (down) thresholds [fixed-window],IMPLIES,1,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701897,crypto-29,Plasma reach (up) thresholds [fixed-window],IMPLIES,0,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701898,crypto-29,Plasma reach (up) thresholds [fixed-window],IMPLIES,1,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701899,crypto-29,Plasma reach (up) thresholds [fixed-window],IMPLIES,2,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701900,crypto-29,Plasma reach (up) thresholds [fixed-window],IMPLIES,3,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701901,crypto-29,Plasma reach (up) thresholds [fixed-window],IMPLIES,4,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701902,crypto-29,Plasma reach (up) thresholds [fixed-window],IMPLIES,5,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+704527,crypto-30,Plasma reach (up) thresholds [fixed-window],IMPLIES,0,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+704524,crypto-30,Plasma reach (up) thresholds [fixed-window],IMPLIES,1,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+704521,crypto-30,Plasma reach (up) thresholds [fixed-window],IMPLIES,2,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+704497,crypto-30,Plasma reach (up) thresholds [fixed-window],IMPLIES,3,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701808,crypto-31,Ethena dip (down) thresholds [fixed-window],IMPLIES,0,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701807,crypto-31,Ethena dip (down) thresholds [fixed-window],IMPLIES,1,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701806,crypto-31,Ethena dip (down) thresholds [fixed-window],IMPLIES,2,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701805,crypto-31,Ethena dip (down) thresholds [fixed-window],IMPLIES,3,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701804,crypto-31,Ethena dip (down) thresholds [fixed-window],IMPLIES,4,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701803,crypto-31,Ethena dip (down) thresholds [fixed-window],IMPLIES,5,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701791,crypto-32,Ethena reach (up) thresholds [fixed-window],IMPLIES,0,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701792,crypto-32,Ethena reach (up) thresholds [fixed-window],IMPLIES,1,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701793,crypto-32,Ethena reach (up) thresholds [fixed-window],IMPLIES,2,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701794,crypto-32,Ethena reach (up) thresholds [fixed-window],IMPLIES,3,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701795,crypto-32,Ethena reach (up) thresholds [fixed-window],IMPLIES,4,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701796,crypto-32,Ethena reach (up) thresholds [fixed-window],IMPLIES,5,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701797,crypto-32,Ethena reach (up) thresholds [fixed-window],IMPLIES,6,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701798,crypto-32,Ethena reach (up) thresholds [fixed-window],IMPLIES,7,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701799,crypto-32,Ethena reach (up) thresholds [fixed-window],IMPLIES,8,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701800,crypto-32,Ethena reach (up) thresholds [fixed-window],IMPLIES,9,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701801,crypto-32,Ethena reach (up) thresholds [fixed-window],IMPLIES,10,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701802,crypto-32,Ethena reach (up) thresholds [fixed-window],IMPLIES,11,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701875,crypto-33,Pump.fun dip (down) thresholds [fixed-window],IMPLIES,0,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701874,crypto-33,Pump.fun dip (down) thresholds [fixed-window],IMPLIES,1,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701873,crypto-33,Pump.fun dip (down) thresholds [fixed-window],IMPLIES,2,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701872,crypto-33,Pump.fun dip (down) thresholds [fixed-window],IMPLIES,3,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701871,crypto-33,Pump.fun dip (down) thresholds [fixed-window],IMPLIES,4,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701858,crypto-34,Pump.fun reach (up) thresholds [fixed-window],IMPLIES,0,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701859,crypto-34,Pump.fun reach (up) thresholds [fixed-window],IMPLIES,1,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701860,crypto-34,Pump.fun reach (up) thresholds [fixed-window],IMPLIES,2,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701861,crypto-34,Pump.fun reach (up) thresholds [fixed-window],IMPLIES,3,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701862,crypto-34,Pump.fun reach (up) thresholds [fixed-window],IMPLIES,4,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701863,crypto-34,Pump.fun reach (up) thresholds [fixed-window],IMPLIES,5,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701865,crypto-34,Pump.fun reach (up) thresholds [fixed-window],IMPLIES,6,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701867,crypto-34,Pump.fun reach (up) thresholds [fixed-window],IMPLIES,7,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701868,crypto-34,Pump.fun reach (up) thresholds [fixed-window],IMPLIES,8,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701869,crypto-34,Pump.fun reach (up) thresholds [fixed-window],IMPLIES,9,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701870,crypto-34,Pump.fun reach (up) thresholds [fixed-window],IMPLIES,10,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701770,crypto-35,BNB dip (down) thresholds [fixed-window],IMPLIES,0,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701769,crypto-35,BNB dip (down) thresholds [fixed-window],IMPLIES,1,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701768,crypto-35,BNB dip (down) thresholds [fixed-window],IMPLIES,2,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701767,crypto-35,BNB dip (down) thresholds [fixed-window],IMPLIES,3,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701766,crypto-35,BNB dip (down) thresholds [fixed-window],IMPLIES,4,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701765,crypto-35,BNB dip (down) thresholds [fixed-window],IMPLIES,5,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701764,crypto-35,BNB dip (down) thresholds [fixed-window],IMPLIES,6,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701757,crypto-36,BNB reach (up) thresholds [fixed-window],IMPLIES,0,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701758,crypto-36,BNB reach (up) thresholds [fixed-window],IMPLIES,1,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701759,crypto-36,BNB reach (up) thresholds [fixed-window],IMPLIES,2,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701760,crypto-36,BNB reach (up) thresholds [fixed-window],IMPLIES,3,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701761,crypto-36,BNB reach (up) thresholds [fixed-window],IMPLIES,4,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701762,crypto-36,BNB reach (up) thresholds [fixed-window],IMPLIES,5,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701763,crypto-36,BNB reach (up) thresholds [fixed-window],IMPLIES,6,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701850,crypto-37,Zcash dip (down) thresholds [fixed-window],IMPLIES,0,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701849,crypto-37,Zcash dip (down) thresholds [fixed-window],IMPLIES,1,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701848,crypto-37,Zcash dip (down) thresholds [fixed-window],IMPLIES,2,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701847,crypto-37,Zcash dip (down) thresholds [fixed-window],IMPLIES,3,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701846,crypto-37,Zcash dip (down) thresholds [fixed-window],IMPLIES,4,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701845,crypto-37,Zcash dip (down) thresholds [fixed-window],IMPLIES,5,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701839,crypto-38,Zcash reach (up) thresholds [fixed-window],IMPLIES,0,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701840,crypto-38,Zcash reach (up) thresholds [fixed-window],IMPLIES,1,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701841,crypto-38,Zcash reach (up) thresholds [fixed-window],IMPLIES,2,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701842,crypto-38,Zcash reach (up) thresholds [fixed-window],IMPLIES,3,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701843,crypto-38,Zcash reach (up) thresholds [fixed-window],IMPLIES,4,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701844,crypto-38,Zcash reach (up) thresholds [fixed-window],IMPLIES,5,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701896,crypto-39,Aster dip (down) thresholds [fixed-window],IMPLIES,0,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701895,crypto-39,Aster dip (down) thresholds [fixed-window],IMPLIES,1,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701894,crypto-39,Aster dip (down) thresholds [fixed-window],IMPLIES,2,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701893,crypto-39,Aster dip (down) thresholds [fixed-window],IMPLIES,3,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701892,crypto-39,Aster dip (down) thresholds [fixed-window],IMPLIES,4,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701886,crypto-40,Aster reach (up) thresholds [fixed-window],IMPLIES,0,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701887,crypto-40,Aster reach (up) thresholds [fixed-window],IMPLIES,1,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701888,crypto-40,Aster reach (up) thresholds [fixed-window],IMPLIES,2,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701889,crypto-40,Aster reach (up) thresholds [fixed-window],IMPLIES,3,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701890,crypto-40,Aster reach (up) thresholds [fixed-window],IMPLIES,4,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701891,crypto-40,Aster reach (up) thresholds [fixed-window],IMPLIES,5,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701931,crypto-41,Uniswap (UNI) dip (down) thresholds [fixed-window],IMPLIES,0,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701930,crypto-41,Uniswap (UNI) dip (down) thresholds [fixed-window],IMPLIES,1,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701929,crypto-41,Uniswap (UNI) dip (down) thresholds [fixed-window],IMPLIES,2,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+701922,crypto-42,Uniswap (UNI) reach (up) thresholds [fixed-window],IMPLIES,0,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701923,crypto-42,Uniswap (UNI) reach (up) thresholds [fixed-window],IMPLIES,1,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701924,crypto-42,Uniswap (UNI) reach (up) thresholds [fixed-window],IMPLIES,2,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701925,crypto-42,Uniswap (UNI) reach (up) thresholds [fixed-window],IMPLIES,3,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701926,crypto-42,Uniswap (UNI) reach (up) thresholds [fixed-window],IMPLIES,4,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701927,crypto-42,Uniswap (UNI) reach (up) thresholds [fixed-window],IMPLIES,5,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+701928,crypto-42,Uniswap (UNI) reach (up) thresholds [fixed-window],IMPLIES,6,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+1067841,crypto-43,Lighter dip (down) thresholds [fixed-window],IMPLIES,0,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+1067840,crypto-43,Lighter dip (down) thresholds [fixed-window],IMPLIES,1,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+1067839,crypto-43,Lighter dip (down) thresholds [fixed-window],IMPLIES,2,high,"Same metric, lower (deeper) threshold strictly implies higher; monotone ladder."
+1067835,crypto-44,Lighter reach (up) thresholds [fixed-window],IMPLIES,0,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+1067836,crypto-44,Lighter reach (up) thresholds [fixed-window],IMPLIES,1,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+1067837,crypto-44,Lighter reach (up) thresholds [fixed-window],IMPLIES,2,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+1067838,crypto-44,Lighter reach (up) thresholds [fixed-window],IMPLIES,3,high,"Same metric, higher threshold strictly implies lower; monotone YES-ladder."
+1393326,crypto-45,Predict.fun launch FDV threshold ladder,IMPLIES,0,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1393325,crypto-45,Predict.fun launch FDV threshold ladder,IMPLIES,1,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1393324,crypto-45,Predict.fun launch FDV threshold ladder,IMPLIES,2,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1393323,crypto-45,Predict.fun launch FDV threshold ladder,IMPLIES,3,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1393322,crypto-45,Predict.fun launch FDV threshold ladder,IMPLIES,4,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1393321,crypto-45,Predict.fun launch FDV threshold ladder,IMPLIES,5,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1393320,crypto-45,Predict.fun launch FDV threshold ladder,IMPLIES,6,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1393319,crypto-45,Predict.fun launch FDV threshold ladder,IMPLIES,7,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1393318,crypto-45,Predict.fun launch FDV threshold ladder,IMPLIES,8,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1393317,crypto-45,Predict.fun launch FDV threshold ladder,IMPLIES,9,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1393316,crypto-45,Predict.fun launch FDV threshold ladder,IMPLIES,10,high,Same token launch FDV; higher FDV threshold implies lower ones.
+2090563,crypto-46,Printr launch FDV threshold ladder,IMPLIES,0,high,Same token launch FDV; higher FDV threshold implies lower ones.
+2090562,crypto-46,Printr launch FDV threshold ladder,IMPLIES,1,high,Same token launch FDV; higher FDV threshold implies lower ones.
+2090561,crypto-46,Printr launch FDV threshold ladder,IMPLIES,2,high,Same token launch FDV; higher FDV threshold implies lower ones.
+2090560,crypto-46,Printr launch FDV threshold ladder,IMPLIES,3,high,Same token launch FDV; higher FDV threshold implies lower ones.
+2090559,crypto-46,Printr launch FDV threshold ladder,IMPLIES,4,high,Same token launch FDV; higher FDV threshold implies lower ones.
+2090558,crypto-46,Printr launch FDV threshold ladder,IMPLIES,5,high,Same token launch FDV; higher FDV threshold implies lower ones.
+2090557,crypto-46,Printr launch FDV threshold ladder,IMPLIES,6,high,Same token launch FDV; higher FDV threshold implies lower ones.
+2090556,crypto-46,Printr launch FDV threshold ladder,IMPLIES,7,high,Same token launch FDV; higher FDV threshold implies lower ones.
+2090555,crypto-46,Printr launch FDV threshold ladder,IMPLIES,8,high,Same token launch FDV; higher FDV threshold implies lower ones.
+2090554,crypto-46,Printr launch FDV threshold ladder,IMPLIES,9,high,Same token launch FDV; higher FDV threshold implies lower ones.
+920407,crypto-47,Variational launch FDV threshold ladder,IMPLIES,0,high,Same token launch FDV; higher FDV threshold implies lower ones.
+920406,crypto-47,Variational launch FDV threshold ladder,IMPLIES,1,high,Same token launch FDV; higher FDV threshold implies lower ones.
+920405,crypto-47,Variational launch FDV threshold ladder,IMPLIES,2,high,Same token launch FDV; higher FDV threshold implies lower ones.
+920404,crypto-47,Variational launch FDV threshold ladder,IMPLIES,3,high,Same token launch FDV; higher FDV threshold implies lower ones.
+920403,crypto-47,Variational launch FDV threshold ladder,IMPLIES,4,high,Same token launch FDV; higher FDV threshold implies lower ones.
+920402,crypto-47,Variational launch FDV threshold ladder,IMPLIES,5,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1028586,crypto-47,Variational launch FDV threshold ladder,IMPLIES,6,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1356656,crypto-47,Variational launch FDV threshold ladder,IMPLIES,7,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1861361,crypto-47,Variational launch FDV threshold ladder,IMPLIES,8,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1861376,crypto-47,Variational launch FDV threshold ladder,IMPLIES,9,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1287622,crypto-48,Abstract launch FDV threshold ladder,IMPLIES,0,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1287621,crypto-48,Abstract launch FDV threshold ladder,IMPLIES,1,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1287620,crypto-48,Abstract launch FDV threshold ladder,IMPLIES,2,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1287619,crypto-48,Abstract launch FDV threshold ladder,IMPLIES,3,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1287618,crypto-48,Abstract launch FDV threshold ladder,IMPLIES,4,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1287617,crypto-48,Abstract launch FDV threshold ladder,IMPLIES,5,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1287616,crypto-48,Abstract launch FDV threshold ladder,IMPLIES,6,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1287615,crypto-48,Abstract launch FDV threshold ladder,IMPLIES,7,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1287614,crypto-48,Abstract launch FDV threshold ladder,IMPLIES,8,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1363513,crypto-49,Cap launch FDV threshold ladder,IMPLIES,0,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1363512,crypto-49,Cap launch FDV threshold ladder,IMPLIES,1,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1363511,crypto-49,Cap launch FDV threshold ladder,IMPLIES,2,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1322382,crypto-49,Cap launch FDV threshold ladder,IMPLIES,3,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1322381,crypto-49,Cap launch FDV threshold ladder,IMPLIES,4,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1322380,crypto-49,Cap launch FDV threshold ladder,IMPLIES,5,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1322379,crypto-49,Cap launch FDV threshold ladder,IMPLIES,6,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1322378,crypto-49,Cap launch FDV threshold ladder,IMPLIES,7,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1322377,crypto-49,Cap launch FDV threshold ladder,IMPLIES,8,high,Same token launch FDV; higher FDV threshold implies lower ones.
+704278,crypto-50,Ostium launch FDV threshold ladder,IMPLIES,0,high,Same token launch FDV; higher FDV threshold implies lower ones.
+704277,crypto-50,Ostium launch FDV threshold ladder,IMPLIES,1,high,Same token launch FDV; higher FDV threshold implies lower ones.
+704276,crypto-50,Ostium launch FDV threshold ladder,IMPLIES,2,high,Same token launch FDV; higher FDV threshold implies lower ones.
+704275,crypto-50,Ostium launch FDV threshold ladder,IMPLIES,3,high,Same token launch FDV; higher FDV threshold implies lower ones.
+704274,crypto-50,Ostium launch FDV threshold ladder,IMPLIES,4,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1113919,crypto-50,Ostium launch FDV threshold ladder,IMPLIES,5,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1113920,crypto-50,Ostium launch FDV threshold ladder,IMPLIES,6,high,Same token launch FDV; higher FDV threshold implies lower ones.
+2365844,crypto-50,Ostium launch FDV threshold ladder,IMPLIES,7,high,Same token launch FDV; higher FDV threshold implies lower ones.
+2365843,crypto-50,Ostium launch FDV threshold ladder,IMPLIES,8,high,Same token launch FDV; higher FDV threshold implies lower ones.
+680664,crypto-51,StandX launch FDV threshold ladder,IMPLIES,0,high,Same token launch FDV; higher FDV threshold implies lower ones.
+680662,crypto-51,StandX launch FDV threshold ladder,IMPLIES,1,high,Same token launch FDV; higher FDV threshold implies lower ones.
+680656,crypto-51,StandX launch FDV threshold ladder,IMPLIES,2,high,Same token launch FDV; higher FDV threshold implies lower ones.
+676520,crypto-51,StandX launch FDV threshold ladder,IMPLIES,3,high,Same token launch FDV; higher FDV threshold implies lower ones.
+676519,crypto-51,StandX launch FDV threshold ladder,IMPLIES,4,high,Same token launch FDV; higher FDV threshold implies lower ones.
+676518,crypto-51,StandX launch FDV threshold ladder,IMPLIES,5,high,Same token launch FDV; higher FDV threshold implies lower ones.
+676517,crypto-51,StandX launch FDV threshold ladder,IMPLIES,6,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1299974,crypto-51,StandX launch FDV threshold ladder,IMPLIES,7,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1370033,crypto-51,StandX launch FDV threshold ladder,IMPLIES,8,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1485765,crypto-52,Cambria launch FDV threshold ladder,IMPLIES,0,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1485764,crypto-52,Cambria launch FDV threshold ladder,IMPLIES,1,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1485763,crypto-52,Cambria launch FDV threshold ladder,IMPLIES,2,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1485762,crypto-52,Cambria launch FDV threshold ladder,IMPLIES,3,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1485761,crypto-52,Cambria launch FDV threshold ladder,IMPLIES,4,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1485760,crypto-52,Cambria launch FDV threshold ladder,IMPLIES,5,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1485759,crypto-52,Cambria launch FDV threshold ladder,IMPLIES,6,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1485758,crypto-52,Cambria launch FDV threshold ladder,IMPLIES,7,high,Same token launch FDV; higher FDV threshold implies lower ones.
+716909,crypto-53,Felix Protocol launch FDV threshold ladder,IMPLIES,0,high,Same token launch FDV; higher FDV threshold implies lower ones.
+716908,crypto-53,Felix Protocol launch FDV threshold ladder,IMPLIES,1,high,Same token launch FDV; higher FDV threshold implies lower ones.
+716907,crypto-53,Felix Protocol launch FDV threshold ladder,IMPLIES,2,high,Same token launch FDV; higher FDV threshold implies lower ones.
+716906,crypto-53,Felix Protocol launch FDV threshold ladder,IMPLIES,3,high,Same token launch FDV; higher FDV threshold implies lower ones.
+716905,crypto-53,Felix Protocol launch FDV threshold ladder,IMPLIES,4,high,Same token launch FDV; higher FDV threshold implies lower ones.
+716904,crypto-53,Felix Protocol launch FDV threshold ladder,IMPLIES,5,high,Same token launch FDV; higher FDV threshold implies lower ones.
+732179,crypto-53,Felix Protocol launch FDV threshold ladder,IMPLIES,6,high,Same token launch FDV; higher FDV threshold implies lower ones.
+732180,crypto-53,Felix Protocol launch FDV threshold ladder,IMPLIES,7,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1294074,crypto-54,Hurupay launch FDV threshold ladder,IMPLIES,0,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1294073,crypto-54,Hurupay launch FDV threshold ladder,IMPLIES,1,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1294072,crypto-54,Hurupay launch FDV threshold ladder,IMPLIES,2,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1294071,crypto-54,Hurupay launch FDV threshold ladder,IMPLIES,3,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1294070,crypto-54,Hurupay launch FDV threshold ladder,IMPLIES,4,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1294069,crypto-54,Hurupay launch FDV threshold ladder,IMPLIES,5,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1294068,crypto-54,Hurupay launch FDV threshold ladder,IMPLIES,6,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1294067,crypto-54,Hurupay launch FDV threshold ladder,IMPLIES,7,high,Same token launch FDV; higher FDV threshold implies lower ones.
+667005,crypto-55,Metamask launch FDV threshold ladder,IMPLIES,0,high,Same token launch FDV; higher FDV threshold implies lower ones.
+665533,crypto-55,Metamask launch FDV threshold ladder,IMPLIES,1,high,Same token launch FDV; higher FDV threshold implies lower ones.
+667004,crypto-55,Metamask launch FDV threshold ladder,IMPLIES,2,high,Same token launch FDV; higher FDV threshold implies lower ones.
+665532,crypto-55,Metamask launch FDV threshold ladder,IMPLIES,3,high,Same token launch FDV; higher FDV threshold implies lower ones.
+665531,crypto-55,Metamask launch FDV threshold ladder,IMPLIES,4,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1601452,crypto-55,Metamask launch FDV threshold ladder,IMPLIES,5,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1601453,crypto-55,Metamask launch FDV threshold ladder,IMPLIES,6,high,Same token launch FDV; higher FDV threshold implies lower ones.
+2100453,crypto-55,Metamask launch FDV threshold ladder,IMPLIES,7,high,Same token launch FDV; higher FDV threshold implies lower ones.
+620682,crypto-56,Opensea launch FDV threshold ladder,IMPLIES,0,high,Same token launch FDV; higher FDV threshold implies lower ones.
+618456,crypto-56,Opensea launch FDV threshold ladder,IMPLIES,1,high,Same token launch FDV; higher FDV threshold implies lower ones.
+936450,crypto-56,Opensea launch FDV threshold ladder,IMPLIES,2,high,Same token launch FDV; higher FDV threshold implies lower ones.
+618455,crypto-56,Opensea launch FDV threshold ladder,IMPLIES,3,high,Same token launch FDV; higher FDV threshold implies lower ones.
+618454,crypto-56,Opensea launch FDV threshold ladder,IMPLIES,4,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1535124,crypto-56,Opensea launch FDV threshold ladder,IMPLIES,5,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1535122,crypto-56,Opensea launch FDV threshold ladder,IMPLIES,6,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1535123,crypto-56,Opensea launch FDV threshold ladder,IMPLIES,6,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1486023,crypto-57,Probable launch FDV threshold ladder,IMPLIES,0,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1486022,crypto-57,Probable launch FDV threshold ladder,IMPLIES,1,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1486021,crypto-57,Probable launch FDV threshold ladder,IMPLIES,2,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1486020,crypto-57,Probable launch FDV threshold ladder,IMPLIES,3,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1486019,crypto-57,Probable launch FDV threshold ladder,IMPLIES,4,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1486018,crypto-57,Probable launch FDV threshold ladder,IMPLIES,5,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1486017,crypto-57,Probable launch FDV threshold ladder,IMPLIES,6,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1486016,crypto-57,Probable launch FDV threshold ladder,IMPLIES,7,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1279001,crypto-58,Unit launch FDV threshold ladder,IMPLIES,0,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1279000,crypto-58,Unit launch FDV threshold ladder,IMPLIES,1,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1278999,crypto-58,Unit launch FDV threshold ladder,IMPLIES,2,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1278998,crypto-58,Unit launch FDV threshold ladder,IMPLIES,3,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1278997,crypto-58,Unit launch FDV threshold ladder,IMPLIES,4,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1278996,crypto-58,Unit launch FDV threshold ladder,IMPLIES,5,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1278995,crypto-58,Unit launch FDV threshold ladder,IMPLIES,6,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1278994,crypto-58,Unit launch FDV threshold ladder,IMPLIES,7,high,Same token launch FDV; higher FDV threshold implies lower ones.
+716831,crypto-59,Extended launch FDV threshold ladder,IMPLIES,0,high,Same token launch FDV; higher FDV threshold implies lower ones.
+716829,crypto-59,Extended launch FDV threshold ladder,IMPLIES,1,high,Same token launch FDV; higher FDV threshold implies lower ones.
+716827,crypto-59,Extended launch FDV threshold ladder,IMPLIES,2,high,Same token launch FDV; higher FDV threshold implies lower ones.
+716826,crypto-59,Extended launch FDV threshold ladder,IMPLIES,3,high,Same token launch FDV; higher FDV threshold implies lower ones.
+716823,crypto-59,Extended launch FDV threshold ladder,IMPLIES,4,high,Same token launch FDV; higher FDV threshold implies lower ones.
+904737,crypto-59,Extended launch FDV threshold ladder,IMPLIES,5,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1383905,crypto-59,Extended launch FDV threshold ladder,IMPLIES,6,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1435847,crypto-60,GRVT launch FDV threshold ladder,IMPLIES,0,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1435846,crypto-60,GRVT launch FDV threshold ladder,IMPLIES,1,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1435845,crypto-60,GRVT launch FDV threshold ladder,IMPLIES,2,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1435844,crypto-60,GRVT launch FDV threshold ladder,IMPLIES,3,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1435843,crypto-60,GRVT launch FDV threshold ladder,IMPLIES,4,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1435842,crypto-60,GRVT launch FDV threshold ladder,IMPLIES,5,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1435841,crypto-60,GRVT launch FDV threshold ladder,IMPLIES,6,high,Same token launch FDV; higher FDV threshold implies lower ones.
+690594,crypto-61,Hyperbeat launch FDV threshold ladder,IMPLIES,0,high,Same token launch FDV; higher FDV threshold implies lower ones.
+690593,crypto-61,Hyperbeat launch FDV threshold ladder,IMPLIES,1,high,Same token launch FDV; higher FDV threshold implies lower ones.
+690592,crypto-61,Hyperbeat launch FDV threshold ladder,IMPLIES,2,high,Same token launch FDV; higher FDV threshold implies lower ones.
+690591,crypto-61,Hyperbeat launch FDV threshold ladder,IMPLIES,3,high,Same token launch FDV; higher FDV threshold implies lower ones.
+690590,crypto-61,Hyperbeat launch FDV threshold ladder,IMPLIES,4,high,Same token launch FDV; higher FDV threshold implies lower ones.
+2365860,crypto-61,Hyperbeat launch FDV threshold ladder,IMPLIES,5,high,Same token launch FDV; higher FDV threshold implies lower ones.
+2365859,crypto-61,Hyperbeat launch FDV threshold ladder,IMPLIES,6,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1554883,crypto-62,o1 launch FDV threshold ladder,IMPLIES,0,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1554882,crypto-62,o1 launch FDV threshold ladder,IMPLIES,1,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1554881,crypto-62,o1 launch FDV threshold ladder,IMPLIES,2,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1554880,crypto-62,o1 launch FDV threshold ladder,IMPLIES,3,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1554879,crypto-62,o1 launch FDV threshold ladder,IMPLIES,4,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1554878,crypto-62,o1 launch FDV threshold ladder,IMPLIES,5,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1554877,crypto-62,o1 launch FDV threshold ladder,IMPLIES,6,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1068312,crypto-63,Base launch FDV threshold ladder,IMPLIES,0,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1068311,crypto-63,Base launch FDV threshold ladder,IMPLIES,1,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1068310,crypto-63,Base launch FDV threshold ladder,IMPLIES,2,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1068309,crypto-63,Base launch FDV threshold ladder,IMPLIES,3,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1068308,crypto-63,Base launch FDV threshold ladder,IMPLIES,4,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1068307,crypto-63,Base launch FDV threshold ladder,IMPLIES,5,high,Same token launch FDV; higher FDV threshold implies lower ones.
+916437,crypto-64,Ink launch FDV threshold ladder,IMPLIES,0,high,Same token launch FDV; higher FDV threshold implies lower ones.
+916390,crypto-64,Ink launch FDV threshold ladder,IMPLIES,1,high,Same token launch FDV; higher FDV threshold implies lower ones.
+637457,crypto-64,Ink launch FDV threshold ladder,IMPLIES,2,high,Same token launch FDV; higher FDV threshold implies lower ones.
+637456,crypto-64,Ink launch FDV threshold ladder,IMPLIES,3,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1373645,crypto-64,Ink launch FDV threshold ladder,IMPLIES,4,high,Same token launch FDV; higher FDV threshold implies lower ones.
+2365820,crypto-64,Ink launch FDV threshold ladder,IMPLIES,5,high,Same token launch FDV; higher FDV threshold implies lower ones.
+716654,crypto-65,Pacifica launch FDV threshold ladder,IMPLIES,0,high,Same token launch FDV; higher FDV threshold implies lower ones.
+716653,crypto-65,Pacifica launch FDV threshold ladder,IMPLIES,1,high,Same token launch FDV; higher FDV threshold implies lower ones.
+716652,crypto-65,Pacifica launch FDV threshold ladder,IMPLIES,2,high,Same token launch FDV; higher FDV threshold implies lower ones.
+716651,crypto-65,Pacifica launch FDV threshold ladder,IMPLIES,3,high,Same token launch FDV; higher FDV threshold implies lower ones.
+716650,crypto-65,Pacifica launch FDV threshold ladder,IMPLIES,4,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1028588,crypto-65,Pacifica launch FDV threshold ladder,IMPLIES,5,high,Same token launch FDV; higher FDV threshold implies lower ones.
+789404,crypto-66,Reya launch FDV threshold ladder,IMPLIES,0,high,Same token launch FDV; higher FDV threshold implies lower ones.
+705810,crypto-66,Reya launch FDV threshold ladder,IMPLIES,1,high,Same token launch FDV; higher FDV threshold implies lower ones.
+705809,crypto-66,Reya launch FDV threshold ladder,IMPLIES,2,high,Same token launch FDV; higher FDV threshold implies lower ones.
+705808,crypto-66,Reya launch FDV threshold ladder,IMPLIES,3,high,Same token launch FDV; higher FDV threshold implies lower ones.
+705807,crypto-66,Reya launch FDV threshold ladder,IMPLIES,4,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1693719,crypto-66,Reya launch FDV threshold ladder,IMPLIES,5,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1302781,crypto-67,Puffpaw launch FDV threshold ladder,IMPLIES,0,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1005346,crypto-67,Puffpaw launch FDV threshold ladder,IMPLIES,1,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1005345,crypto-67,Puffpaw launch FDV threshold ladder,IMPLIES,2,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1005344,crypto-67,Puffpaw launch FDV threshold ladder,IMPLIES,3,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1005343,crypto-67,Puffpaw launch FDV threshold ladder,IMPLIES,4,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1535117,crypto-68,Surf launch FDV threshold ladder,IMPLIES,0,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1535116,crypto-68,Surf launch FDV threshold ladder,IMPLIES,1,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1535115,crypto-68,Surf launch FDV threshold ladder,IMPLIES,2,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1535114,crypto-68,Surf launch FDV threshold ladder,IMPLIES,3,high,Same token launch FDV; higher FDV threshold implies lower ones.
+1535113,crypto-68,Surf launch FDV threshold ladder,IMPLIES,4,high,Same token launch FDV; higher FDV threshold implies lower ones.
+716643,crypto-69,Theo launch FDV threshold ladder,IMPLIES,0,high,Same token launch FDV; higher FDV threshold implies lower ones.
+716642,crypto-69,Theo launch FDV threshold ladder,IMPLIES,1,high,Same token launch FDV; higher FDV threshold implies lower ones.
+716641,crypto-69,Theo launch FDV threshold ladder,IMPLIES,2,high,Same token launch FDV; higher FDV threshold implies lower ones.
+716640,crypto-69,Theo launch FDV threshold ladder,IMPLIES,3,high,Same token launch FDV; higher FDV threshold implies lower ones.
+2100090,crypto-70,Printr public sale commitments threshold ladder,IMPLIES,0,high,Same quantity; higher threshold implies all lower thresholds.
+2100089,crypto-70,Printr public sale commitments threshold ladder,IMPLIES,1,high,Same quantity; higher threshold implies all lower thresholds.
+2100088,crypto-70,Printr public sale commitments threshold ladder,IMPLIES,2,high,Same quantity; higher threshold implies all lower thresholds.
+2088999,crypto-70,Printr public sale commitments threshold ladder,IMPLIES,3,high,Same quantity; higher threshold implies all lower thresholds.
+2088998,crypto-70,Printr public sale commitments threshold ladder,IMPLIES,4,high,Same quantity; higher threshold implies all lower thresholds.
+2088997,crypto-70,Printr public sale commitments threshold ladder,IMPLIES,5,high,Same quantity; higher threshold implies all lower thresholds.
+2088996,crypto-70,Printr public sale commitments threshold ladder,IMPLIES,6,high,Same quantity; higher threshold implies all lower thresholds.
+2088995,crypto-70,Printr public sale commitments threshold ladder,IMPLIES,7,high,Same quantity; higher threshold implies all lower thresholds.
+2088994,crypto-70,Printr public sale commitments threshold ladder,IMPLIES,8,high,Same quantity; higher threshold implies all lower thresholds.
+2088993,crypto-70,Printr public sale commitments threshold ladder,IMPLIES,9,high,Same quantity; higher threshold implies all lower thresholds.
+2088992,crypto-70,Printr public sale commitments threshold ladder,IMPLIES,10,high,Same quantity; higher threshold implies all lower thresholds.
+2088991,crypto-70,Printr public sale commitments threshold ladder,IMPLIES,11,high,Same quantity; higher threshold implies all lower thresholds.
+2088990,crypto-70,Printr public sale commitments threshold ladder,IMPLIES,12,high,Same quantity; higher threshold implies all lower thresholds.
+2088989,crypto-70,Printr public sale commitments threshold ladder,IMPLIES,13,high,Same quantity; higher threshold implies all lower thresholds.
+2088988,crypto-70,Printr public sale commitments threshold ladder,IMPLIES,14,high,Same quantity; higher threshold implies all lower thresholds.
+2088987,crypto-70,Printr public sale commitments threshold ladder,IMPLIES,15,high,Same quantity; higher threshold implies all lower thresholds.
+2088986,crypto-70,Printr public sale commitments threshold ladder,IMPLIES,16,high,Same quantity; higher threshold implies all lower thresholds.
+2088985,crypto-70,Printr public sale commitments threshold ladder,IMPLIES,17,high,Same quantity; higher threshold implies all lower thresholds.
+2037114,crypto-71,2026 crypto hack value threshold ladder,IMPLIES,0,high,Same quantity; higher threshold implies all lower thresholds.
+2037113,crypto-71,2026 crypto hack value threshold ladder,IMPLIES,1,high,Same quantity; higher threshold implies all lower thresholds.
+2037112,crypto-71,2026 crypto hack value threshold ladder,IMPLIES,2,high,Same quantity; higher threshold implies all lower thresholds.
+2037111,crypto-71,2026 crypto hack value threshold ladder,IMPLIES,3,high,Same quantity; higher threshold implies all lower thresholds.
+2037110,crypto-71,2026 crypto hack value threshold ladder,IMPLIES,4,high,Same quantity; higher threshold implies all lower thresholds.
+2037109,crypto-71,2026 crypto hack value threshold ladder,IMPLIES,5,high,Same quantity; higher threshold implies all lower thresholds.
+2037108,crypto-71,2026 crypto hack value threshold ladder,IMPLIES,6,high,Same quantity; higher threshold implies all lower thresholds.
+2037107,crypto-71,2026 crypto hack value threshold ladder,IMPLIES,7,high,Same quantity; higher threshold implies all lower thresholds.
+2037106,crypto-71,2026 crypto hack value threshold ladder,IMPLIES,8,high,Same quantity; higher threshold implies all lower thresholds.
+691554,crypto-72,Kraken IPO closing market cap threshold ladder,IMPLIES,0,high,Same quantity; higher threshold implies all lower thresholds.
+691553,crypto-72,Kraken IPO closing market cap threshold ladder,IMPLIES,1,high,Same quantity; higher threshold implies all lower thresholds.
+691552,crypto-72,Kraken IPO closing market cap threshold ladder,IMPLIES,2,high,Same quantity; higher threshold implies all lower thresholds.
+691551,crypto-72,Kraken IPO closing market cap threshold ladder,IMPLIES,3,high,Same quantity; higher threshold implies all lower thresholds.
+691550,crypto-72,Kraken IPO closing market cap threshold ladder,IMPLIES,4,high,Same quantity; higher threshold implies all lower thresholds.
+691549,crypto-72,Kraken IPO closing market cap threshold ladder,IMPLIES,5,high,Same quantity; higher threshold implies all lower thresholds.
+691548,crypto-72,Kraken IPO closing market cap threshold ladder,IMPLIES,6,high,Same quantity; higher threshold implies all lower thresholds.
+1106059,crypto-73,Funds raised on Coinbase 2026 threshold ladder,IMPLIES,0,high,Same quantity; higher threshold implies all lower thresholds.
+1106058,crypto-73,Funds raised on Coinbase 2026 threshold ladder,IMPLIES,1,high,Same quantity; higher threshold implies all lower thresholds.
+1106057,crypto-73,Funds raised on Coinbase 2026 threshold ladder,IMPLIES,2,high,Same quantity; higher threshold implies all lower thresholds.
+1106056,crypto-73,Funds raised on Coinbase 2026 threshold ladder,IMPLIES,3,high,Same quantity; higher threshold implies all lower thresholds.
+1106055,crypto-73,Funds raised on Coinbase 2026 threshold ladder,IMPLIES,4,high,Same quantity; higher threshold implies all lower thresholds.
+1091096,crypto-74,New 2026 coins ending in top 100 threshold ladder,IMPLIES,0,high,Same quantity; higher threshold implies all lower thresholds.
+1091095,crypto-74,New 2026 coins ending in top 100 threshold ladder,IMPLIES,1,high,Same quantity; higher threshold implies all lower thresholds.
+1091094,crypto-74,New 2026 coins ending in top 100 threshold ladder,IMPLIES,2,high,Same quantity; higher threshold implies all lower thresholds.
+1091093,crypto-74,New 2026 coins ending in top 100 threshold ladder,IMPLIES,3,high,Same quantity; higher threshold implies all lower thresholds.
+1091092,crypto-74,New 2026 coins ending in top 100 threshold ladder,IMPLIES,4,high,Same quantity; higher threshold implies all lower thresholds.
+667075,crypto-75,Consensys IPO market cap threshold ladder,IMPLIES,0,high,Same quantity; higher threshold implies all lower thresholds.
+667074,crypto-75,Consensys IPO market cap threshold ladder,IMPLIES,1,high,Same quantity; higher threshold implies all lower thresholds.
+667073,crypto-75,Consensys IPO market cap threshold ladder,IMPLIES,2,high,Same quantity; higher threshold implies all lower thresholds.
+569994,crypto-76,USDT market cap $200B threshold ladder,IMPLIES,0,high,Same quantity; higher threshold implies all lower thresholds.
+1068728,crypto-76,USDT market cap $200B threshold ladder,IMPLIES,0,high,Same quantity; higher threshold implies all lower thresholds.
+556106,crypto-77,MegaETH airdrop by deadline,IMPLIES,0,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+556107,crypto-77,MegaETH airdrop by deadline,IMPLIES,1,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+1125054,crypto-77,MegaETH airdrop by deadline,IMPLIES,2,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+556108,crypto-77,MegaETH airdrop by deadline,IMPLIES,3,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+2119266,crypto-77,MegaETH airdrop by deadline,IMPLIES,4,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+1242318,crypto-77,MegaETH airdrop by deadline,IMPLIES,5,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+1235499,crypto-77,MegaETH airdrop by deadline,IMPLIES,6,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+1266129,crypto-77,MegaETH airdrop by deadline,IMPLIES,7,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+549617,crypto-78,Pump.fun airdrop by deadline,IMPLIES,0,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+561699,crypto-78,Pump.fun airdrop by deadline,IMPLIES,1,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+549618,crypto-78,Pump.fun airdrop by deadline,IMPLIES,2,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+561700,crypto-78,Pump.fun airdrop by deadline,IMPLIES,3,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+567468,crypto-78,Pump.fun airdrop by deadline,IMPLIES,4,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+567469,crypto-78,Pump.fun airdrop by deadline,IMPLIES,5,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+666656,crypto-78,Pump.fun airdrop by deadline,IMPLIES,6,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+1068327,crypto-78,Pump.fun airdrop by deadline,IMPLIES,7,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+1571982,crypto-79,Predict.fun token launch by deadline,IMPLIES,0,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+1571983,crypto-79,Predict.fun token launch by deadline,IMPLIES,1,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+1571984,crypto-79,Predict.fun token launch by deadline,IMPLIES,2,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+1571985,crypto-79,Predict.fun token launch by deadline,IMPLIES,3,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+1571986,crypto-79,Predict.fun token launch by deadline,IMPLIES,4,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+1571987,crypto-79,Predict.fun token launch by deadline,IMPLIES,5,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+1571988,crypto-79,Predict.fun token launch by deadline,IMPLIES,6,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+1571989,crypto-79,Predict.fun token launch by deadline,IMPLIES,7,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+690671,crypto-80,Arc token launch by deadline,IMPLIES,0,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+690672,crypto-80,Arc token launch by deadline,IMPLIES,1,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+690673,crypto-80,Arc token launch by deadline,IMPLIES,2,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+690674,crypto-80,Arc token launch by deadline,IMPLIES,3,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+690675,crypto-80,Arc token launch by deadline,IMPLIES,4,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+2245064,crypto-80,Arc token launch by deadline,IMPLIES,5,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+2245065,crypto-80,Arc token launch by deadline,IMPLIES,6,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+553886,crypto-81,Hyperliquid airdrop by deadline,IMPLIES,0,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+553887,crypto-81,Hyperliquid airdrop by deadline,IMPLIES,1,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+553888,crypto-81,Hyperliquid airdrop by deadline,IMPLIES,2,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+622738,crypto-81,Hyperliquid airdrop by deadline,IMPLIES,3,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+2244109,crypto-81,Hyperliquid airdrop by deadline,IMPLIES,4,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+2100106,crypto-81,Hyperliquid airdrop by deadline,IMPLIES,5,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+943521,crypto-82,Daylight token launch by deadline,IMPLIES,0,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+943522,crypto-82,Daylight token launch by deadline,IMPLIES,1,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+943523,crypto-82,Daylight token launch by deadline,IMPLIES,2,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+943524,crypto-82,Daylight token launch by deadline,IMPLIES,3,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+943525,crypto-82,Daylight token launch by deadline,IMPLIES,4,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+2325350,crypto-82,Daylight token launch by deadline,IMPLIES,5,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+743434,crypto-83,Fomo token launch by deadline,IMPLIES,0,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+743435,crypto-83,Fomo token launch by deadline,IMPLIES,1,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+743436,crypto-83,Fomo token launch by deadline,IMPLIES,2,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+743437,crypto-83,Fomo token launch by deadline,IMPLIES,3,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+743438,crypto-83,Fomo token launch by deadline,IMPLIES,4,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+2325359,crypto-83,Fomo token launch by deadline,IMPLIES,5,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+704134,crypto-84,Tempo token launch by deadline,IMPLIES,0,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+704135,crypto-84,Tempo token launch by deadline,IMPLIES,1,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+704136,crypto-84,Tempo token launch by deadline,IMPLIES,2,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+704137,crypto-84,Tempo token launch by deadline,IMPLIES,3,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+704138,crypto-84,Tempo token launch by deadline,IMPLIES,4,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+2325394,crypto-84,Tempo token launch by deadline,IMPLIES,5,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+657353,crypto-85,Consensys IPO by deadline,IMPLIES,0,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+664878,crypto-85,Consensys IPO by deadline,IMPLIES,1,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+658198,crypto-85,Consensys IPO by deadline,IMPLIES,2,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+664884,crypto-85,Consensys IPO by deadline,IMPLIES,3,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+664885,crypto-85,Consensys IPO by deadline,IMPLIES,4,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+1038874,crypto-86,Exponent token launch by deadline,IMPLIES,0,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+1038876,crypto-86,Exponent token launch by deadline,IMPLIES,1,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+1038877,crypto-86,Exponent token launch by deadline,IMPLIES,2,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+1038880,crypto-86,Exponent token launch by deadline,IMPLIES,3,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+2325351,crypto-86,Exponent token launch by deadline,IMPLIES,4,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+690611,crypto-87,Extended token launch by deadline,IMPLIES,0,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+690612,crypto-87,Extended token launch by deadline,IMPLIES,1,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+690613,crypto-87,Extended token launch by deadline,IMPLIES,2,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+690614,crypto-87,Extended token launch by deadline,IMPLIES,3,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+690615,crypto-87,Extended token launch by deadline,IMPLIES,4,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+1415606,crypto-88,Hibachi token launch by deadline,IMPLIES,0,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+1415607,crypto-88,Hibachi token launch by deadline,IMPLIES,1,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+1415611,crypto-88,Hibachi token launch by deadline,IMPLIES,2,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+1415613,crypto-88,Hibachi token launch by deadline,IMPLIES,3,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+2325117,crypto-88,Hibachi token launch by deadline,IMPLIES,4,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+1038640,crypto-89,Loopscale token launch by deadline,IMPLIES,0,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+1038641,crypto-89,Loopscale token launch by deadline,IMPLIES,1,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+1038642,crypto-89,Loopscale token launch by deadline,IMPLIES,2,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+1038643,crypto-89,Loopscale token launch by deadline,IMPLIES,3,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+2325376,crypto-89,Loopscale token launch by deadline,IMPLIES,4,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+1038565,crypto-90,Nansen token launch by deadline,IMPLIES,0,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+1038566,crypto-90,Nansen token launch by deadline,IMPLIES,1,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+1038567,crypto-90,Nansen token launch by deadline,IMPLIES,2,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+1038568,crypto-90,Nansen token launch by deadline,IMPLIES,3,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+2325377,crypto-90,Nansen token launch by deadline,IMPLIES,4,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+1038712,crypto-91,Oro token launch by deadline,IMPLIES,0,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+1038714,crypto-91,Oro token launch by deadline,IMPLIES,1,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+1038717,crypto-91,Oro token launch by deadline,IMPLIES,2,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+1038719,crypto-91,Oro token launch by deadline,IMPLIES,3,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+2325378,crypto-91,Oro token launch by deadline,IMPLIES,4,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+690688,crypto-92,Pacifica token launch by deadline,IMPLIES,0,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+690689,crypto-92,Pacifica token launch by deadline,IMPLIES,1,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+690690,crypto-92,Pacifica token launch by deadline,IMPLIES,2,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+690691,crypto-92,Pacifica token launch by deadline,IMPLIES,3,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+690692,crypto-92,Pacifica token launch by deadline,IMPLIES,4,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+1068689,crypto-93,Phantom token launch by deadline,IMPLIES,0,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+1068690,crypto-93,Phantom token launch by deadline,IMPLIES,1,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+1068691,crypto-93,Phantom token launch by deadline,IMPLIES,2,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+1068692,crypto-93,Phantom token launch by deadline,IMPLIES,3,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+2325379,crypto-93,Phantom token launch by deadline,IMPLIES,4,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+707026,crypto-94,Solstice token launch by deadline,IMPLIES,0,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+707028,crypto-94,Solstice token launch by deadline,IMPLIES,1,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+707031,crypto-94,Solstice token launch by deadline,IMPLIES,2,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+707033,crypto-94,Solstice token launch by deadline,IMPLIES,3,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+707034,crypto-94,Solstice token launch by deadline,IMPLIES,4,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+706858,crypto-95,Theo token launch by deadline,IMPLIES,0,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+706859,crypto-95,Theo token launch by deadline,IMPLIES,1,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+706860,crypto-95,Theo token launch by deadline,IMPLIES,2,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+706861,crypto-95,Theo token launch by deadline,IMPLIES,3,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+706862,crypto-95,Theo token launch by deadline,IMPLIES,4,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+1038644,crypto-96,Titan token launch by deadline,IMPLIES,0,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+1038645,crypto-96,Titan token launch by deadline,IMPLIES,1,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+1038646,crypto-96,Titan token launch by deadline,IMPLIES,2,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+1038647,crypto-96,Titan token launch by deadline,IMPLIES,3,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+2325402,crypto-96,Titan token launch by deadline,IMPLIES,4,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+1153986,crypto-97,Tread token launch by deadline,IMPLIES,0,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+1153987,crypto-97,Tread token launch by deadline,IMPLIES,1,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+1153988,crypto-97,Tread token launch by deadline,IMPLIES,2,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+1153989,crypto-97,Tread token launch by deadline,IMPLIES,3,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+2325403,crypto-97,Tread token launch by deadline,IMPLIES,4,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+700017,crypto-98,Ventuals token launch by deadline,IMPLIES,0,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+700018,crypto-98,Ventuals token launch by deadline,IMPLIES,1,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+700019,crypto-98,Ventuals token launch by deadline,IMPLIES,2,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+700020,crypto-98,Ventuals token launch by deadline,IMPLIES,3,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+700021,crypto-98,Ventuals token launch by deadline,IMPLIES,4,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+948955,crypto-99,Bitcoin all-time-high by deadline,IMPLIES,0,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+948956,crypto-99,Bitcoin all-time-high by deadline,IMPLIES,1,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+948957,crypto-99,Bitcoin all-time-high by deadline,IMPLIES,2,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+948958,crypto-99,Bitcoin all-time-high by deadline,IMPLIES,3,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+951178,crypto-100,Ethereum all-time-high by deadline,IMPLIES,0,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+951179,crypto-100,Ethereum all-time-high by deadline,IMPLIES,1,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+951180,crypto-100,Ethereum all-time-high by deadline,IMPLIES,2,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+951181,crypto-100,Ethereum all-time-high by deadline,IMPLIES,3,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+951215,crypto-101,Solana all-time-high by deadline,IMPLIES,0,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+951216,crypto-101,Solana all-time-high by deadline,IMPLIES,1,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+951217,crypto-101,Solana all-time-high by deadline,IMPLIES,2,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+951218,crypto-101,Solana all-time-high by deadline,IMPLIES,3,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+955800,crypto-102,XRP all-time-high by deadline,IMPLIES,0,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+955801,crypto-102,XRP all-time-high by deadline,IMPLIES,1,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+955802,crypto-102,XRP all-time-high by deadline,IMPLIES,2,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+955803,crypto-102,XRP all-time-high by deadline,IMPLIES,3,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+516950,crypto-103,Kraken IPO by deadline,IMPLIES,0,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+678876,crypto-103,Kraken IPO by deadline,IMPLIES,1,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+1642124,crypto-103,Kraken IPO by deadline,IMPLIES,2,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+691547,crypto-103,Kraken IPO by deadline,IMPLIES,3,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+688485,crypto-104,GMGN token launch by deadline,IMPLIES,0,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+688486,crypto-104,GMGN token launch by deadline,IMPLIES,1,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+688487,crypto-104,GMGN token launch by deadline,IMPLIES,2,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+2325360,crypto-104,GMGN token launch by deadline,IMPLIES,3,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+604067,crypto-105,MetaMask token launch by deadline,IMPLIES,0,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+657287,crypto-105,MetaMask token launch by deadline,IMPLIES,1,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+664895,crypto-105,MetaMask token launch by deadline,IMPLIES,2,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+1356655,crypto-105,MetaMask token launch by deadline,IMPLIES,3,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+1271610,crypto-106,OpenSea token launch by deadline,IMPLIES,0,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+1271611,crypto-106,OpenSea token launch by deadline,IMPLIES,1,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+1271612,crypto-106,OpenSea token launch by deadline,IMPLIES,2,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+1271613,crypto-106,OpenSea token launch by deadline,IMPLIES,3,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+1038815,crypto-107,Perena token launch by deadline,IMPLIES,0,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+1038816,crypto-107,Perena token launch by deadline,IMPLIES,1,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+1038817,crypto-107,Perena token launch by deadline,IMPLIES,2,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+1038818,crypto-107,Perena token launch by deadline,IMPLIES,3,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+666682,crypto-108,Variational token launch by deadline,IMPLIES,0,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+1962607,crypto-108,Variational token launch by deadline,IMPLIES,1,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+1962606,crypto-108,Variational token launch by deadline,IMPLIES,2,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+690683,crypto-108,Variational token launch by deadline,IMPLIES,3,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+582829,crypto-109,Axiom token launch by deadline,IMPLIES,0,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+694160,crypto-109,Axiom token launch by deadline,IMPLIES,1,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+2325349,crypto-109,Axiom token launch by deadline,IMPLIES,2,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+598930,crypto-110,Base token launch by deadline,IMPLIES,0,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+821172,crypto-110,Base token launch by deadline,IMPLIES,1,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+690693,crypto-110,Base token launch by deadline,IMPLIES,2,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+629951,crypto-111,prjx token launch by deadline,IMPLIES,0,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+690660,crypto-111,prjx token launch by deadline,IMPLIES,1,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+2325387,crypto-111,prjx token launch by deadline,IMPLIES,1,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+582830,crypto-112,Unit token launch by deadline,IMPLIES,0,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+697523,crypto-112,Unit token launch by deadline,IMPLIES,1,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+1210085,crypto-112,Unit token launch by deadline,IMPLIES,2,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+665004,crypto-113,Another S&P 500 company buys Bitcoin by deadline,IMPLIES,0,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+776340,crypto-113,Another S&P 500 company buys Bitcoin by deadline,IMPLIES,1,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+776464,crypto-113,Another S&P 500 company buys Bitcoin by deadline,IMPLIES,2,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+2321476,crypto-114,Hyperliquid listed on Binance by deadline,IMPLIES,0,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+1121971,crypto-114,Hyperliquid listed on Binance by deadline,IMPLIES,1,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+582828,crypto-115,Abstract token launch by deadline,IMPLIES,0,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+718188,crypto-115,Abstract token launch by deadline,IMPLIES,1,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+599081,crypto-116,Felix Protocol token launch by deadline,IMPLIES,0,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+690651,crypto-116,Felix Protocol token launch by deadline,IMPLIES,1,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+599077,crypto-117,Ostium token launch by deadline,IMPLIES,0,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+690631,crypto-117,Ostium token launch by deadline,IMPLIES,1,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+1323001,crypto-118,Trump launches a coin by deadline,IMPLIES,0,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+1373724,crypto-118,Trump launches a coin by deadline,IMPLIES,1,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+548324,crypto-119,Trump eliminates crypto cap-gains tax by deadline,IMPLIES,0,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+1068702,crypto-119,Trump eliminates crypto cap-gains tax by deadline,IMPLIES,1,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+569887,crypto-120,USDC hits 50% of USDT market cap by deadline,IMPLIES,0,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+1068762,crypto-120,USDC hits 50% of USDT market cap by deadline,IMPLIES,1,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+582465,crypto-121,El Salvador holds $1b+ BTC by deadline,IMPLIES,0,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+582466,crypto-121,El Salvador holds $1b+ BTC by deadline,IMPLIES,1,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+1068384,crypto-121,El Salvador holds $1b+ BTC by deadline,IMPLIES,2,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+573654,crypto-122,Bitcoin reach $150k by deadline,IMPLIES,0,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+573655,crypto-122,Bitcoin reach $150k by deadline,IMPLIES,1,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+573656,crypto-122,Bitcoin reach $150k by deadline,IMPLIES,2,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+573652,crypto-122,Bitcoin reach $150k by deadline,IMPLIES,3,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+573653,crypto-122,Bitcoin reach $150k by deadline,IMPLIES,4,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+516926,crypto-123,MicroStrategy sells any Bitcoin by deadline,IMPLIES,0,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+692250,crypto-123,MicroStrategy sells any Bitcoin by deadline,IMPLIES,1,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+2169995,crypto-123,MicroStrategy sells any Bitcoin by deadline,IMPLIES,2,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+692258,crypto-123,MicroStrategy sells any Bitcoin by deadline,IMPLIES,3,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+824952,crypto-123,MicroStrategy sells any Bitcoin by deadline,IMPLIES,4,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+813123,crypto-124,MicroStrategy delisted from MSCI by deadline,IMPLIES,0,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+1320795,crypto-124,MicroStrategy delisted from MSCI by deadline,IMPLIES,1,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+1320796,crypto-124,MicroStrategy delisted from MSCI by deadline,IMPLIES,2,high,Same event; earlier deadline is a subset of later deadline (monotone over time).
+1553608,crypto-125,MicroStrategy BTC holdings threshold (Dec 2026),IMPLIES,0,high,Holding 1M+ BTC implies holding 800k+ BTC (same deadline).
+1068045,crypto-125,MicroStrategy BTC holdings threshold (Dec 2026),IMPLIES,1,high,Holding 1M+ BTC implies holding 800k+ BTC (same deadline).
+693940,crypto-126,MicroStrategy announces bankruptcy by Dec 2026,EQUIVALENT,,high,Identical resolution criteria and deadline (duplicate markets).
+676830,crypto-126,MicroStrategy announces bankruptcy by Dec 2026,EQUIVALENT,,high,Identical resolution criteria and deadline (duplicate markets).

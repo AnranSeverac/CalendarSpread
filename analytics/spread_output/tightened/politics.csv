@@ -1,0 +1,120 @@
+market_id,micro_group_id,group_label,relationship,rank,confidence,rationale
+521532,politics-1,Starmer out as UK PM deadline ladder,IMPLIES,1,med,Same event (Starmer ceases to be PM); earlier deadline implies later (minor start-window differences).
+1336699,politics-1,Starmer out as UK PM deadline ladder,IMPLIES,2,med,Same event (Starmer ceases to be PM); earlier deadline implies later (minor start-window differences).
+1359701,politics-1,Starmer out as UK PM deadline ladder,IMPLIES,3,med,Same event (Starmer ceases to be PM); earlier deadline implies later (minor start-window differences).
+1500922,politics-1,Starmer out as UK PM deadline ladder,IMPLIES,4,med,Same event (Starmer ceases to be PM); earlier deadline implies later (minor start-window differences).
+2002685,politics-1,Starmer out as UK PM deadline ladder,IMPLIES,5,med,Same event (Starmer ceases to be PM); earlier deadline implies later (minor start-window differences).
+2251595,politics-1,Starmer out as UK PM deadline ladder,IMPLIES,6,med,Same event (Starmer ceases to be PM); earlier deadline implies later (minor start-window differences).
+2231205,politics-1,Starmer out as UK PM deadline ladder,IMPLIES,7,med,Same event (Starmer ceases to be PM); earlier deadline implies later (minor start-window differences).
+2365092,politics-1,Starmer out as UK PM deadline ladder,IMPLIES,8,med,Same event (Starmer ceases to be PM); earlier deadline implies later (minor start-window differences).
+597967,politics-1,Starmer out as UK PM deadline ladder,IMPLIES,9,med,Same event (Starmer ceases to be PM); earlier deadline implies later (minor start-window differences).
+2365093,politics-1,Starmer out as UK PM deadline ladder,IMPLIES,10,med,Same event (Starmer ceases to be PM); earlier deadline implies later (minor start-window differences).
+666655,politics-1,Starmer out as UK PM deadline ladder,IMPLIES,11,med,Same event (Starmer ceases to be PM); earlier deadline implies later (minor start-window differences).
+581644,politics-2,French snap election called deadline ladder,IMPLIES,1,high,Same event; an earlier deadline strictly implies every later deadline.
+623607,politics-2,French snap election called deadline ladder,IMPLIES,2,high,Same event; an earlier deadline strictly implies every later deadline.
+623608,politics-2,French snap election called deadline ladder,IMPLIES,3,high,Same event; an earlier deadline strictly implies every later deadline.
+623307,politics-2,French snap election called deadline ladder,IMPLIES,4,high,Same event; an earlier deadline strictly implies every later deadline.
+651769,politics-2,French snap election called deadline ladder,IMPLIES,5,high,Same event; an earlier deadline strictly implies every later deadline.
+581639,politics-2,French snap election called deadline ladder,IMPLIES,6,high,Same event; an earlier deadline strictly implies every later deadline.
+644804,politics-2,French snap election called deadline ladder,IMPLIES,7,high,Same event; an earlier deadline strictly implies every later deadline.
+2159620,politics-3,Senate passes reconciliation bill deadline ladder,IMPLIES,1,high,Same event; an earlier deadline strictly implies every later deadline.
+2159621,politics-3,Senate passes reconciliation bill deadline ladder,IMPLIES,2,high,Same event; an earlier deadline strictly implies every later deadline.
+2159622,politics-3,Senate passes reconciliation bill deadline ladder,IMPLIES,3,high,Same event; an earlier deadline strictly implies every later deadline.
+2325720,politics-3,Senate passes reconciliation bill deadline ladder,IMPLIES,4,high,Same event; an earlier deadline strictly implies every later deadline.
+2325721,politics-3,Senate passes reconciliation bill deadline ladder,IMPLIES,5,high,Same event; an earlier deadline strictly implies every later deadline.
+2325722,politics-3,Senate passes reconciliation bill deadline ladder,IMPLIES,6,high,Same event; an earlier deadline strictly implies every later deadline.
+2324725,politics-3,Senate passes reconciliation bill deadline ladder,IMPLIES,7,high,Same event; an earlier deadline strictly implies every later deadline.
+631317,politics-4,Lecornu out as French PM deadline ladder,IMPLIES,1,high,Same event; an earlier deadline strictly implies every later deadline.
+651772,politics-4,Lecornu out as French PM deadline ladder,IMPLIES,2,high,Same event; an earlier deadline strictly implies every later deadline.
+631316,politics-4,Lecornu out as French PM deadline ladder,IMPLIES,3,high,Same event; an earlier deadline strictly implies every later deadline.
+813507,politics-4,Lecornu out as French PM deadline ladder,IMPLIES,4,high,Same event; an earlier deadline strictly implies every later deadline.
+813508,politics-4,Lecornu out as French PM deadline ladder,IMPLIES,5,high,Same event; an earlier deadline strictly implies every later deadline.
+1192770,politics-5,Insurrection Act invoked deadline ladder,IMPLIES,1,high,Same event; an earlier deadline strictly implies every later deadline.
+1117273,politics-5,Insurrection Act invoked deadline ladder,IMPLIES,2,high,Same event; an earlier deadline strictly implies every later deadline.
+1632273,politics-5,Insurrection Act invoked deadline ladder,IMPLIES,3,high,Same event; an earlier deadline strictly implies every later deadline.
+1117274,politics-5,Insurrection Act invoked deadline ladder,IMPLIES,4,high,Same event; an earlier deadline strictly implies every later deadline.
+1117275,politics-5,Insurrection Act invoked deadline ladder,IMPLIES,5,high,Same event; an earlier deadline strictly implies every later deadline.
+1420244,politics-6,Kash Patel out as FBI Director deadline ladder,IMPLIES,1,high,Same event; an earlier deadline strictly implies every later deadline.
+1838758,politics-6,Kash Patel out as FBI Director deadline ladder,IMPLIES,2,high,Same event; an earlier deadline strictly implies every later deadline.
+2099041,politics-6,Kash Patel out as FBI Director deadline ladder,IMPLIES,3,high,Same event; an earlier deadline strictly implies every later deadline.
+1420294,politics-6,Kash Patel out as FBI Director deadline ladder,IMPLIES,4,high,Same event; an earlier deadline strictly implies every later deadline.
+1795655,politics-6,Kash Patel out as FBI Director deadline ladder,IMPLIES,5,high,Same event; an earlier deadline strictly implies every later deadline.
+687270,politics-7,Sheinbaum out as President of Mexico deadline ladder,IMPLIES,1,high,Same event; an earlier deadline strictly implies every later deadline.
+648896,politics-7,Sheinbaum out as President of Mexico deadline ladder,IMPLIES,2,high,Same event; an earlier deadline strictly implies every later deadline.
+1430556,politics-7,Sheinbaum out as President of Mexico deadline ladder,IMPLIES,3,high,Same event; an earlier deadline strictly implies every later deadline.
+2166347,politics-8,Bolojan out as Romanian PM deadline ladder,IMPLIES,1,high,Same event; an earlier deadline strictly implies every later deadline.
+2158709,politics-8,Bolojan out as Romanian PM deadline ladder,IMPLIES,2,high,Same event; an earlier deadline strictly implies every later deadline.
+1403679,politics-8,Bolojan out as Romanian PM deadline ladder,IMPLIES,3,high,Same event; an earlier deadline strictly implies every later deadline.
+2370271,politics-9,JD Vance out as VP deadline ladder,IMPLIES,1,high,Same event; an earlier deadline strictly implies every later deadline.
+2370272,politics-9,JD Vance out as VP deadline ladder,IMPLIES,2,high,Same event; an earlier deadline strictly implies every later deadline.
+2370273,politics-9,JD Vance out as VP deadline ladder,IMPLIES,3,high,Same event; an earlier deadline strictly implies every later deadline.
+1046978,politics-10,Tim Walz resign as Governor deadline ladder,IMPLIES,1,high,Same event; an earlier deadline strictly implies every later deadline.
+1046979,politics-10,Tim Walz resign as Governor deadline ladder,IMPLIES,2,high,Same event; an earlier deadline strictly implies every later deadline.
+1066009,politics-10,Tim Walz resign as Governor deadline ladder,IMPLIES,3,high,Same event; an earlier deadline strictly implies every later deadline.
+2126997,politics-11,Ruben Rocha out as Sinaloa Governor deadline ladder,IMPLIES,1,high,Same event; an earlier deadline strictly implies every later deadline.
+2326049,politics-11,Ruben Rocha out as Sinaloa Governor deadline ladder,IMPLIES,2,high,Same event; an earlier deadline strictly implies every later deadline.
+2127392,politics-12,Ruben Rocha extradited to US deadline ladder,IMPLIES,1,high,Same event; an earlier deadline strictly implies every later deadline.
+2127064,politics-12,Ruben Rocha extradited to US deadline ladder,IMPLIES,2,high,Same event; an earlier deadline strictly implies every later deadline.
+2098364,politics-13,Trump renames ICE to NICE deadline ladder,IMPLIES,1,high,Same event; an earlier deadline strictly implies every later deadline.
+2243625,politics-13,Trump renames ICE to NICE deadline ladder,IMPLIES,2,high,Same event; an earlier deadline strictly implies every later deadline.
+2134416,politics-14,Burnham out as Manchester Mayor deadline ladder,IMPLIES,1,high,Same event; an earlier deadline strictly implies every later deadline.
+2370467,politics-14,Burnham out as Manchester Mayor deadline ladder,IMPLIES,2,high,Same event; an earlier deadline strictly implies every later deadline.
+619169,politics-15,GOP uses nuclear option deadline ladder,IMPLIES,1,high,Same event; an earlier deadline strictly implies every later deadline.
+657471,politics-15,GOP uses nuclear option deadline ladder,IMPLIES,2,high,Same event; an earlier deadline strictly implies every later deadline.
+677320,politics-15,GOP uses nuclear option deadline ladder,IMPLIES,3,high,Same event; an earlier deadline strictly implies every later deadline.
+1090190,politics-15,GOP uses nuclear option deadline ladder,IMPLIES,4,high,Same event; an earlier deadline strictly implies every later deadline.
+535741,politics-16,Mike Johnson out as Speaker deadline ladder,IMPLIES,1,med,Same event (Johnson out as Speaker); earlier deadline implies later (minor start-window differences).
+623964,politics-16,Mike Johnson out as Speaker deadline ladder,IMPLIES,2,med,Same event (Johnson out as Speaker); earlier deadline implies later (minor start-window differences).
+813505,politics-16,Mike Johnson out as Speaker deadline ladder,IMPLIES,3,med,Same event (Johnson out as Speaker); earlier deadline implies later (minor start-window differences).
+813506,politics-16,Mike Johnson out as Speaker deadline ladder,IMPLIES,4,med,Same event (Johnson out as Speaker); earlier deadline implies later (minor start-window differences).
+623939,politics-17,Macron out as French President deadline ladder,IMPLIES,1,med,Same event (Macron out as President); earlier deadline implies later (minor start-window differences).
+517231,politics-17,Macron out as French President deadline ladder,IMPLIES,2,med,Same event (Macron out as President); earlier deadline implies later (minor start-window differences).
+597964,politics-17,Macron out as French President deadline ladder,IMPLIES,3,med,Same event (Macron out as President); earlier deadline implies later (minor start-window differences).
+665372,politics-18,Trump 2026 approval rating <= threshold ladder,IMPLIES,1,high,Approval hitting a lower threshold strictly implies hitting every higher one (lower=harder=lower rank).
+665371,politics-18,Trump 2026 approval rating <= threshold ladder,IMPLIES,2,high,Approval hitting a lower threshold strictly implies hitting every higher one (lower=harder=lower rank).
+665370,politics-18,Trump 2026 approval rating <= threshold ladder,IMPLIES,3,high,Approval hitting a lower threshold strictly implies hitting every higher one (lower=harder=lower rank).
+665369,politics-18,Trump 2026 approval rating <= threshold ladder,IMPLIES,4,high,Approval hitting a lower threshold strictly implies hitting every higher one (lower=harder=lower rank).
+665368,politics-18,Trump 2026 approval rating <= threshold ladder,IMPLIES,5,high,Approval hitting a lower threshold strictly implies hitting every higher one (lower=harder=lower rank).
+2128535,politics-19,Epstein suicide note released deadline ladder,IMPLIES,1,high,Same event; an earlier deadline strictly implies every later deadline.
+2128536,politics-19,Epstein suicide note released deadline ladder,IMPLIES,2,high,Same event; an earlier deadline strictly implies every later deadline.
+689356,politics-20,Epstein client list released deadline ladder,IMPLIES,1,high,Same event; an earlier deadline strictly implies every later deadline.
+996893,politics-20,Epstein client list released deadline ladder,IMPLIES,2,high,Same event; an earlier deadline strictly implies every later deadline.
+2306062,politics-20,Epstein client list released deadline ladder,IMPLIES,3,high,Same event; an earlier deadline strictly implies every later deadline.
+562811,politics-21,Epstein foul play confirmed deadline ladder,IMPLIES,1,high,Same event; an earlier deadline strictly implies every later deadline.
+1057348,politics-21,Epstein foul play confirmed deadline ladder,IMPLIES,2,high,Same event; an earlier deadline strictly implies every later deadline.
+1057349,politics-21,Epstein foul play confirmed deadline ladder,IMPLIES,3,high,Same event; an earlier deadline strictly implies every later deadline.
+1316930,politics-22,Epstein disclosures: jailed implies charged,IMPLIES,1,high,Being jailed over Epstein disclosures entails first being charged; subset of the charged market.
+1319902,politics-22,Epstein disclosures: jailed implies charged,IMPLIES,2,high,Anyone charged over Epstein disclosures is the superset of anyone jailed over them.
+687689,politics-23,Trump pardons Ghislaine Maxwell (dup listings),IMPLIES,1,high,Same event/deadline (Maxwell pardon by end-2026); shorter window is a subset of the longer-window listing.
+566760,politics-23,Trump pardons Ghislaine Maxwell (dup listings),IMPLIES,2,high,Earlier-starting Maxwell-pardon window (from 2025-07-23) is the superset; prices ~equal.
+884888,politics-24,Tim Walz criminally charged deadline ladder,IMPLIES,1,high,Same event; an earlier deadline strictly implies every later deadline.
+1046969,politics-24,Tim Walz criminally charged deadline ladder,IMPLIES,2,high,Same event; an earlier deadline strictly implies every later deadline.
+2109074,politics-25,James Comey: sentenced implies arrested (2026),IMPLIES,1,high,Comey being sentenced to prison entails his prior arrest; subset of the arrested market.
+2116863,politics-25,James Comey: sentenced implies arrested (2026),IMPLIES,2,high,Comey arrested by end-2026 is the superset of Comey sentenced to prison.
+2097472,politics-26,Trump out as President deadline ladder,IMPLIES,1,high,Same event; an earlier deadline strictly implies every later deadline.
+1559394,politics-26,Trump out as President deadline ladder,IMPLIES,2,high,Same event; an earlier deadline strictly implies every later deadline.
+665209,politics-27,Trump impeached deadline ladder,IMPLIES,1,high,Same event; an earlier deadline strictly implies every later deadline.
+568116,politics-27,Trump impeached deadline ladder,IMPLIES,2,high,Same event; an earlier deadline strictly implies every later deadline.
+1553247,politics-28,SAVE Act (proof-of-citizenship) deadline ladder,IMPLIES,1,high,Any proof-of-citizenship voting law enacted by an earlier deadline implies later deadlines.
+2097633,politics-28,SAVE Act (proof-of-citizenship) deadline ladder,IMPLIES,2,high,Any proof-of-citizenship voting law enacted by an earlier deadline implies later deadlines.
+2365109,politics-28,SAVE Act (proof-of-citizenship) deadline ladder,IMPLIES,3,high,Any proof-of-citizenship voting law enacted by an earlier deadline implies later deadlines.
+1553248,politics-28,SAVE Act (proof-of-citizenship) deadline ladder,IMPLIES,4,high,Any proof-of-citizenship voting law enacted by an earlier deadline implies later deadlines.
+1329554,politics-28,SAVE Act (proof-of-citizenship) deadline ladder,IMPLIES,5,high,"H.R.22 specifically becoming law is one qualifying bill, a subset of the generic end-2026 SAVE Act market."
+1542455,politics-29,SAVE America Act (H.R.7296) deadline ladder,IMPLIES,1,high,Same event; an earlier deadline strictly implies every later deadline.
+1542456,politics-29,SAVE America Act (H.R.7296) deadline ladder,IMPLIES,2,high,Same event; an earlier deadline strictly implies every later deadline.
+651326,politics-30,Newsom announces 2028 presidential run deadline ladder,IMPLIES,1,high,Same event; an earlier deadline strictly implies every later deadline.
+651327,politics-30,Newsom announces 2028 presidential run deadline ladder,IMPLIES,2,high,Same event; an earlier deadline strictly implies every later deadline.
+1060867,politics-31,GOP trifecta+supermajority implies GOP Senate control,IMPLIES,1,med,"GOP holding presidency, House and >=60 Senate seats strictly implies GOP controlling the Senate."
+negrisk::32224,politics-31,GOP trifecta+supermajority implies GOP Senate control,IMPLIES,2,med,Which party wins the Senate (Republican outcome) is the superset of the GOP trifecta-supermajority scenario.
+648383,politics-32,CA billionaire wealth tax: passes implies on ballot,IMPLIES,1,high,A wealth-tax proposition passing requires it to be on the ballot; subset of the on-ballot market.
+648378,politics-32,CA billionaire wealth tax: passes implies on ballot,IMPLIES,2,high,Being certified onto the ballot is the superset of the proposition actually passing.
+negrisk::432501,politics-33,Malta 2026: winning party vs next PM,CORRELATED,,med,Party winning most seats in Malta's 2026 election strongly co-moves with who becomes PM.
+negrisk::432545,politics-33,Malta 2026: winning party vs next PM,CORRELATED,,med,Next PM of Malta strongly co-moves with the party that wins the 2026 election.
+negrisk::96640,politics-34,Sweden 2026: winning party vs next PM,CORRELATED,,med,Party winning most seats in Sweden's 2026 election strongly co-moves with who becomes PM.
+negrisk::166435,politics-34,Sweden 2026: winning party vs next PM,CORRELATED,,med,Next PM of Sweden strongly co-moves with the party that wins the 2026 election.
+negrisk::106510,politics-35,Peru 2026: Senate vs Chamber of Deputies winner,CORRELATED,,med,Same Peruvian general election; the party winning the Senate strongly co-moves with the Chamber winner.
+negrisk::106511,politics-35,Peru 2026: Senate vs Chamber of Deputies winner,CORRELATED,,med,Same Peruvian general election; the Chamber-of-Deputies winner strongly co-moves with the Senate winner.
+negrisk::246044,politics-36,Texas Senate runoff margin of victory (bracket variants),CORRELATED,,med,"Identical underlying (TX Senate runoff margin), just different bracket sets; perfectly co-moving."
+negrisk::514577,politics-36,Texas Senate runoff margin of victory (bracket variants),CORRELATED,,med,Identical underlying (TX Senate runoff margin) with larger brackets; perfectly co-moving with the standard brackets.
+664045,politics-37,Mamdani NYC policy actions (shared win precondition),CORRELATED,,med,Conditional on Mamdani winning the 2025 mayoral race; co-moves with his other gated policy market.
+663912,politics-37,Mamdani NYC policy actions (shared win precondition),CORRELATED,,med,Conditional on Mamdani winning the 2025 mayoral race; co-moves with the rent-freeze market.

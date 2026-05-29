@@ -1,0 +1,813 @@
+market_id,slug,question,n_outcomes
+701486,will-bitcoin-reach-200000-by-december-31-2026-752-232-389,"Will Bitcoin reach $200,000 by December 31, 2026?",1
+701488,will-bitcoin-reach-180000-by-december-31-2026-629-622-598,"Will Bitcoin reach $180,000 by December 31, 2026?",1
+701490,will-bitcoin-reach-160000-by-december-31-2026-934-934-164,"Will Bitcoin reach $160,000 by December 31, 2026?",1
+701492,will-bitcoin-reach-140000-by-december-31-2026-131-829-299,"Will Bitcoin reach $140,000 by December 31, 2026?",1
+701494,will-bitcoin-reach-120000-by-december-31-2026-625-425-562,"Will Bitcoin reach $120,000 by December 31, 2026?",1
+701496,will-bitcoin-reach-100000-by-december-31-2026-571-361-361,"Will Bitcoin reach $100,000 by December 31, 2026?",1
+701498,will-bitcoin-dip-to-85000-by-december-31-2026-281-257-273-554-855-332-854,"Will Bitcoin dip to $85,000 by December 31, 2026?",1
+701500,will-bitcoin-dip-to-65000-by-december-31-2026-175-145-572-522-479-997-983,"Will Bitcoin dip to $65,000 by December 31, 2026?",1
+701502,will-bitcoin-dip-to-45000-by-december-31-2026-674-923-755-971-998-525-926-245-316-517-544-589-965-923-986-841-815-224,"Will Bitcoin dip to $45,000 by December 31, 2026?",1
+701504,will-bitcoin-dip-to-25000-by-december-31-2026-948-243-253-666-115-787-981-282-573-719-186-417-762-754-486-851-278-145,"Will Bitcoin dip to $25,000 by December 31, 2026?",1
+701487,will-bitcoin-reach-190000-by-december-31-2026-936-485-627,"Will Bitcoin reach $190,000 by December 31, 2026?",1
+701489,will-bitcoin-reach-170000-by-december-31-2026-335-688-943,"Will Bitcoin reach $170,000 by December 31, 2026?",1
+701491,will-bitcoin-reach-150000-by-december-31-2026-557-246-971,"Will Bitcoin reach $150,000 by December 31, 2026?",1
+701493,will-bitcoin-reach-130000-by-december-31-2026-756-151-855,"Will Bitcoin reach $130,000 by December 31, 2026?",1
+701495,will-bitcoin-reach-110000-by-december-31-2026-658-339-969,"Will Bitcoin reach $110,000 by December 31, 2026?",1
+701497,will-bitcoin-reach-90000-by-december-31-2026-164-234-278,"Will Bitcoin reach $90,000 by December 31, 2026?",1
+701499,will-bitcoin-dip-to-75000-by-december-31-2026-333-141-768-486-937-643-979,"Will Bitcoin dip to $75,000 by December 31, 2026?",1
+701501,will-bitcoin-dip-to-55000-by-december-31-2026-527-627-868-745-188-361-314-673-612-946-821-624-855-557-684-381,"Will Bitcoin dip to $55,000 by December 31, 2026?",1
+701503,will-bitcoin-dip-to-35000-by-december-31-2026-744-877-748-219-467-465-646-211-122-947-537-552-555-361-972-954-635-887,"Will Bitcoin dip to $35,000 by December 31, 2026?",1
+1057883,will-bitcoin-reach-250000-by-december-31-2026-579-442,"Will Bitcoin reach $250,000 by December 31, 2026?",1
+1057916,will-bitcoin-dip-to-15000-by-december-31-2026-416-954-417-853-885-363-335-458-585-275-615-269-479-379-516-218-918-374-598,"Will Bitcoin dip to $15,000 by December 31, 2026?",1
+1339746,will-bitcoin-dip-to-60000-by-december-31-2026-868-514-748-652-885-613-696-368-736-451-217-888-749-379,"Will Bitcoin dip to $60,000 by December 31, 2026?",1
+1339767,will-bitcoin-dip-to-50000-by-december-31-2026-454-325-222-878-949-487-451,"Will Bitcoin dip to $50,000 by December 31, 2026?",1
+1339768,will-bitcoin-dip-to-40000-by-december-31-2026-593-522-842-874-931-776-991,"Will Bitcoin dip to $40,000 by December 31, 2026?",1
+1339769,will-bitcoin-dip-to-30000-by-december-31-2026-971-191-116-343-999-758-299,"Will Bitcoin dip to $30,000 by December 31, 2026?",1
+1343219,will-bitcoin-dip-to-20000-by-december-31-2026-121-885-178-397-354-236-731,"Will Bitcoin dip to $20,000 by December 31, 2026?",1
+1343220,will-bitcoin-dip-to-10000-by-december-31-2026-888-644-567-258-946-853,"Will Bitcoin dip to $10,000 by December 31, 2026?",1
+1343228,will-bitcoin-dip-to-5000-by-december-31-2026-jy3n-991-141-345-117-196-482,"Will Bitcoin dip to $5,000 by December 31, 2026?",1
+1345526,will-bitcoin-reach-70000-by-december-31-2026-594-899-294-344-343-378-654,"Will Bitcoin reach $70,000 by December 31, 2026?",1
+1345529,will-bitcoin-reach-75000-by-december-31-2026-887-423-442-296-878,"Will Bitcoin reach $75,000 by December 31, 2026?",1
+1345530,will-bitcoin-reach-80000-by-december-31-2026-195-842-488-785,"Will Bitcoin reach $80,000 by December 31, 2026?",1
+1345531,will-bitcoin-reach-90000-by-december-31-2026-113-862-581,"Will Bitcoin reach $90,000 by December 31, 2026?",1
+1393068,will-bitcoin-reach-500000-by-december-31-2026-864,"Will Bitcoin reach $500,000 by December 31, 2026?",1
+1393070,will-bitcoin-reach-1000000-by-december-31-2026-946,"Will Bitcoin reach $1,000,000 by December 31, 2026?",1
+2132770,will-bitcoin-reach-115k-in-may-2026,"Will Bitcoin reach $115,000 in May?",1
+2132772,will-bitcoin-reach-105k-in-may-2026,"Will Bitcoin reach $105,000 in May?",1
+2132774,will-bitcoin-reach-95k-in-may-2026,"Will Bitcoin reach $95,000 in May?",1
+2132776,will-bitcoin-reach-85k-in-may-2026,"Will Bitcoin reach $85,000 in May?",1
+2132778,will-bitcoin-dip-to-75k-in-may-2026-643-576,"Will Bitcoin dip to $75,000 in May?",1
+2132787,will-bitcoin-dip-to-30k-in-may-2026-696-525-724,"Will Bitcoin dip to $30,000 in May?",1
+2132769,will-bitcoin-reach-120k-in-may-2026,"Will Bitcoin reach $120,000 in May?",1
+2132780,will-bitcoin-dip-to-65k-in-may-2026-183-857-425,"Will Bitcoin dip to $65,000 in May?",1
+2132782,will-bitcoin-dip-to-55k-in-may-2026-941,"Will Bitcoin dip to $55,000 in May?",1
+2132784,will-bitcoin-dip-to-45k-in-may-2026-669-185-973,"Will Bitcoin dip to $45,000 in May?",1
+2132786,will-bitcoin-dip-to-35k-in-may-2026-217-769-834,"Will Bitcoin dip to $35,000 in May?",1
+2132771,will-bitcoin-reach-110k-in-may-2026,"Will Bitcoin reach $110,000 in May?",1
+2132773,will-bitcoin-reach-100k-in-may-2026,"Will Bitcoin reach $100,000 in May?",1
+2132775,will-bitcoin-reach-90k-in-may-2026,"Will Bitcoin reach $90,000 in May?",1
+2132777,will-bitcoin-reach-80k-in-may-2026-943-519,"Will Bitcoin reach $80,000 in May?",1
+2132779,will-bitcoin-dip-to-70k-in-may-2026-438-356-919,"Will Bitcoin dip to $70,000 in May?",1
+2132768,will-bitcoin-reach-150k-in-may-2026,"Will Bitcoin reach $150,000 in May?",1
+2132781,will-bitcoin-dip-to-60k-in-may-2026-973-269,"Will Bitcoin dip to $60,000 in May?",1
+2132783,will-bitcoin-dip-to-50k-in-may-2026-896,"Will Bitcoin dip to $50,000 in May?",1
+2132785,will-bitcoin-dip-to-40k-in-may-2026-277-395,"Will Bitcoin dip to $40,000 in May?",1
+2365496,will-bitcoin-reach-80000-in-may-2026-from-may-27,"Will Bitcoin reach $80,000 in May?",1
+2365528,will-bitcoin-dip-to-72500-in-may-2026-from-may-27,"Will Bitcoin dip to $72,500 in May?",1
+2365497,will-bitcoin-reach-77500-in-may-2026-from-may-27,"Will Bitcoin reach $77,500 in May?",1
+2365498,will-bitcoin-reach-75000-in-may-2026-from-may-27,"Will Bitcoin reach $75,000 in May?",1
+516926,microstrategy-sell-any-bitcoin-in-2025,MicroStrategy sells any Bitcoin in 2025?,1
+824952,microstrategy-sells-any-bitcoin-by-december-31-2026,"MicroStrategy sells any Bitcoin by December 31, 2026?",1
+692250,microstrategy-sells-any-bitcoin-by-march-31-2026,"MicroStrategy sells any Bitcoin by March 31, 2026?",1
+692258,microstrategy-sells-any-bitcoin-by-june-30-2026,"MicroStrategy sells any Bitcoin by June 30, 2026?",1
+2169995,microstrategy-sells-any-bitcoin-by-may-31-2026,"MicroStrategy sells any Bitcoin by May 31, 2026?",1
+573652,will-bitcoin-hit-150k-by-september-30,Will Bitcoin hit $150k by September 30?,1
+573653,will-bitcoin-hit-150k-by-december-31,Will Bitcoin hit $150k by December 31?,1
+573654,will-bitcoin-hit-150k-by-march-31-2026,"Will Bitcoin hit $150k by March 31, 2026?",1
+573655,will-bitcoin-hit-150k-by-june-30-2026,"Will Bitcoin hit $150k by June 30, 2026?",1
+573656,will-bitcoin-hit-150k-by-december-31-2026,"Will Bitcoin hit $150k by December 31, 2026?",1
+604067,will-metamask-launch-a-token-in-2025,Will MetaMask launch a token in 2025?,1
+657287,will-metamask-launch-a-token-by-june-30,Will MetaMask launch a token by June 30?,1
+664895,will-metamask-launch-a-token-by-september-30-2026,"Will MetaMask launch a token by September 30, 2026?",1
+1356655,will-metamask-launch-a-token-by-december-31-2026,"Will MetaMask launch a token by December 31, 2026?",1
+2132788,will-ethereum-reach-5000-in-may-2026,"Will Ethereum reach $5,000 in May?",1
+2132790,will-ethereum-reach-3800-in-may-2026,"Will Ethereum reach $3,800 in May?",1
+2132792,will-ethereum-reach-3400-in-may-2026,"Will Ethereum reach $3,400 in May?",1
+2132794,will-ethereum-reach-3000-in-may-2026,"Will Ethereum reach $3,000 in May?",1
+2132796,will-ethereum-reach-2600-in-may-2026,"Will Ethereum reach $2,600 in May?",1
+2132798,will-ethereum-dip-to-2200-in-may-2026,"Will Ethereum dip to $2,200 in May?",1
+2132801,will-ethereum-dip-to-1600-in-may-2026,"Will Ethereum dip to $1,600 in May?",1
+2132803,will-ethereum-dip-to-1200-in-may-2026,"Will Ethereum dip to $1,200 in May?",1
+2132805,will-ethereum-dip-to-800-in-may-2026,Will Ethereum dip to $800 in May?,1
+2132807,will-ethereum-dip-to-400-in-may-2026,Will Ethereum dip to $400 in May?,1
+2132789,will-ethereum-reach-4000-in-may-2026,"Will Ethereum reach $4,000 in May?",1
+2132791,will-ethereum-reach-3600-in-may-2026,"Will Ethereum reach $3,600 in May?",1
+2132793,will-ethereum-reach-3200-in-may-2026,"Will Ethereum reach $3,200 in May?",1
+2132795,will-ethereum-reach-2800-in-may-2026,"Will Ethereum reach $2,800 in May?",1
+2132797,will-ethereum-reach-2400-in-may-2026,"Will Ethereum reach $2,400 in May?",1
+2132799,will-ethereum-dip-to-2000-in-may-2026,"Will Ethereum dip to $2,000 in May?",1
+2132800,will-ethereum-dip-to-1800-in-may-2026,"Will Ethereum dip to $1,800 in May?",1
+2132802,will-ethereum-dip-to-1400-in-may-2026,"Will Ethereum dip to $1,400 in May?",1
+2132804,will-ethereum-dip-to-1000-in-may-2026,"Will Ethereum dip to $1,000 in May?",1
+2132806,will-ethereum-dip-to-600-in-may-2026,Will Ethereum dip to $600 in May?,1
+948955,bitcoin-all-time-high-by-march-31-2026,"Bitcoin all time high by March 31, 2026?",1
+948956,bitcoin-all-time-high-by-june-30-2026,"Bitcoin all time high by June 30, 2026?",1
+948957,bitcoin-all-time-high-by-september-30-2026,"Bitcoin all time high by September 30, 2026?",1
+948958,bitcoin-all-time-high-by-december-31-2026,"Bitcoin all time high by December 31, 2026?",1
+2088985,over-250k-committed-to-the-printr-public-sale,Over $250k committed to the Printr public sale?,1
+2088988,over-2m-committed-to-the-printr-public-sale,Over $2M committed to the Printr public sale?,1
+2088992,over-8m-committed-to-the-printr-public-sale,Over $8M committed to the Printr public sale?,1
+2088996,over-30m-committed-to-the-printr-public-sale,Over $30M committed to the Printr public sale?,1
+2088986,over-500k-committed-to-the-printr-public-sale,Over $500k committed to the Printr public sale?,1
+2088990,over-4m-committed-to-the-printr-public-sale,Over $4M committed to the Printr public sale?,1
+2088994,over-15m-committed-to-the-printr-public-sale,Over $15M committed to the Printr public sale?,1
+2088998,over-60m-committed-to-the-printr-public-sale,Over $60M committed to the Printr public sale?,1
+2088987,over-1m-committed-to-the-printr-public-sale,Over $1M committed to the Printr public sale?,1
+2088991,over-6m-committed-to-the-printr-public-sale,Over $6M committed to the Printr public sale?,1
+2088995,over-20m-committed-to-the-printr-public-sale,Over $20M committed to the Printr public sale?,1
+2088999,over-100m-committed-to-the-printr-public-sale,Over $100M committed to the Printr public sale?,1
+2088989,over-3m-committed-to-the-printr-public-sale,Over $3M committed to the Printr public sale?,1
+2088993,over-10m-committed-to-the-printr-public-sale,Over $10M committed to the Printr public sale?,1
+2088997,over-40m-committed-to-the-printr-public-sale,Over $40M committed to the Printr public sale?,1
+2100088,over-150m-committed-to-the-printr-public-sale,Over $150M committed to the Printr public sale?,1
+2100089,over-200m-committed-to-the-printr-public-sale-bnf,Over $200M committed to the Printr public sale?,1
+2100090,over-250m-committed-to-the-printr-public-sale,Over $250M committed to the Printr public sale?,1
+598930,will-base-launch-a-token-in-2025-341,Will Base launch a token in 2025?,1
+690693,will-base-launch-a-token-by-december-31-2026-154,"Will Base launch a token by December 31, 2026?",1
+821172,will-base-launch-a-token-by-june-30-2026,"Will Base launch a token by June 30, 2026?",1
+618455,opensea-fdv-above-1b-one-day-after-launch-426-422-754-756-879-328-494,Opensea FDV above $1B one day after launch?,1
+618454,opensea-fdv-above-500m-one-day-after-launch-221-468-166-873-514-375-468-384,Opensea FDV above $500M one day after launch?,1
+618456,opensea-fdv-above-3b-one-day-after-launch-786-419-967-433-241-436,Opensea FDV above $3B one day after launch?,1
+620682,opensea-fdv-above-5b-one-day-after-launch-919-666-825-992-543-333,Opensea FDV above $5B one day after launch?,1
+936450,opensea-fdv-above-2b-one-day-after-launch-771-639-367-482-177-837,Opensea FDV above $2B one day after launch?,1
+1535122,opensea-fdv-above-100m-one-day-after-launch-172-151-588-987,Opensea FDV above $100M one day after launch?,1
+1535123,opensea-fdv-above-100m-one-day-after-launch-676-675-854-745-536,Opensea FDV above $100M one day after launch?,1
+1535124,opensea-fdv-above-300m-one-day-after-launch-444-132-763-296,Opensea FDV above $300M one day after launch?,1
+701539,will-ethereum-reach-10000-by-december-31-2026,"Will Ethereum reach $10,000 by December 31, 2026?",1
+701541,will-ethereum-reach-7500-by-december-31-2026,"Will Ethereum reach $7,500 by December 31, 2026?",1
+701543,will-ethereum-reach-6500-by-december-31-2026,"Will Ethereum reach $6,500 by December 31, 2026?",1
+701545,will-ethereum-reach-5500-by-december-31-2026,"Will Ethereum reach $5,500 by December 31, 2026?",1
+701547,will-ethereum-reach-4500-by-december-31-2026,"Will Ethereum reach $4,500 by December 31, 2026?",1
+701549,will-ethereum-reach-3500-by-december-31-2026,"Will Ethereum reach $3,500 by December 31, 2026?",1
+701551,will-ethereum-dip-to-2000-by-december-31-2026,"Will Ethereum dip to $2,000 by December 31, 2026?",1
+701553,will-ethereum-dip-to-1000-by-december-31-2026,"Will Ethereum dip to $1,000 by December 31, 2026?",1
+701540,will-ethereum-reach-8000-by-december-31-2026,"Will Ethereum reach $8,000 by December 31, 2026?",1
+701542,will-ethereum-reach-7000-by-december-31-2026,"Will Ethereum reach $7,000 by December 31, 2026?",1
+701544,will-ethereum-reach-6000-by-december-31-2026,"Will Ethereum reach $6,000 by December 31, 2026?",1
+701546,will-ethereum-reach-5000-by-december-31-2026,"Will Ethereum reach $5,000 by December 31, 2026?",1
+701548,will-ethereum-reach-4000-by-december-31-2026,"Will Ethereum reach $4,000 by December 31, 2026?",1
+701550,will-ethereum-dip-to-2500-by-december-31-2026,"Will Ethereum dip to $2,500 by December 31, 2026?",1
+701552,will-ethereum-dip-to-1500-by-december-31-2026,"Will Ethereum dip to $1,500 by December 31, 2026?",1
+701554,will-ethereum-dip-to-800-by-december-31-2026,"Will Ethereum dip to $800 by December 31, 2026?",1
+1005343,puffpaw-fdv-above-50m-one-day-after-launch,Puffpaw FDV above $50M one day after launch?,1
+1005346,puffpaw-fdv-above-300m-one-day-after-launch,Puffpaw FDV above $300M one day after launch?,1
+1005344,puffpaw-fdv-above-100m-one-day-after-launch,Puffpaw FDV above $100M one day after launch?,1
+1005345,puffpaw-fdv-above-200m-one-day-after-launch,Puffpaw FDV above $200M one day after launch?,1
+1302781,puffpaw-fdv-above-400m-one-day-after-launch,Puffpaw FDV above $400M one day after launch?,1
+1393316,predictfun-fdv-above-50m-one-day-after-launch,Predict.fun FDV above $50M one day after launch?,1
+1393317,predictfun-fdv-above-100m-one-day-after-launch,Predict.fun FDV above $100M one day after launch?,1
+1393318,predictfun-fdv-above-200m-one-day-after-launch,Predict.fun FDV above $200M one day after launch?,1
+1393319,predictfun-fdv-above-300m-one-day-after-launch,Predict.fun FDV above $300M one day after launch?,1
+1393320,predictfun-fdv-above-400m-one-day-after-launch,Predict.fun FDV above $400M one day after launch?,1
+1393321,predictfun-fdv-above-500m-one-day-after-launch,Predict.fun FDV above $500M one day after launch?,1
+1393322,predictfun-fdv-above-600m-one-day-after-launch,Predict.fun FDV above $600M one day after launch?,1
+1393323,predictfun-fdv-above-800m-one-day-after-launch,Predict.fun FDV above $800M one day after launch?,1
+1393324,predictfun-fdv-above-1b-one-day-after-launch,Predict.fun FDV above $1B one day after launch?,1
+1393325,predictfun-fdv-above-1pt5b-one-day-after-launch,Predict.fun FDV above $1.5B one day after launch?,1
+1393326,predictfun-fdv-above-2b-one-day-after-launch,Predict.fun FDV above $2B one day after launch?,1
+1144471,will-satoshi-move-any-bitcoin-in-2026,Will Satoshi move any Bitcoin in 2026?,1
+2132808,will-solana-reach-170-in-may-2026,Will Solana reach $170 in May?,1
+2132810,will-solana-reach-150-in-may-2026,Will Solana reach $150 in May?,1
+2132812,will-solana-reach-130-in-may-2026,Will Solana reach $130 in May?,1
+2132813,will-solana-reach-120-in-may-2026,Will Solana reach $120 in May?,1
+2132815,will-solana-reach-100-in-may-2026,Will Solana reach $100 in May?,1
+2132817,will-solana-dip-to-80-in-may-2026,Will Solana dip to $80 in May?,1
+2132819,will-solana-dip-to-60-in-may-2026,Will Solana dip to $60 in May?,1
+2132821,will-solana-dip-to-40-in-may-2026,Will Solana dip to $40 in May?,1
+2132823,will-solana-dip-to-20-in-may-2026,Will Solana dip to $20 in May?,1
+2132824,will-solana-dip-to-10-in-may-2026,Will Solana dip to $10 in May?,1
+2132809,will-solana-reach-160-in-may-2026,Will Solana reach $160 in May?,1
+2132811,will-solana-reach-140-in-may-2026,Will Solana reach $140 in May?,1
+2132814,will-solana-reach-110-in-may-2026,Will Solana reach $110 in May?,1
+2132816,will-solana-reach-90-in-may-2026,Will Solana reach $90 in May?,1
+2132818,will-solana-dip-to-70-in-may-2026,Will Solana dip to $70 in May?,1
+2132820,will-solana-dip-to-50-in-may-2026,Will Solana dip to $50 in May?,1
+2132822,will-solana-dip-to-30-in-may-2026,Will Solana dip to $30 in May?,1
+665531,metamask-fdv-above-700m-one-day-after-launch-696-977-652-246-632,Metamask FDV above $700M one day after launch?,1
+665532,metamask-fdv-above-1b-one-day-after-launch-978-851-628-634,Metamask FDV above $1B one day after launch?,1
+665533,metamask-fdv-above-3b-one-day-after-launch-363-663-664-569-222,Metamask FDV above $3B one day after launch?,1
+667004,metamask-fdv-above-2b-one-day-after-launch-222-955-573-228,Metamask FDV above $2B one day after launch?,1
+667005,metamask-fdv-above-4b-one-day-after-launch-851-782-477-258,Metamask FDV above $4B one day after launch?,1
+1601453,metamask-fdv-above-300m-one-day-after-launch-747-257,Metamask FDV above $300M one day after launch?,1
+1601452,metamask-fdv-above-500m-one-day-after-launch-584-889-774,Metamask FDV above $500M one day after launch?,1
+2100453,metamask-fdv-above-100m-one-day-after-launch,Metamask FDV above $100M one day after launch?,1
+561699,will-pumpfun-perform-an-airdrop-by-july-18-659,Will Pump.fun perform an airdrop by July 18? ,1
+561700,will-pumpfun-perform-an-airdrop-by-august-31,Will Pump.fun perform an airdrop by August 31? ,1
+567468,will-pumpfun-perform-an-airdrop-by-september-30,Will Pump.fun perform an airdrop by September 30? ,1
+567469,will-pumpfun-perform-an-airdrop-by-december-31,Will Pump.fun perform an airdrop by December 31? ,1
+549617,will-pumpfun-perform-an-airdrop-by-june-30,Will Pump.fun perform an airdrop by June 30? ,1
+549618,will-pumpfun-perform-an-airdrop-by-july-31-382,Will Pump.fun perform an airdrop by July 31? ,1
+666656,will-pumpfun-perform-an-airdrop-by-march-31,Will Pump.fun perform an airdrop by March 31? ,1
+1068327,will-pumpfun-perform-an-airdrop-by-december-31-2026,"Will Pump.fun perform an airdrop by December 31, 2026",1
+556106,will-megaeth-perform-an-airdrop-by-september-30,Will MegaETH perform an airdrop by September 30? ,1
+556108,will-megaeth-perform-an-airdrop-by-june-30-143-229-513-574-212-254,Will MegaETH perform an airdrop by June 30? ,1
+556107,will-megaeth-perform-an-airdrop-by-december-31,Will MegaETH perform an airdrop by December 31? ,1
+1125054,will-megaeth-perform-an-airdrop-by-january-31-933-879-443,Will MegaETH perform an airdrop by January 31?,1
+1235499,will-megaeth-perform-an-airdrop-by-february-28-623-432,Will MegaETH perform an airdrop by February 28?,1
+1242318,will-megaeth-perform-an-airdrop-by-february-15,Will MegaETH perform an airdrop by February 15?,1
+1266129,will-megaeth-perform-an-airdrop-by-march-15,Will MegaETH perform an airdrop by March 15?,1
+2119266,will-megaeth-perform-an-airdrop-by-december-31-2026,"Will MegaETH perform an airdrop by December 31, 2026?",1
+716826,extended-fdv-above-800m-one-day-after-launch-299-255-178,Extended FDV above $800M one day after launch?,1
+716829,extended-fdv-above-2b-one-day-after-launch-692-597-187,Extended FDV above $2B one day after launch?,1
+716823,extended-fdv-above-500m-one-day-after-launch-711-975-248,Extended FDV above $500M one day after launch?,1
+716827,extended-fdv-above-1b-one-day-after-launch-166-135-747,Extended FDV above $1B one day after launch?,1
+716831,extended-fdv-above-3b-one-day-after-launch-437-271-658,Extended FDV above $3B one day after launch?,1
+904737,extended-fdv-above-300m-one-day-after-launch-351-333,Extended FDV above $300M one day after launch?,1
+1383905,extended-fdv-above-150m-one-day-after-launch-452,Extended FDV above $150M one day after launch?,1
+951178,ethereum-all-time-high-by-march-31-2026,"Ethereum all time high by March 31, 2026?",1
+951179,ethereum-all-time-high-by-june-30-2026,"Ethereum all time high by June 30, 2026?",1
+951180,ethereum-all-time-high-by-september-30-2026,"Ethereum all time high by September 30, 2026?",1
+951181,ethereum-all-time-high-by-december-31-2026,"Ethereum all time high by December 31, 2026?",1
+2132832,will-xrp-reach-1pt6-in-may-2026,Will XRP reach $1.60 in May?,1
+2132834,will-xrp-dip-to-1pt2-in-may-2026,Will XRP dip to $1.20 in May?,1
+2132836,will-xrp-dip-to-0pt8-in-may-2026,Will XRP dip to $0.80 in May?,1
+2132838,will-xrp-dip-to-0pt4-in-may-2026,Will XRP dip to $0.40 in May?,1
+2132826,will-xrp-reach-2pt8-in-may-2026,Will XRP reach $2.80 in May?,1
+2132828,will-xrp-reach-2pt4-in-may-2026,Will XRP reach $2.40 in May?,1
+2132830,will-xrp-reach-2-in-may-2026,Will XRP reach $2.00 in May?,1
+2132833,will-xrp-reach-1pt4-in-may-2026,Will XRP reach $1.40 in May?,1
+2132835,will-xrp-dip-to-1-in-may-2026,Will XRP dip to $1.00 in May?,1
+2132837,will-xrp-dip-to-0pt6-in-may-2026,Will XRP dip to $0.60 in May?,1
+2132839,will-xrp-dip-to-0pt2-in-may-2026,Will XRP dip to $0.20 in May?,1
+2132825,will-xrp-reach-3-in-may-2026,Will XRP reach $3.00 in May?,1
+2132827,will-xrp-reach-2pt6-in-may-2026,Will XRP reach $2.60 in May?,1
+2132829,will-xrp-reach-2pt2-in-may-2026,Will XRP reach $2.20 in May?,1
+2132831,will-xrp-reach-1pt8-in-may-2026,Will XRP reach $1.80 in May?,1
+516950,kraken-ipo-in-2025,Kraken IPO in 2025?,1
+678876,kraken-ipo-by-march-31-2026,"Kraken IPO by March 31, 2026?",1
+691547,kraken-ipo-by-december-31-2026-513,"Kraken IPO by December 31, 2026?",1
+1642124,kraken-ipo-by-june-30-2026,"Kraken IPO by June 30, 2026?",1
+1271611,will-opensea-launch-a-token-by-june-30-2026,"Will OpenSea launch a token by June 30, 2026?",1
+1271613,will-opensea-launch-a-token-by-december-31-2026,"Will OpenSea launch a token by December 31, 2026?",1
+1271610,will-opensea-launch-a-token-by-march-31-2026,"Will OpenSea launch a token by March 31, 2026?",1
+1271612,will-opensea-launch-a-token-by-september-30-2026,"Will OpenSea launch a token by September 30, 2026?",1
+680656,standx-fdv-above-5b-one-day-after-launch-536-723-718-827-974,StandX FDV above $5B one day after launch?,1
+680662,standx-fdv-above-7b-one-day-after-launch-218-627-392-991,StandX FDV above $7B one day after launch?,1
+680664,standx-fdv-above-10b-one-day-after-launch-467-712-296,StandX FDV above $10B one day after launch?,1
+676518,standx-fdv-above-1b-one-day-after-launch-758-887-458-572-867,StandX FDV above $1B one day after launch?,1
+676520,standx-fdv-above-3b-one-day-after-launch-573-228-889-488-762,StandX FDV above $3B one day after launch?,1
+676517,standx-fdv-above-800m-one-day-after-launch-732-932-813-941-568,StandX FDV above $800M one day after launch?,1
+676519,standx-fdv-above-2b-one-day-after-launch-143-135-174-596-974,StandX FDV above $2B one day after launch?,1
+1299974,standx-fdv-above-400m-one-day-after-launch-281-522,StandX FDV above $400M one day after launch?,1
+1370033,standx-fdv-above-200m-one-day-after-launch-665,StandX FDV above $200M one day after launch?,1
+920402,variational-fdv-above-800m-one-day-after-launch-842-835-884,Variational FDV above $800M one day after launch?,1
+920404,variational-fdv-above-2b-one-day-after-launch-713-376-681,Variational FDV above $2B one day after launch?,1
+920406,variational-fdv-above-4b-one-day-after-launch-174-657-695,Variational FDV above $4B one day after launch?,1
+920403,variational-fdv-above-1b-one-day-after-launch-636-229-681,Variational FDV above $1B one day after launch?,1
+920405,variational-fdv-above-3b-one-day-after-launch-846-887-175,Variational FDV above $3B one day after launch?,1
+920407,variational-fdv-above-5b-one-day-after-launch-995-724-585,Variational FDV above $5B one day after launch?,1
+1028586,variational-fdv-above-500m-one-day-after-launch-547-272,Variational FDV above $500M one day after launch?,1
+1356656,variational-fdv-above-300m-one-day-after-launch-777-637,Variational FDV above $300M one day after launch?,1
+1861361,variational-fdv-above-200m-one-day-after-launch-918,Variational FDV above $200M one day after launch?,1
+1861376,variational-fdv-above-100m-one-day-after-launch-519,Variational FDV above $100M one day after launch?,1
+701726,will-hyperliquid-reach-100-by-december-31-2026,"Will Hyperliquid reach $100 by December 31, 2026?",1
+701728,will-hyperliquid-reach-70-by-december-31-2026,"Will Hyperliquid reach $70 by December 31, 2026?",1
+701730,will-hyperliquid-reach-62-by-december-31-2026,"Will Hyperliquid reach $62 by December 31, 2026?",1
+701732,will-hyperliquid-reach-54-by-december-31-2026,"Will Hyperliquid reach $54 by December 31, 2026?",1
+701734,will-hyperliquid-reach-46-by-december-31-2026,"Will Hyperliquid reach $46 by December 31, 2026?",1
+701736,will-hyperliquid-reach-38-by-december-31-2026,"Will Hyperliquid reach $38 by December 31, 2026?",1
+701738,will-hyperliquid-dip-to-32-by-december-31-2026,"Will Hyperliquid dip to $32 by December 31, 2026?",1
+701740,will-hyperliquid-dip-to-24-by-december-31-2026,"Will Hyperliquid dip to $24 by December 31, 2026?",1
+701742,will-hyperliquid-dip-to-16-by-december-31-2026,"Will Hyperliquid dip to $16 by December 31, 2026?",1
+701744,will-hyperliquid-dip-to-8-by-december-31-2026,"Will Hyperliquid dip to $8 by December 31, 2026?",1
+701727,will-hyperliquid-reach-80-by-december-31-2026,"Will Hyperliquid reach $80 by December 31, 2026?",1
+701729,will-hyperliquid-reach-66-by-december-31-2026,"Will Hyperliquid reach $66 by December 31, 2026?",1
+701731,will-hyperliquid-reach-58-by-december-31-2026,"Will Hyperliquid reach $58 by December 31, 2026?",1
+701733,will-hyperliquid-reach-50-by-december-31-2026,"Will Hyperliquid reach $50 by December 31, 2026?",1
+701735,will-hyperliquid-reach-42-by-december-31-2026,"Will Hyperliquid reach $42 by December 31, 2026?",1
+701737,will-hyperliquid-reach-34-by-december-31-2026,"Will Hyperliquid reach $34 by December 31, 2026?",1
+701739,will-hyperliquid-dip-to-28-by-december-31-2026,"Will Hyperliquid dip to $28 by December 31, 2026?",1
+701741,will-hyperliquid-dip-to-20-by-december-31-2026,"Will Hyperliquid dip to $20 by December 31, 2026?",1
+701743,will-hyperliquid-dip-to-12-by-december-31-2026,"Will Hyperliquid dip to $12 by December 31, 2026?",1
+1163699,clarity-act-signed-into-law-in-2026,Clarity Act signed into law in 2026?,1
+813123,will-microstrategy-be-delisted-from-the-msci-index-by-march-31,Microstrategy delisted from MSCI index by March 31?,1
+1320796,microstrategy-delisted-from-msci-index-by-december-31,Microstrategy delisted from MSCI index by December 31?,1
+1320795,microstrategy-delisted-from-msci-index-by-june-30,Microstrategy delisted from MSCI index by June 30?,1
+665258,will-china-unban-bitcoin-by-2027,Will China unban Bitcoin by 2027?,1
+701563,will-solana-reach-600-by-december-31-2026,"Will Solana reach $600 by December 31, 2026?",1
+701565,will-solana-reach-320-by-december-31-2026,"Will Solana reach $320 by December 31, 2026?",1
+701567,will-solana-reach-280-by-december-31-2026,"Will Solana reach $280 by December 31, 2026?",1
+701569,will-solana-reach-240-by-december-31-2026,"Will Solana reach $240 by December 31, 2026?",1
+701571,will-solana-reach-200-by-december-31-2026,"Will Solana reach $200 by December 31, 2026?",1
+701573,will-solana-reach-160-by-december-31-2026,"Will Solana reach $160 by December 31, 2026?",1
+701575,will-solana-dip-to-120-by-december-31-2026,"Will Solana dip to $120 by December 31, 2026?",1
+701577,will-solana-dip-to-80-by-december-31-2026,"Will Solana dip to $80 by December 31, 2026?",1
+701579,will-solana-dip-to-40-by-december-31-2026,"Will Solana dip to $40 by December 31, 2026?",1
+701564,will-solana-reach-400-by-december-31-2026,"Will Solana reach $400 by December 31, 2026?",1
+701566,will-solana-reach-300-by-december-31-2026,"Will Solana reach $300 by December 31, 2026?",1
+701568,will-solana-reach-260-by-december-31-2026,"Will Solana reach $260 by December 31, 2026?",1
+701570,will-solana-reach-220-by-december-31-2026,"Will Solana reach $220 by December 31, 2026?",1
+701572,will-solana-reach-180-by-december-31-2026,"Will Solana reach $180 by December 31, 2026?",1
+701574,will-solana-reach-140-by-december-31-2026,"Will Solana reach $140 by December 31, 2026?",1
+701576,will-solana-dip-to-100-by-december-31-2026,"Will Solana dip to $100 by December 31, 2026?",1
+701578,will-solana-dip-to-60-by-december-31-2026,"Will Solana dip to $60 by December 31, 2026?",1
+701580,will-solana-dip-to-20-by-december-31-2026,"Will Solana dip to $20 by December 31, 2026?",1
+704135,will-tempo-launch-a-token-by-march-31-2026,"Will Tempo launch a token by March 31, 2026?",1
+704137,will-tempo-launch-a-token-by-september-30-2026,"Will Tempo launch a token by September 30, 2026?",1
+704134,will-tempo-launch-a-token-by-december-31-2025,"Will Tempo launch a token by December 31, 2025?",1
+704136,will-tempo-launch-a-token-by-june-30-2026,"Will Tempo launch a token by June 30, 2026?",1
+704138,will-tempo-launch-a-token-by-december-31-2026,"Will Tempo launch a token by December 31, 2026?",1
+2325394,will-tempo-launch-a-token-by-december-31-2027,"Will Tempo launch a token by December 31, 2027?",1
+2132841,will-dogecoin-reach-0pt2-in-may-2026,Will Dogecoin reach $0.20 in May?,1
+2132843,will-dogecoin-dip-to-0pt1-in-may-2026,Will Dogecoin dip to $0.10 in May?,1
+2132840,will-dogecoin-reach-0pt25-in-may-2026,Will Dogecoin reach $0.25 in May?,1
+2132842,will-dogecoin-reach-0pt15-in-may-2026,Will Dogecoin reach $0.15 in May?,1
+2132844,will-dogecoin-dip-to-0pt05-in-may-2026,Will Dogecoin dip to $0.05 in May?,1
+1067835,will-lighter-reach-10-before-2027,Will Lighter reach $10 before 2027?,1
+1067836,will-lighter-reach-8-before-2027,Will Lighter reach $8 before 2027?,1
+1067837,will-lighter-reach-6-before-2027,Will Lighter reach $6 before 2027?,1
+1067838,will-lighter-reach-4-before-2027,Will Lighter reach $4 before 2027?,1
+1067839,will-lighter-dip-to-2-before-2027-185,Will Lighter dip to $2 before 2027?,1
+1067840,will-lighter-dip-to-1pt5-before-2027-932,Will Lighter dip to $1.5 before 2027?,1
+1067841,will-lighter-dip-to-1-before-2027-791,Will Lighter dip to $1 before 2027?,1
+1279773,will-lighter-reach-3-before-2027,Will Lighter reach $3 before 2027?,1
+743434,will-fomo-launch-a-token-by-december-31-2025,Will Fomo launch a token by December 31 2025?,1
+743438,will-fomo-launch-a-token-by-december-31-2026,Will Fomo launch a token by December 31 2026?,1
+743435,will-fomo-launch-a-token-by-march-31-2026,Will Fomo launch a token by March 31 2026?,1
+743436,will-fomo-launch-a-token-by-june-30-2026,Will Fomo launch a token by June 30 2026?,1
+743437,will-fomo-launch-a-token-by-september-30-2026,Will Fomo launch a token by September 30 2026?,1
+2325359,will-fomo-launch-a-token-by-december-31-2027,Will Fomo launch a token by December 31 2027?,1
+637457,ink-fdv-above-1b-one-day-after-launch-289-587-241,Ink FDV above $1B one day after launch?,1
+637456,ink-fdv-above-500m-one-day-after-launch-253-778,Ink FDV above $500M one day after launch?,1
+916390,ink-fdv-above-2b-one-day-after-launch-664-291-334,Ink FDV above $2B one day after launch?,1
+916437,ink-fdv-above-3b-one-day-after-launch-699-259-755,Ink FDV above $3B one day after launch?,1
+1373645,ink-fdv-above-250m-one-day-after-launch-949-437,Ink FDV above $250M one day after launch?,1
+2365820,ink-fdv-above-100m-one-day-after-launch,Ink FDV above $100M one day after launch?,1
+1068307,base-fdv-above-2b-one-day-after-launch,Base FDV above $2B one day after launch?,1
+1068308,base-fdv-above-4b-one-day-after-launch,Base FDV above $4B one day after launch?,1
+1068309,base-fdv-above-6b-one-day-after-launch,Base FDV above $6B one day after launch?,1
+1068310,base-fdv-above-8b-one-day-after-launch,Base FDV above $8B one day after launch?,1
+1068311,base-fdv-above-10b-one-day-after-launch,Base FDV above $10B one day after launch?,1
+1068312,base-fdv-above-12b-one-day-after-launch,Base FDV above $12B one day after launch?,1
+1068733,will-stablecoins-hit-500b-before-2027,Will stablecoins hit $500B before 2027?,1
+1122084,okx-ipo-in-2026,OKX IPO in 2026?,1
+951215,solana-all-time-high-by-march-31-2026,"Solana all time high by March 31, 2026?",1
+951217,solana-all-time-high-by-september-30-2026,"Solana all time high by September 30, 2026?",1
+951218,solana-all-time-high-by-december-31-2026,"Solana all time high by December 31, 2026?",1
+951216,solana-all-time-high-by-june-30-2026,"Solana all time high by June 30, 2026?",1
+1089847,eth-flipped-in-2026,Ethereum flipped in 2026?,1
+582828,will-abstract-launch-a-token-in-2025,Will Abstract launch a token in 2025?,1
+718188,will-abstract-launch-a-token-by-december-31-2026,"Will Abstract launch a token by December 31, 2026",1
+553886,will-hyperliquid-perform-an-airdrop-by-june-30,Will Hyperliquid perform an airdrop by June 30? ,1
+553887,will-hyperliquid-perform-an-airdrop-by-september-30,Will Hyperliquid perform an airdrop by September 30? ,1
+553888,will-hyperliquid-perform-an-airdrop-by-december-31,Will Hyperliquid perform an airdrop by December 31? ,1
+622738,will-hyperliquid-perform-an-airdrop-by-december-31-2026,"Will Hyperliquid perform an airdrop by December 31, 2026? ",1
+2100106,will-hyperliquid-perform-an-airdrop-by-december-31-2027-117,"Will Hyperliquid perform an airdrop by December 31, 2027?",1
+2244109,will-hyperliquid-perform-an-airdrop-by-june-30-2027,"Will Hyperliquid perform an airdrop by June 30, 2027?",1
+1038877,will-exponent-launch-a-token-by-september-30-2026,"Will Exponent launch a token by September 30, 2026?",1
+1038880,will-exponent-launch-a-token-by-december-31-2026,"Will Exponent launch a token by December 31, 2026?",1
+1038874,will-exponent-launch-a-token-by-march-31-2026,"Will Exponent launch a token by March 31, 2026?",1
+1038876,will-exponent-launch-a-token-by-june-30-2026,"Will Exponent launch a token by June 30, 2026?",1
+2325351,will-exponent-launch-a-token-by-december-31-2027,"Will Exponent launch a token by December 31, 2027?",1
+1068045,will-microstrategy-announce-holding-800k-btc-by-december-31-2026,"Will MicroStrategy announce holding 800k+ BTC by December 31, 2026?",1
+1553608,will-microstrategy-announce-holding-1m-btc-by-december-31-2026-bv81,"Will MicroStrategy announce holding 1M+ BTC by December 31, 2026?-bV81",1
+657353,will-consensys-ipo-by-december-31-2025,Will Consensys IPO by December 31 2025?,1
+658198,will-consensys-ipo-by-june-30-2026-144,Will Consensys IPO by June 30 2026?,1
+664878,will-consensys-ipo-by-march-31-2026,Will Consensys IPO by March 31 2026?,1
+664884,will-consensys-ipo-by-september-30-2026,Will Consensys IPO by September 30 2026?,1
+664885,will-consensys-ipo-by-december-31-2026,Will Consensys IPO by December 31 2026?,1
+789404,reya-fdv-above-1b-one-day-after-launch-348-347,Reya FDV above $1B one day after launch?,1
+705808,reya-fdv-above-200m-one-day-after-launch-645-575,Reya FDV above $200M one day after launch?,1
+705810,reya-fdv-above-400m-one-day-after-launch-589-277,Reya FDV above $400M one day after launch?,1
+705807,reya-fdv-above-150m-one-day-after-launch-514-746,Reya FDV above $150M one day after launch?,1
+705809,reya-fdv-above-300m-one-day-after-launch-389-467,Reya FDV above $300M one day after launch?,1
+1693719,reya-fdv-above-70m-one-day-after-launch-874,Reya FDV above $70M one day after launch?,1
+707031,will-solstice-launch-a-token-by-june-30-2026,Will Solstice launch a token by June 30 2026?,1
+707028,will-solstice-launch-a-token-by-march-31-2026,Will Solstice launch a token by March 31 2026?,1
+707026,will-solstice-launch-a-token-by-december-31-2025,Will Solstice launch a token by December 31 2025?,1
+707034,will-solstice-launch-a-token-by-december-31-2026,Will Solstice launch a token by December 31 2026?,1
+707033,will-solstice-launch-a-token-by-september-30-2026,Will Solstice launch a token by September 30 2026?,1
+1068346,will-bitcoin-outperform-gold-in-2026,Will Bitcoin outperform Gold in 2026?,1
+1287614,abstract-fdv-above-200m-one-day-after-launch,Abstract FDV above $200M one day after launch?,1
+1287616,abstract-fdv-above-600m-one-day-after-launch,Abstract FDV above $600M one day after launch?,1
+1287618,abstract-fdv-above-1b-one-day-after-launch,Abstract FDV above $1B one day after launch?,1
+1287620,abstract-fdv-above-2b-one-day-after-launch,Abstract FDV above $2B one day after launch?,1
+1287622,abstract-fdv-above-3b-one-day-after-launch,Abstract FDV above $3B one day after launch?,1
+1287615,abstract-fdv-above-400m-one-day-after-launch,Abstract FDV above $400M one day after launch?,1
+1287617,abstract-fdv-above-800m-one-day-after-launch,Abstract FDV above $800M one day after launch?,1
+1287619,abstract-fdv-above-1pt5b-one-day-after-launch,Abstract FDV above $1.5B one day after launch?,1
+1287621,abstract-fdv-above-2pt5b-one-day-after-launch,Abstract FDV above $2.5B one day after launch?,1
+2142994,will-hyperliquid-reach-52-in-may,Will Hyperliquid reach $52 in May?,1
+2142995,will-hyperliquid-reach-48-in-may,Will Hyperliquid reach $48 in May?,1
+2142996,will-hyperliquid-reach-44-in-may,Will Hyperliquid reach $44 in May?,1
+2142997,will-hyperliquid-dip-to-38-in-may,Will Hyperliquid dip to $38 in May?,1
+2142998,will-hyperliquid-dip-to-32-in-may,Will Hyperliquid dip to $32 in May?,1
+2142999,will-hyperliquid-dip-to-28-in-may,Will Hyperliquid dip to $28 in May?,1
+2143000,will-hyperliquid-dip-to-24-in-may,Will Hyperliquid dip to $24 in May?,1
+690683,will-variational-launch-a-token-by-december-31-2026-577-621,"Will Variational launch a token by December 31, 2026?",1
+666682,will-variational-launch-a-token-in-2025,Will Variational launch a token in 2025?,1
+1962607,will-variational-launch-a-token-by-june-30-2026,"Will Variational launch a token by June 30, 2026?",1
+1962606,will-variational-launch-a-token-by-september-30-2026-873,"Will Variational launch a token by September 30, 2026?",1
+1435842,grvt-fdv-above-100m-one-day-after-launch,GRVT FDV above $100M one day after launch?,1
+1435844,grvt-fdv-above-300m-one-day-after-launch,GRVT FDV above $300M one day after launch?,1
+1435846,grvt-fdv-above-800m-one-day-after-launch,GRVT FDV above $800M one day after launch?,1
+1435841,grvt-fdv-above-50m-one-day-after-launch,GRVT FDV above $50M one day after launch?,1
+1435843,grvt-fdv-above-200m-one-day-after-launch,GRVT FDV above $200M one day after launch?,1
+1435845,grvt-fdv-above-500m-one-day-after-launch,GRVT FDV above $500M one day after launch?,1
+1435847,grvt-fdv-above-1b-one-day-after-launch,GRVT FDV above $1B one day after launch?,1
+1415611,will-hibachi-launch-a-token-by-september-30-2026,"Will Hibachi launch a token by September 30, 2026?",1
+1415613,will-hibachi-launch-a-token-by-december-31-2026,"Will Hibachi launch a token by December 31, 2026?",1
+1415606,will-hibachi-launch-a-token-by-march-31-2026,"Will Hibachi launch a token by March 31, 2026?",1
+1415607,will-hibachi-launch-a-token-by-june-30-2026,"Will Hibachi launch a token by June 30, 2026?",1
+2325117,will-hibachi-launch-a-token-by-december-31-2027,"Will Hibachi launch a token by December 31, 2027?",1
+1106056,over-400m-raised-on-coinbase-in-2026,Over $400M raised on Coinbase in 2026?,1
+1106058,over-800m-raised-on-coinbase-in-2026,Over $800M raised on Coinbase in 2026?,1
+1106055,over-200m-raised-on-coinbase-in-2026,Over $200M raised on Coinbase in 2026?,1
+1106057,over-600m-raised-on-coinbase-in-2026,Over $600M raised on Coinbase in 2026?,1
+1106059,over-1b-raised-on-coinbase-in-2026,Over $1B raised on Coinbase in 2026?,1
+667073,consensys-ipo-closing-market-cap-above-1b,Consensys IPO closing market cap above $1B?,1
+667074,consensys-ipo-closing-market-cap-above-2b,Consensys IPO closing market cap above $2B?,1
+667075,consensys-ipo-closing-market-cap-above-3b,Consensys IPO closing market cap above $3B?,1
+703821,will-plasma-dip-to-0pt16-by-december-31-2026-572-333-669-361-991,"Will Plasma dip to $0.16 by December 31, 2026?",1
+704314,will-plasma-dip-to-0pt08-by-december-31-2026-836-818-417-813-169,"Will Plasma dip to $0.08 by December 31, 2026?",1
+704333,will-plasma-reach-0pt24-by-december-31-2026-779-911-453-977-147,"Will Plasma reach $0.24 by December 31, 2026?",1
+704313,will-plasma-dip-to-0pt12-by-december-31-2026-253-926-495-284-825,"Will Plasma dip to $0.12 by December 31, 2026?",1
+704521,will-plasma-reach-0pt40-by-december-31-2026-567-872,"Will Plasma reach $0.40 by December 31, 2026?",1
+704527,will-plasma-reach-0pt60-by-december-31-2026,"Will Plasma reach $0.60 by December 31, 2026?",1
+704497,will-plasma-reach-0pt30-by-december-31-2026-224-945-571,"Will Plasma reach $0.30 by December 31, 2026?",1
+704524,will-plasma-reach-0pt50-by-december-31-2026-722,"Will Plasma reach $0.50 by December 31, 2026?",1
+701897,will-plasma-reach-2pt20-by-december-31-2026,"Will Plasma reach $2.20 by December 31, 2026?",1
+701899,will-plasma-reach-1pt80-by-december-31-2026,"Will Plasma reach $1.80 by December 31, 2026?",1
+701901,will-plasma-reach-1pt40-by-december-31-2026,"Will Plasma reach $1.40 by December 31, 2026?",1
+701903,will-plasma-dip-to-1pt00-by-december-31-2026,"Will Plasma dip to $1.00 by December 31, 2026?",1
+701905,will-plasma-dip-to-0pt60-by-december-31-2026,"Will Plasma dip to $0.60 by December 31, 2026?",1
+701907,will-plasma-dip-to-0pt20-by-december-31-2026-382-685-558-171-163,"Will Plasma dip to $0.20 by December 31, 2026?",1
+701898,will-plasma-reach-2pt00-by-december-31-2026,"Will Plasma reach $2.00 by December 31, 2026?",1
+701900,will-plasma-reach-1pt60-by-december-31-2026,"Will Plasma reach $1.60 by December 31, 2026?",1
+701902,will-plasma-reach-1pt20-by-december-31-2026,"Will Plasma reach $1.20 by December 31, 2026?",1
+701904,will-plasma-dip-to-0pt80-by-december-31-2026,"Will Plasma dip to $0.80 by December 31, 2026?",1
+701906,will-plasma-dip-to-0pt40-by-december-31-2026,"Will Plasma dip to $0.40 by December 31, 2026?",1
+1058192,usdc-depeg-by-december-31-968,USDC depeg by December 31?,1
+1058193,usde-depeg-by-december-31-434,USDE depeg by December 31?,1
+1058194,usds-depeg-by-december-31-551,USDS depeg by December 31?,1
+1058195,dai-depeg-by-december-31-286,DAI depeg by December 31?,1
+1058196,usd1-depeg-by-december-31-842,USD1 depeg by December 31?,1
+1058197,pyusd-depeg-by-december-31-499,PYUSD depeg by December 31?,1
+1058198,usdtb-depeg-by-december-31-535,USDTb depeg by December 31?,1
+1058199,usd0-depeg-by-december-31,USD0 depeg by December 31?,1
+1058200,gho-depeg-by-december-31,GHO depeg by December 31?,1
+1058201,usr-depeg-by-december-31,USR depeg by December 31?,1
+732179,felix-protocol-fdv-above-50m-one-day-after-launch-488,Felix Protocol FDV above $50M one day after launch?,1
+732180,felix-protocol-fdv-above-25m-one-day-after-launch,Felix Protocol FDV above $25M one day after launch?,1
+716904,felix-protocol-fdv-above-100m-one-day-after-launch-274-973,Felix Protocol FDV above $100M one day after launch?,1
+716906,felix-protocol-fdv-above-500m-one-day-after-launch-477-288,Felix Protocol FDV above $500M one day after launch?,1
+716908,felix-protocol-fdv-above-1b-one-day-after-launch-736-797,Felix Protocol FDV above $1B one day after launch?,1
+716905,felix-protocol-fdv-above-300m-one-day-after-launch-953-129,Felix Protocol FDV above $300M one day after launch?,1
+716907,felix-protocol-fdv-above-800m-one-day-after-launch-892-997,Felix Protocol FDV above $800M one day after launch?,1
+716909,felix-protocol-fdv-above-2b-one-day-after-launch-398-145,Felix Protocol FDV above $2B one day after launch?,1
+599077,will-ostium-launch-a-token-in-2025,Will Ostium launch a token in 2025?,1
+690631,will-ostium-launch-a-token-by-december-31-2026,"Will Ostium launch a token by December 31, 2026?",1
+690590,hyperbeat-fdv-above-50m-one-day-after-launch-143,Hyperbeat FDV above $50M one day after launch?,1
+690592,hyperbeat-fdv-above-200m-one-day-after-launch-176,Hyperbeat FDV above $200M one day after launch?,1
+690594,hyperbeat-fdv-above-400m-one-day-after-launch-423,Hyperbeat FDV above $400M one day after launch?,1
+690591,hyperbeat-fdv-above-100m-one-day-after-launch-126,Hyperbeat FDV above $100M one day after launch?,1
+690593,hyperbeat-fdv-above-300m-one-day-after-launch-156,Hyperbeat FDV above $300M one day after launch?,1
+2365860,hyperbeat-fdv-above-25m-one-day-after-launch,Hyperbeat FDV above $25M one day after launch?,1
+2365859,hyperbeat-fdv-above-10m-one-day-after-launch,Hyperbeat FDV above $10M one day after launch?,1
+955800,xrp-all-time-high-by-march-31-2026,"XRP all time high by March 31, 2026?",1
+955801,xrp-all-time-high-by-june-30-2026,"XRP all time high by June 30, 2026?",1
+955802,xrp-all-time-high-by-september-30-2026,"XRP all time high by September 30, 2026?",1
+955803,xrp-all-time-high-by-december-31-2026,"XRP all time high by December 31, 2026?",1
+1068623,altcoin-market-cap-dip-to-150b-before-2027,Altcoin market cap dip to $150B before 2027?,1
+701840,will-zcash-reach-1000-by-december-31-2026,"Will Zcash reach $1000 by December 31, 2026?",1
+701842,will-zcash-reach-800-by-december-31-2026,"Will Zcash reach $800 by December 31, 2026?",1
+701844,will-zcash-reach-600-by-december-31-2026,"Will Zcash reach $600 by December 31, 2026?",1
+701846,will-zcash-dip-to-400-by-december-31-2026,"Will Zcash dip to $400 by December 31, 2026?",1
+701848,will-zcash-dip-to-200-by-december-31-2026,"Will Zcash dip to $200 by December 31, 2026?",1
+701850,will-zcash-dip-to-50-by-december-31-2026,"Will Zcash dip to $50 by December 31, 2026?",1
+701839,will-zcash-reach-1100-by-december-31-2026,"Will Zcash reach $1100 by December 31, 2026?",1
+701841,will-zcash-reach-900-by-december-31-2026,"Will Zcash reach $900 by December 31, 2026?",1
+701843,will-zcash-reach-700-by-december-31-2026,"Will Zcash reach $700 by December 31, 2026?",1
+701845,will-zcash-dip-to-500-by-december-31-2026,"Will Zcash dip to $500 by December 31, 2026?",1
+701847,will-zcash-dip-to-300-by-december-31-2026,"Will Zcash dip to $300 by December 31, 2026?",1
+701849,will-zcash-dip-to-100-by-december-31-2026,"Will Zcash dip to $100 by December 31, 2026?",1
+1121971,hyperliquid-listed-on-binance-in-2026-485,Hyperliquid listed on Binance in 2026?,1
+2321476,hyperliquid-listed-on-binance-by-june-30-2026,"Hyperliquid listed on Binance by June 30, 2026?",1
+1294068,hurupay-fdv-above-10m-one-day-after-launch,Hurupay FDV above $10M one day after launch?,1
+1294070,hurupay-fdv-above-30m-one-day-after-launch,Hurupay FDV above $30M one day after launch?,1
+1294072,hurupay-fdv-above-50m-one-day-after-launch,Hurupay FDV above $50M one day after launch?,1
+1294074,hurupay-fdv-above-200m-one-day-after-launch,Hurupay FDV above $200M one day after launch?,1
+1294067,hurupay-fdv-above-5m-one-day-after-launch,Hurupay FDV above $5M one day after launch?,1
+1294069,hurupay-fdv-above-20m-one-day-after-launch,Hurupay FDV above $20M one day after launch?,1
+1294071,hurupay-fdv-above-40m-one-day-after-launch,Hurupay FDV above $40M one day after launch?,1
+1294073,hurupay-fdv-above-100m-one-day-after-launch,Hurupay FDV above $100M one day after launch?,1
+701796,will-ethena-reach-0pt52-by-december-31-2026,"Will Ethena reach $0.52 by December 31, 2026?",1
+701799,will-ethena-reach-0pt40-by-december-31-2026,"Will Ethena reach $0.40 by December 31, 2026?",1
+701801,will-ethena-reach-0pt32-by-december-31-2026,"Will Ethena reach $0.32 by December 31, 2026?",1
+701791,will-ethena-reach-1pt20-by-december-31-2026,"Will Ethena reach $1.20 by December 31, 2026?",1
+701795,will-ethena-reach-0pt60-by-december-31-2026,"Will Ethena reach $0.60 by December 31, 2026?",1
+701797,will-ethena-reach-0pt48-by-december-31-2026,"Will Ethena reach $0.48 by December 31, 2026?",1
+701804,will-ethena-dip-to-0pt20-by-december-31-2026,"Will Ethena dip to $0.20 by December 31, 2026?",1
+701806,will-ethena-dip-to-0pt12-by-december-31-2026,"Will Ethena dip to $0.12 by December 31, 2026?",1
+701808,will-ethena-dip-to-0pt04-by-december-31-2026,"Will Ethena dip to $0.04 by December 31, 2026?",1
+701794,will-ethena-reach-0pt70-by-december-31-2026,"Will Ethena reach $0.70 by December 31, 2026?",1
+701798,will-ethena-reach-0pt44-by-december-31-2026,"Will Ethena reach $0.44 by December 31, 2026?",1
+701803,will-ethena-dip-to-0pt24-by-december-31-2026,"Will Ethena dip to $0.24 by December 31, 2026?",1
+701805,will-ethena-dip-to-0pt16-by-december-31-2026,"Will Ethena dip to $0.16 by December 31, 2026?",1
+701792,will-ethena-reach-1pt00-by-december-31-2026,"Will Ethena reach $1.00 by December 31, 2026?",1
+701793,will-ethena-reach-0pt80-by-december-31-2026,"Will Ethena reach $0.80 by December 31, 2026?",1
+701800,will-ethena-reach-0pt36-by-december-31-2026,"Will Ethena reach $0.36 by December 31, 2026?",1
+701802,will-ethena-reach-0pt28-by-december-31-2026,"Will Ethena reach $0.28 by December 31, 2026?",1
+701807,will-ethena-dip-to-0pt08-by-december-31-2026,"Will Ethena dip to $0.08 by December 31, 2026?",1
+706861,will-theo-launch-a-token-by-september-30-2026,Will Theo launch a token by September 30 2026?,1
+706859,will-theo-launch-a-token-by-march-31-2026,Will Theo launch a token by March 31 2026?,1
+706860,will-theo-launch-a-token-by-june-30-2026,Will Theo launch a token by June 30 2026?,1
+706858,will-theo-launch-a-token-by-december-31-2025,Will Theo launch a token by December 31 2025?,1
+706862,will-theo-launch-a-token-by-december-31-2026,Will Theo launch a token by December 31 2026?,1
+1038642,will-loopscale-launch-a-token-by-september-30-2026,"Will Loopscale launch a token by September 30, 2026?",1
+1038640,will-loopscale-launch-a-token-by-march-31-2026,"Will Loopscale launch a token by March 31, 2026?",1
+1038641,will-loopscale-launch-a-token-by-june-30-2026,"Will Loopscale launch a token by June 30, 2026?",1
+1038643,will-loopscale-launch-a-token-by-december-31-2026,"Will Loopscale launch a token by December 31, 2026?",1
+2325376,will-loopscale-launch-a-token-by-december-31-2027,"Will Loopscale launch a token by December 31, 2027?",1
+1038565,will-nansen-launch-a-token-by-march-31-2026,"Will Nansen launch a token by March 31, 2026?",1
+1038566,will-nansen-launch-a-token-by-june-30-2026,"Will Nansen launch a token by June 30, 2026?",1
+1038567,will-nansen-launch-a-token-by-september-30-2026,"Will Nansen launch a token by September 30, 2026?",1
+1038568,will-nansen-launch-a-token-by-december-31-2026,"Will Nansen launch a token by December 31, 2026?",1
+2325377,will-nansen-launch-a-token-by-december-31-2027,"Will Nansen launch a token by December 31, 2027?",1
+690612,will-extended-launch-a-token-by-march-31-2026,Will Extended launch a token by March 31 2026?,1
+690614,will-extended-launch-a-token-by-september-30-2026,Will Extended launch a token by September 30 2026?,1
+690611,will-extended-launch-a-token-by-december-31-2025,Will Extended launch a token by December 31 2025?,1
+690613,will-extended-launch-a-token-by-june-30-2026,Will Extended launch a token by June 30 2026?,1
+690615,will-extended-launch-a-token-by-december-31-2026,Will Extended launch a token by December 31 2026?,1
+694865,will-openai-announce-bankruptcy-before-2027-819-686-981,Will OpenAI announce bankruptcy before 2027?,1
+694867,will-xerox-announce-bankruptcy-before-2027-511-298-531,Will Xerox announce bankruptcy before 2027?,1
+694874,will-soundhound-ai-announce-bankruptcy-before-2027-744-881-571,Will SoundHound AI announce bankruptcy before 2027?,1
+694866,will-jetblue-airways-announce-bankruptcy-before-2027-219-161-939,Will JetBlue Airways announce bankruptcy before 2027?,1
+694868,will-lucid-announce-bankruptcy-before-2027-732-585-695,Will Lucid announce bankruptcy before 2027?,1
+694875,will-anthropic-announce-bankruptcy-before-2027-kuqe-632,Will Anthropic announce bankruptcy before 2027?-kuQe,1
+694871,will-rivian-announce-bankruptcy-before-2027-396-969-235,Will Rivian announce bankruptcy before 2027?,1
+694876,will-lovable-announce-bankruptcy-before-2027-725-658,Will Lovable announce bankruptcy before 2027?,1
+693967,will-perplexity-ai-announce-bankruptcy-before-2027-513-763-545,Will Perplexity AI announce bankruptcy before 2027?,1
+693940,will-microstrategy-announce-bankruptcy-before-2027-666,Will MicroStrategy announce bankruptcy before 2027?,1
+693942,will-irobot-announce-bankruptcy-before-2027-836-195-544-548-927,Will iRobot announce bankruptcy before 2027?,1
+693944,will-c3ai-announce-bankruptcy-before-2027-272-269-675-414-351-737,Will C3.ai announce bankruptcy before 2027?,1
+693941,will-beyond-meat-announce-bankruptcy-before-2027-859-613-462-581-119,Will Beyond Meat announce bankruptcy before 2027?,1
+693943,will-workhorse-announce-bankruptcy-before-2027-596-468-177-494-196-581,Will Workhorse announce bankruptcy before 2027?,1
+700386,will-carvana-announce-bankruptcy-before-2027,Will Carvana announce bankruptcy before 2027?,1
+582829,will-axiom-launch-a-token-in-2025,Will Axiom launch a token in 2025?,1
+694160,will-axiom-launch-a-token-by-december-31-2026,"Will Axiom launch a token by December 31, 2026?",1
+2325349,will-axiom-launch-a-token-by-december-31-2027,"Will Axiom launch a token by December 31, 2027?",1
+1038815,will-perena-launch-a-token-by-march-31-2026,"Will Perena launch a token by March 31, 2026?",1
+1038817,will-perena-launch-a-token-by-september-30-2026,"Will Perena launch a token by September 30, 2026?",1
+1038816,will-perena-launch-a-token-by-june-30-2026,"Will Perena launch a token by June 30, 2026?",1
+1038818,will-perena-launch-a-token-by-december-31-2026,"Will Perena launch a token by December 31, 2026?",1
+569994,will-usdt-market-cap-hit-by-december-31,Will USDT market cap hit $200B by December 31?,1
+1068728,will-usdt-market-cap-hit-200b-before-2027,Will USDT market cap hit $200B before 2027?,1
+704784,will-bitcoin-replace-sha-256-before-2027,Will Bitcoin replace SHA-256 before 2027?,1
+569887,will-usdc-hit-50-of-usdt-market-cap-by-december-31,Will USDC hit 50% of USDT market cap by December 31?,1
+1068762,will-usdc-hit-50-of-usdt-market-cap-by-december-31-2026,"Will USDC hit 50% of USDT market cap by December 31, 2026?",1
+1278999,unit-fdv-above-1pt5b-one-day-after-launch,Unit FDV above $1.5B one day after launch?,1
+1279000,unit-fdv-above-2b-one-day-after-launch,Unit FDV above $2B one day after launch?,1
+1278998,unit-fdv-above-1b-one-day-after-launch,Unit FDV above $1B one day after launch?,1
+1279001,unit-fdv-above-3b-one-day-after-launch,Unit FDV above $3B one day after launch?,1
+1278994,unit-fdv-above-200m-one-day-after-launch,Unit FDV above $200M one day after launch?,1
+1278995,unit-fdv-above-400m-one-day-after-launch,Unit FDV above $400M one day after launch?,1
+1278996,unit-fdv-above-600m-one-day-after-launch,Unit FDV above $600M one day after launch?,1
+1278997,unit-fdv-above-800m-one-day-after-launch,Unit FDV above $800M one day after launch?,1
+701590,will-xrp-reach-3pt80-by-december-31-2026,"Will XRP reach $3.80 by December 31, 2026?",1
+701594,will-xrp-reach-3pt00-by-december-31-2026,"Will XRP reach $3.00 by December 31, 2026?",1
+701598,will-xrp-dip-to-2pt00-by-december-31-2026,"Will XRP dip to $2.00 by December 31, 2026?",1
+701602,will-xrp-dip-to-1pt20-by-december-31-2026,"Will XRP dip to $1.20 by December 31, 2026?",1
+701606,will-xrp-dip-to-0pt40-by-december-31-2026,"Will XRP dip to $0.40 by December 31, 2026?",1
+701587,will-xrp-reach-5pt00-by-december-31-2026,"Will XRP reach $5.00 by December 31, 2026?",1
+701591,will-xrp-reach-3pt60-by-december-31-2026,"Will XRP reach $3.60 by December 31, 2026?",1
+701595,will-xrp-reach-2pt80-by-december-31-2026,"Will XRP reach $2.80 by December 31, 2026?",1
+701599,will-xrp-dip-to-1pt80-by-december-31-2026,"Will XRP dip to $1.80 by December 31, 2026?",1
+701603,will-xrp-dip-to-1pt00-by-december-31-2026,"Will XRP dip to $1.00 by December 31, 2026?",1
+701607,will-xrp-dip-to-0pt20-by-december-31-2026,"Will XRP dip to $0.20 by December 31, 2026?",1
+701588,will-xrp-reach-4pt20-by-december-31-2026,"Will XRP reach $4.20 by December 31, 2026?",1
+701592,will-xrp-reach-3pt40-by-december-31-2026,"Will XRP reach $3.40 by December 31, 2026?",1
+701596,will-xrp-reach-2pt60-by-december-31-2026,"Will XRP reach $2.60 by December 31, 2026?",1
+701600,will-xrp-dip-to-1pt60-by-december-31-2026,"Will XRP dip to $1.60 by December 31, 2026?",1
+701604,will-xrp-dip-to-0pt80-by-december-31-2026,"Will XRP dip to $0.80 by December 31, 2026?",1
+701589,will-xrp-reach-4pt00-by-december-31-2026,"Will XRP reach $4.00 by December 31, 2026?",1
+701593,will-xrp-reach-3pt20-by-december-31-2026,"Will XRP reach $3.20 by December 31, 2026?",1
+701597,will-xrp-reach-2pt40-by-december-31-2026,"Will XRP reach $2.40 by December 31, 2026?",1
+701601,will-xrp-dip-to-1pt40-by-december-31-2026,"Will XRP dip to $1.40 by December 31, 2026?",1
+701605,will-xrp-dip-to-0pt60-by-december-31-2026,"Will XRP dip to $0.60 by December 31, 2026?",1
+700017,will-ventuals-launch-a-token-by-december-31-2025,Will Ventuals launch a token by December 31 2025?,1
+700019,will-ventuals-launch-a-token-by-june-30-2026,Will Ventuals launch a token by June 30 2026?,1
+700021,will-ventuals-launch-a-token-by-december-31-2026,Will Ventuals launch a token by December 31 2026?,1
+700018,will-ventuals-launch-a-token-by-march-31-2026,Will Ventuals launch a token by March 31 2026?,1
+700020,will-ventuals-launch-a-token-by-september-30-2026,Will Ventuals launch a token by September 30 2026?,1
+690689,will-pacifica-launch-a-token-by-march-31-2026,Will Pacifica launch a token by March 31 2026?,1
+690691,will-pacifica-launch-a-token-by-september-30-2026,Will Pacifica launch a token by September 30 2026?,1
+690688,will-pacifica-launch-a-token-by-december-31-2025,Will Pacifica launch a token by December 31 2025?,1
+690690,will-pacifica-launch-a-token-by-june-30-2026,Will Pacifica launch a token by June 30 2026?,1
+690692,will-pacifica-launch-a-token-by-december-31-2026,Will Pacifica launch a token by December 31 2026?,1
+943521,will-daylight-launch-a-token-by-december-31-2025-397,"Will Daylight launch a token by December 31, 2025?",1
+943524,will-daylight-launch-a-token-by-september-30-2026-231,"Will Daylight launch a token by September 30, 2026?",1
+943525,will-daylight-launch-a-token-by-december-31-2026-761,"Will Daylight launch a token by December 31, 2026?",1
+943522,will-daylight-launch-a-token-by-march-31-2026-327,"Will Daylight launch a token by March 31, 2026?",1
+943523,will-daylight-launch-a-token-by-june-30-2026-913,"Will Daylight launch a token by June 30, 2026?",1
+2325350,will-daylight-launch-a-token-by-december-31-2027,"Will Daylight launch a token by December 31, 2027?",1
+776464,another-sp-500-company-buys-bitcoin-by-december-31-2026,"Another S&P 500 Company buys Bitcoin by December 31, 2026?",1
+776340,another-sp-500-company-buys-bitcoin-by-december-31-2025,"Another S&P 500 Company buys Bitcoin by December 31, 2025?",1
+665004,another-sp-500-company-buys-bitcoin-by-november-30,Another S&P 500 Company buys Bitcoin by November 30?,1
+676830,will-microstrategy-announce-bankruptcy-before-2027,Will MicroStrategy announce bankruptcy before 2027?,1
+690671,will-arc-launch-a-token-by-december-31-2025,Will Arc launch a token by December 31 2025?,1
+690673,will-arc-launch-a-token-by-june-30-2026,Will Arc launch a token by June 30 2026?,1
+690675,will-arc-launch-a-token-by-december-31-2026,Will Arc launch a token by December 31 2026?,1
+690672,will-arc-launch-a-token-by-march-31-2026,Will Arc launch a token by March 31 2026?,1
+690674,will-arc-launch-a-token-by-september-30-2026,Will Arc launch a token by September 30 2026?,1
+2245064,will-arc-launch-a-token-by-june-30-2027,Will Arc launch a token by June 30 2027?,1
+2245065,will-arc-launch-a-token-by-december-31-2027,Will Arc launch a token by December 31 2027?,1
+2109881,will-anthropic-flip-btc-by-december-31,Will Anthropic flip BTC by December 31?,1
+1343533,major-cex-insolvent-in-2026,Major CEX insolvent in 2026?,1
+691549,kraken-ipo-closing-market-cap-above-18b,Kraken IPO closing market cap above $18B?,1
+691551,kraken-ipo-closing-market-cap-above-22b,Kraken IPO closing market cap above $22B?,1
+691553,kraken-ipo-closing-market-cap-above-26b,Kraken IPO closing market cap above $26B?,1
+691548,kraken-ipo-closing-market-cap-above-16b,Kraken IPO closing market cap above $16B?,1
+691550,kraken-ipo-closing-market-cap-above-20b,Kraken IPO closing market cap above $20B?,1
+691552,kraken-ipo-closing-market-cap-above-24b,Kraken IPO closing market cap above $24B?,1
+691554,kraken-ipo-closing-market-cap-above-28b,Kraken IPO closing market cap above $28B?,1
+1038714,will-oro-launch-a-token-by-june-30-2026,"Will Oro launch a token by June 30, 2026?",1
+1038712,will-oro-launch-a-token-by-march-31-2026,"Will Oro launch a token by March 31, 2026?",1
+1038719,will-oro-launch-a-token-by-december-31-2026,"Will Oro launch a token by December 31, 2026?",1
+1038717,will-oro-launch-a-token-by-september-30-2026,"Will Oro launch a token by September 30, 2026?",1
+2325378,will-oro-launch-a-token-by-december-31-2027,"Will Oro launch a token by December 31, 2027?",1
+2109822,will-hype-flip-sol-by-december-31,Will HYPE flip SOL by December 31?,1
+701757,will-bnb-reach-1600-by-december-31-2026,"Will BNB reach $1600 by December 31, 2026?",1
+701761,will-bnb-reach-1200-by-december-31-2026,"Will BNB reach $1200 by December 31, 2026?",1
+701765,will-bnb-dip-to-700-by-december-31-2026,"Will BNB dip to $700 by December 31, 2026?",1
+701769,will-bnb-dip-to-300-by-december-31-2026,"Will BNB dip to $300 by December 31, 2026?",1
+701758,will-bnb-reach-1500-by-december-31-2026,"Will BNB reach $1500 by December 31, 2026?",1
+701762,will-bnb-reach-1100-by-december-31-2026,"Will BNB reach $1100 by December 31, 2026?",1
+701766,will-bnb-dip-to-600-by-december-31-2026,"Will BNB dip to $600 by December 31, 2026?",1
+701770,will-bnb-dip-to-200-by-december-31-2026,"Will BNB dip to $200 by December 31, 2026?",1
+701760,will-bnb-reach-1300-by-december-31-2026,"Will BNB reach $1300 by December 31, 2026?",1
+701764,will-bnb-dip-to-800-by-december-31-2026,"Will BNB dip to $800 by December 31, 2026?",1
+701768,will-bnb-dip-to-400-by-december-31-2026,"Will BNB dip to $400 by December 31, 2026?",1
+701759,will-bnb-reach-1400-by-december-31-2026,"Will BNB reach $1400 by December 31, 2026?",1
+701763,will-bnb-reach-1000-by-december-31-2026,"Will BNB reach $1000 by December 31, 2026?",1
+701767,will-bnb-dip-to-500-by-december-31-2026,"Will BNB dip to $500 by December 31, 2026?",1
+1486016,probable-fdv-above-50m-one-day-after-launch,Probable FDV above $50M one day after launch?,1
+1486017,probable-fdv-above-100m-one-day-after-launch,Probable FDV above $100M one day after launch?,1
+1486018,probable-fdv-above-200m-one-day-after-launch,Probable FDV above $200M one day after launch?,1
+1486019,probable-fdv-above-300m-one-day-after-launch,Probable FDV above $300M one day after launch?,1
+1486020,probable-fdv-above-400m-one-day-after-launch,Probable FDV above $400M one day after launch?,1
+1486021,probable-fdv-above-500m-one-day-after-launch,Probable FDV above $500M one day after launch?,1
+1486022,probable-fdv-above-800m-one-day-after-launch,Probable FDV above $800M one day after launch?,1
+1486023,probable-fdv-above-1b-one-day-after-launch,Probable FDV above $1B one day after launch?,1
+548324,trump-eliminates-capital-gains-tax-on-crypto-in-2025,Trump eliminates capital gains tax on crypto in 2025?,1
+1068702,trump-eliminates-capital-gains-tax-on-crypto-before-2027,Trump eliminates capital gains tax on crypto before 2027?,1
+688485,will-gmgn-launch-a-token-by-december-31-2025,"Will GMGN launch a token by December 31, 2025?",1
+688487,will-gmgn-launch-a-token-by-december-31-2026,"Will GMGN launch a token by December 31, 2026?",1
+688486,will-gmgn-launch-a-token-by-march-31-2026,"Will GMGN launch a token by March 31, 2026?",1
+2325360,will-gmgn-launch-a-token-by-december-31-2027,"Will GMGN launch a token by December 31, 2027?",1
+701861,will-pumpfun-reach-0pt0058-by-december-31-2026,"Will Pump.fun reach $0.0058 by December 31, 2026?",1
+701867,will-pumpfun-reach-0pt0042-by-december-31-2026,"Will Pump.fun reach $0.0042 by December 31, 2026?",1
+701871,will-pumpfun-dip-to-0pt0026-by-december-31-2026,"Will Pump.fun dip to $0.0026 by December 31, 2026?",1
+701875,will-pumpfun-dip-to-0pt0010-by-december-31-2026,"Will Pump.fun dip to $0.0010 by December 31, 2026?",1
+701860,will-pumpfun-reach-0pt0062-by-december-31-2026,"Will Pump.fun reach $0.0062 by December 31, 2026?",1
+701865,will-pumpfun-reach-0pt0046-by-december-31-2026,"Will Pump.fun reach $0.0046 by December 31, 2026?",1
+701870,will-pumpfun-reach-0pt0030-by-december-31-2026,"Will Pump.fun reach $0.0030 by December 31, 2026?",1
+701874,will-pumpfun-dip-to-0pt0014-by-december-31-2026,"Will Pump.fun dip to $0.0014 by December 31, 2026?",1
+701858,will-pumpfun-reach-0pt0090-by-december-31-2026,"Will Pump.fun reach $0.0090 by December 31, 2026?",1
+701862,will-pumpfun-reach-0pt0054-by-december-31-2026,"Will Pump.fun reach $0.0054 by December 31, 2026?",1
+701868,will-pumpfun-reach-0pt0038-by-december-31-2026,"Will Pump.fun reach $0.0038 by December 31, 2026?",1
+701872,will-pumpfun-dip-to-0pt0022-by-december-31-2026,"Will Pump.fun dip to $0.0022 by December 31, 2026?",1
+701859,will-pumpfun-reach-0pt0080-by-december-31-2026,"Will Pump.fun reach $0.0080 by December 31, 2026?",1
+701863,will-pumpfun-reach-0pt0050-by-december-31-2026,"Will Pump.fun reach $0.0050 by December 31, 2026?",1
+701869,will-pumpfun-reach-0pt0034-by-december-31-2026,"Will Pump.fun reach $0.0034 by December 31, 2026?",1
+701873,will-pumpfun-dip-to-0pt0018-by-december-31-2026,"Will Pump.fun dip to $0.0018 by December 31, 2026?",1
+2158351,will-bitcoin-hit-70k-or-90k-first-382,Will Bitcoin hit $70k or $90k first?,1
+1186445,will-monero-hit-1000-in-2026,Will Monero hit $1000 in 2026?,1
+599081,will-felix-protocol-launch-a-token-in-2025,Will Felix Protocol launch a token in 2025?,1
+690651,will-felix-protocol-launch-a-token-by-december-31-2026,"Will Felix Protocol launch a token by December 31, 2026?",1
+1535113,surf-fdv-above-50m-one-day-after-launch,Surf FDV above $50M one day after launch?,1
+1535114,surf-fdv-above-100m-one-day-after-launch,Surf FDV above $100M one day after launch?,1
+1535116,surf-fdv-above-300m-one-day-after-launch,Surf FDV above $300M one day after launch?,1
+1535117,surf-fdv-above-500m-one-day-after-launch,Surf FDV above $500M one day after launch?,1
+1535115,surf-fdv-above-200m-one-day-after-launch,Surf FDV above $200M one day after launch?,1
+629951,will-prjx-launch-a-token-in-2025,Will prjx launch a token in 2025?,1
+690660,will-prjx-launch-a-token-by-december-31-2026,"Will prjx launch a token by December 31, 2026?",1
+2325387,will-prjx-launch-a-token-by-december-31-2027,"Will prjx launch a token by December 31, 2027?",1
+1571982,will-predictfun-launch-a-token-by-march-31-2026,"Will Predict.fun launch a token by March 31, 2026?",1
+1571984,will-predictfun-launch-a-token-by-september-30-2026,"Will Predict.fun launch a token by September 30, 2026?",1
+1571986,will-predictfun-launch-a-token-by-march-31-2027,"Will Predict.fun launch a token by March 31, 2027?",1
+1571988,will-predictfun-launch-a-token-by-september-30-2027,"Will Predict.fun launch a token by September 30, 2027?",1
+1571983,will-predictfun-launch-a-token-by-june-30-2026,"Will Predict.fun launch a token by June 30, 2026?",1
+1571985,will-predictfun-launch-a-token-by-december-31-2026,"Will Predict.fun launch a token by December 31, 2026?",1
+1571987,will-predictfun-launch-a-token-by-june-30-2027,"Will Predict.fun launch a token by June 30, 2027?",1
+1571989,will-predictfun-launch-a-token-by-december-31-2027,"Will Predict.fun launch a token by December 31, 2027?",1
+1068690,will-phantom-launch-a-token-by-june-30-2026,"Will Phantom launch a token by June 30, 2026?",1
+1068691,will-phantom-launch-a-token-by-september-30-2026,"Will Phantom launch a token by September 30, 2026?",1
+1068692,will-phantom-launch-a-token-by-december-31-2026,"Will Phantom launch a token by December 31, 2026?",1
+1068689,will-phantom-launch-a-token-by-march-31-2026,"Will Phantom launch a token by March 31, 2026?",1
+2325379,will-phantom-launch-a-token-by-december-31-2027,"Will Phantom launch a token by December 31, 2027?",1
+1091094,over-8-coins-launched-in-2026-end-the-year-in-the-top-100,Over 8 coins launched in 2026 end the year in the top 100?,1
+1091093,over-6-coins-launched-in-2026-end-the-year-in-the-top-100,Over 6 coins launched in 2026 end the year in the top 100?,1
+1091096,over-12-coins-launched-in-2026-end-the-year-in-the-top-100,Over 12 coins launched in 2026 end the year in the top 100?,1
+1091092,over-4-coins-launched-in-2026-end-the-year-in-the-top-100,Over 4 coins launched in 2026 end the year in the top 100?,1
+1091095,over-10-coins-launched-in-2026-end-the-year-in-the-top-100,Over 10 coins launched in 2026 end the year in the top 100?,1
+1038644,will-titan-launch-a-token-by-march-31-2026,"Will Titan launch a token by March 31, 2026?",1
+1038646,will-titan-launch-a-token-by-september-30-2026,"Will Titan launch a token by September 30, 2026?",1
+1038645,will-titan-launch-a-token-by-june-30-2026,"Will Titan launch a token by June 30, 2026?",1
+1038647,will-titan-launch-a-token-by-december-31-2026,"Will Titan launch a token by December 31, 2026?",1
+2325402,will-titan-launch-a-token-by-december-31-2027,"Will Titan launch a token by December 31, 2027?",1
+1322381,cap-fdv-above-500m-one-day-after-launch,Cap FDV above $500M one day after launch?,1
+1322382,cap-fdv-above-800m-one-day-after-launch,Cap FDV above $800M one day after launch?,1
+1322377,cap-fdv-above-50m-one-day-after-launch,Cap FDV above $50M one day after launch?,1
+1322378,cap-fdv-above-100m-one-day-after-launch,Cap FDV above $100M one day after launch?,1
+1322379,cap-fdv-above-150m-one-day-after-launch,Cap FDV above $150M one day after launch?,1
+1322380,cap-fdv-above-250m-one-day-after-launch,Cap FDV above $250M one day after launch?,1
+1363512,cap-fdv-above-2b-one-day-after-launch,Cap FDV above $2B one day after launch?,1
+1363513,cap-fdv-above-4b-one-day-after-launch,Cap FDV above $4B one day after launch?,1
+1363511,cap-fdv-above-1b-one-day-after-launch,Cap FDV above $1B one day after launch?,1
+716652,pacifica-fdv-above-1b-one-day-after-launch-995,Pacifica FDV above $1B one day after launch?,1
+716650,pacifica-fdv-above-500m-one-day-after-launch-171,Pacifica FDV above $500M one day after launch?,1
+716654,pacifica-fdv-above-3b-one-day-after-launch-755,Pacifica FDV above $3B one day after launch?,1
+716653,pacifica-fdv-above-2b-one-day-after-launch-382,Pacifica FDV above $2B one day after launch?,1
+716651,pacifica-fdv-above-800m-one-day-after-launch-685,Pacifica FDV above $800M one day after launch?,1
+1028588,pacifica-fdv-above-300m-one-day-after-launch,Pacifica FDV above $300M one day after launch?,1
+582465,will-el-salvador-hold-1b-of-btc-by-september-30,Will El Salvador hold $1b+ of BTC by September 30? ,1
+582466,will-el-salvador-hold-1b-of-btc-by-december-31,Will El Salvador hold $1b+ of BTC by December 31? ,1
+1068384,will-el-salvador-hold-1b-of-btc-by-december-31-2026,"Will El Salvador hold $1b+ of BTC by December 31, 2026?",1
+1323001,will-trump-launch-a-coin-by-january-31-637-684,Will Trump launch a coin by December 31?,1
+1373724,will-trump-launch-a-coin-by-march-31-433,Will Trump launch a coin by March 31?,1
+701708,will-dogecoin-reach-0pt52-by-december-31-2026,"Will Dogecoin reach $0.52 by December 31, 2026?",1
+701710,will-dogecoin-reach-0pt44-by-december-31-2026,"Will Dogecoin reach $0.44 by December 31, 2026?",1
+701712,will-dogecoin-reach-0pt36-by-december-31-2026,"Will Dogecoin reach $0.36 by December 31, 2026?",1
+701714,will-dogecoin-reach-0pt28-by-december-31-2026,"Will Dogecoin reach $0.28 by December 31, 2026?",1
+701716,will-dogecoin-reach-0pt20-by-december-31-2026,"Will Dogecoin reach $0.20 by December 31, 2026?",1
+701718,will-dogecoin-dip-to-0pt14-by-december-31-2026,"Will Dogecoin dip to $0.14 by December 31, 2026?",1
+701720,will-dogecoin-dip-to-0pt06-by-december-31-2026,"Will Dogecoin dip to $0.06 by December 31, 2026?",1
+701709,will-dogecoin-reach-0pt48-by-december-31-2026,"Will Dogecoin reach $0.48 by December 31, 2026?",1
+701711,will-dogecoin-reach-0pt40-by-december-31-2026,"Will Dogecoin reach $0.40 by December 31, 2026?",1
+701713,will-dogecoin-reach-0pt32-by-december-31-2026,"Will Dogecoin reach $0.32 by December 31, 2026?",1
+701715,will-dogecoin-reach-0pt24-by-december-31-2026,"Will Dogecoin reach $0.24 by December 31, 2026?",1
+701717,will-dogecoin-reach-0pt16-by-december-31-2026,"Will Dogecoin reach $0.16 by December 31, 2026?",1
+701719,will-dogecoin-dip-to-0pt10-by-december-31-2026,"Will Dogecoin dip to $0.10 by December 31, 2026?",1
+701721,will-dogecoin-dip-to-0pt02-by-december-31-2026,"Will Dogecoin dip to $0.02 by December 31, 2026?",1
+2090554,printr-fdv-above-50m-one-day-after-launch,Printr FDV above $50M one day after launch?,1
+2090556,printr-fdv-above-100m-one-day-after-launch,Printr FDV above $100M one day after launch?,1
+2090558,printr-fdv-above-200m-one-day-after-launch,Printr FDV above $200M one day after launch?,1
+2090555,printr-fdv-above-80m-one-day-after-launch,Printr FDV above $80M one day after launch?,1
+2090557,printr-fdv-above-150m-one-day-after-launch,Printr FDV above $150M one day after launch?,1
+2090559,printr-fdv-above-300m-one-day-after-launch,Printr FDV above $300M one day after launch?,1
+2090561,printr-fdv-above-500m-one-day-after-launch,Printr FDV above $500M one day after launch?,1
+2090563,printr-fdv-above-1b-one-day-after-launch,Printr FDV above $1B one day after launch?,1
+2090560,printr-fdv-above-400m-one-day-after-launch,Printr FDV above $400M one day after launch?,1
+2090562,printr-fdv-above-800m-one-day-after-launch,Printr FDV above $800M one day after launch?,1
+1554877,o1-fdv-above-100m-one-day-after-launch-167,o1 FDV above $100M one day after launch?,1
+1554879,o1-fdv-above-300m-one-day-after-launch-692,o1 FDV above $300M one day after launch?,1
+1554881,o1-fdv-above-500m-one-day-after-launch-144,o1 FDV above $500M one day after launch?,1
+1554883,o1-fdv-above-1b-one-day-after-launch-975,o1 FDV above $1B one day after launch?,1
+1554878,o1-fdv-above-200m-one-day-after-launch-939,o1 FDV above $200M one day after launch?,1
+1554880,o1-fdv-above-400m-one-day-after-launch-551,o1 FDV above $400M one day after launch?,1
+1554882,o1-fdv-above-700m-one-day-after-launch-473,o1 FDV above $700M one day after launch?,1
+1153987,will-tread-launch-a-token-by-june-30-2026,"Will Tread launch a token by June 30, 2026?",1
+1153989,will-tread-launch-a-token-by-december-31-2026,"Will Tread launch a token by December 31, 2026?",1
+1153986,will-tread-launch-a-token-by-march-31-2026,"Will Tread launch a token by March 31, 2026?",1
+1153988,will-tread-launch-a-token-by-september-30-2026,"Will Tread launch a token by September 30, 2026?",1
+2325403,will-tread-launch-a-token-by-december-31-2027,"Will Tread launch a token by December 31, 2027?",1
+582830,will-unit-launch-a-token-in-2025,Will Unit launch a token in 2025?,1
+697523,will-unit-launch-a-token-by-december-31-2026,"Will Unit launch a token by December 31, 2026?",1
+1210085,will-unit-launch-a-token-by-december-31-2027,"Will Unit launch a token by December 31, 2027?",1
+716641,theo-fdv-above-300m-one-day-after-launch,Theo FDV above $300M one day after launch?,1
+716643,theo-fdv-above-1b-one-day-after-launch,Theo FDV above $1B one day after launch?,1
+716640,theo-fdv-above-100m-one-day-after-launch,Theo FDV above $100M one day after launch?,1
+716642,theo-fdv-above-700m-one-day-after-launch,Theo FDV above $700M one day after launch?,1
+704274,ostium-fdv-above-700m-one-day-after-launch-515-395-926,Ostium FDV above $700M one day after launch?,1
+704276,ostium-fdv-above-2b-one-day-after-launch-284-572-681,Ostium FDV above $2B one day after launch?,1
+704275,ostium-fdv-above-1b-one-day-after-launch-133-944-452,Ostium FDV above $1B one day after launch?,1
+704278,ostium-fdv-above-4b-one-day-after-launch-739-685-752,Ostium FDV above $4B one day after launch?,1
+704277,ostium-fdv-above-3b-one-day-after-launch-987-535-683,Ostium FDV above $3B one day after launch?,1
+1113919,ostium-fdv-above-500m-one-day-after-launch-834-581,Ostium FDV above $500M one day after launch?,1
+1113920,ostium-fdv-above-300m-one-day-after-launch-722,Ostium FDV above $300M one day after launch?,1
+2365843,ostium-fdv-above-100m-one-day-after-launch,Ostium FDV above $100M one day after launch?,1
+2365844,ostium-fdv-above-200m-one-day-after-launch,Ostium FDV above $200M one day after launch?,1
+701923,will-uni-reach-14pt00-by-december-31-2026,"Will UNI reach $14.00 by December 31, 2026?",1
+701927,will-uni-reach-8pt00-by-december-31-2026,"Will UNI reach $8.00 by December 31, 2026?",1
+701931,will-uni-dip-to-3pt00-by-december-31-2026,"Will UNI dip to $3.00 by December 31, 2026?",1
+701922,will-uni-reach-15pt50-by-december-31-2026,"Will UNI reach $15.50 by December 31, 2026?",1
+701926,will-uni-reach-9pt50-by-december-31-2026,"Will UNI reach $9.50 by December 31, 2026?",1
+701930,will-uni-dip-to-4pt50-by-december-31-2026,"Will UNI dip to $4.50 by December 31, 2026?",1
+701925,will-uni-reach-11pt00-by-december-31-2026,"Will UNI reach $11.00 by December 31, 2026?",1
+701929,will-uni-dip-to-6pt00-by-december-31-2026,"Will UNI dip to $6.00 by December 31, 2026?",1
+701924,will-uni-reach-12pt50-by-december-31-2026,"Will UNI reach $12.50 by December 31, 2026?",1
+701928,will-uni-reach-6pt50-by-december-31-2026,"Will UNI reach $6.50 by December 31, 2026?",1
+1328423,will-microstrategy-be-margin-called-in-2026,Will MicroStrategy be margin called in 2026?,1
+1485758,cambria-fdv-above-20m-one-day-after-launch,Cambria FDV above $20M one day after launch?,1
+1485759,cambria-fdv-above-30m-one-day-after-launch,Cambria FDV above $30M one day after launch?,1
+1485760,cambria-fdv-above-40m-one-day-after-launch,Cambria FDV above $40M one day after launch?,1
+1485761,cambria-fdv-above-50m-one-day-after-launch,Cambria FDV above $50M one day after launch?,1
+1485762,cambria-fdv-above-70m-one-day-after-launch,Cambria FDV above $70M one day after launch?,1
+1485763,cambria-fdv-above-100m-one-day-after-launch,Cambria FDV above $100M one day after launch?,1
+1485764,cambria-fdv-above-150m-one-day-after-launch,Cambria FDV above $150M one day after launch?,1
+1485765,cambria-fdv-above-200m-one-day-after-launch,Cambria FDV above $200M one day after launch?,1
+1090479,record-crypto-liquidation-in-2026,Record crypto liquidation in 2026?,1
+701887,will-aster-reach-2pt00-by-december-31-2026,"Will Aster reach $2.00 by December 31, 2026?",1
+701889,will-aster-reach-1pt60-by-december-31-2026,"Will Aster reach $1.60 by December 31, 2026?",1
+701891,will-aster-reach-1pt20-by-december-31-2026,"Will Aster reach $1.20 by December 31, 2026?",1
+701893,will-aster-dip-to-0pt80-by-december-31-2026,"Will Aster dip to $0.80 by December 31, 2026?",1
+701895,will-aster-dip-to-0pt40-by-december-31-2026,"Will Aster dip to $0.40 by December 31, 2026?",1
+701886,will-aster-reach-2pt20-by-december-31-2026,"Will Aster reach $2.20 by December 31, 2026?",1
+701888,will-aster-reach-1pt80-by-december-31-2026,"Will Aster reach $1.80 by December 31, 2026?",1
+701890,will-aster-reach-1pt40-by-december-31-2026,"Will Aster reach $1.40 by December 31, 2026?",1
+701892,will-aster-dip-to-1pt00-by-december-31-2026,"Will Aster dip to $1.00 by December 31, 2026?",1
+701894,will-aster-dip-to-0pt60-by-december-31-2026,"Will Aster dip to $0.60 by December 31, 2026?",1
+701896,will-aster-dip-to-0pt20-by-december-31-2026,"Will Aster dip to $0.20 by December 31, 2026?",1
+2037108,over-1pt2b-crypto-hack-value-in-2026,Over $1.2B crypto hack value in 2026?,1
+2037112,over-3b-crypto-hack-value-in-2026,Over $3B crypto hack value in 2026?,1
+2037107,over-1b-crypto-hack-value-in-2026,Over $1B crypto hack value in 2026?,1
+2037111,over-2pt5b-crypto-hack-value-in-2026,Over $2.5B crypto hack value in 2026?,1
+2037109,over-1pt5b-crypto-hack-value-in-2026,Over $1.5B crypto hack value in 2026?,1
+2037113,over-3pt5b-crypto-hack-value-in-2026,Over $3.5B crypto hack value in 2026?,1
+2037106,over-800m-crypto-hack-value-in-2026,Over $800M crypto hack value in 2026?,1
+2037110,over-2b-crypto-hack-value-in-2026,Over $2B crypto hack value in 2026?,1
+2037114,over-4b-crypto-hack-value-in-2026,Over $4B crypto hack value in 2026?,1
+negrisk::106981,evt::bitcoin-vs-gold-vs-sp-500-in-2026,Bitcoin vs. Gold vs. S&P 500 in 2026,3
+negrisk::192882,evt::bitcoin-best-month-in-2026,Bitcoin best month in 2026?,12

@@ -1,0 +1,27 @@
+[Unit]
+Description=CalendarSpread rolling-z live trading loop
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/home/ubuntu/CalendarSpread
+ExecStart=/home/ubuntu/CalendarSpread/.venv/bin/python3 live_execution.py --execute --loop-seconds 600 --max-shares 50 --max-notional 50
+
+# Restart on crash, but not too aggressively
+Restart=on-failure
+RestartSec=30
+StartLimitIntervalSec=600
+StartLimitBurst=5
+
+# Output to journald (view with `journalctl -u calendarspread -f`)
+StandardOutput=journal
+StandardError=journal
+
+# Resource limits
+MemoryMax=512M
+CPUQuota=50%
+
+[Install]
+WantedBy=multi-user.target

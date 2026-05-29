@@ -1,0 +1,11 @@
+[Unit]
+Description=CalendarSpread daily status one-shot (gated to 8am London inside the script)
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=ec2-user
+WorkingDirectory=/home/ec2-user/CalendarSpread
+ExecStart=/home/ec2-user/CalendarSpread/.venv/bin/python3 daily_status.py
+StandardOutput=journal
+StandardError=journal
