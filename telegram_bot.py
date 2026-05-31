@@ -330,7 +330,6 @@ def format_plan_message(p, bankroll: Optional[float], recommended: int) -> str:
     cost_per = (p.notional / p.shares) if p.shares else 0.0
     ladder = _render_ladder(p)
     bal_str = f"${bankroll:,.2f}" if bankroll else "unknown"
-    strategy = getattr(p, "strategy", "rolling_z")
 
     # ── Net risk framing (max loss is the number that matters for a spread) ──
     floor, ceil = _payoff_bounds(p.direction)
@@ -340,20 +339,13 @@ def format_plan_message(p, bankroll: Optional[float], recommended: int) -> str:
     rec_gain   = gain_per_sh * recommended          # max gain at recommended size
     rec_outlay = cost_per * recommended             # cash outlay (collateral) at rec size
 
-    # Strategy-specific header and signal-summary line.
-    if strategy == "cheap_opt":
-        strategy_tag = "🪙 <b>Strategy:</b> cheap_optionality"
-        signal_line = (
-            f"S = <code>{p.spread_at_signal:.3f}</code>   "
-            f"take-profit: S ≥ <code>{p.mu:.3f}</code>"
-        )
-    else:
-        strategy_tag = "📈 <b>Strategy:</b> rolling_z (mean-reversion)"
-        signal_line = (
-            f"z = <code>{p.z:.2f}</code>   "
-            f"μ = <code>{p.mu:.3f}</code>   "
-            f"S = <code>{p.spread_at_signal:.3f}</code>"
-        )
+    # Signal-summary header (rolling_z mean-reversion).
+    strategy_tag = "📈 <b>Strategy:</b> rolling_z (mean-reversion)"
+    signal_line = (
+        f"z = <code>{p.z:.2f}</code>   "
+        f"μ = <code>{p.mu:.3f}</code>   "
+        f"S = <code>{p.spread_at_signal:.3f}</code>"
+    )
     fee_note = "<i>(net risk includes Polymarket fees)</i>\n" if p.entry_ladder else ""
     rr = (rec_gain / rec_risk) if rec_risk > 1e-9 else 0.0
     return (

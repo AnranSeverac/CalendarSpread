@@ -5,6 +5,7 @@ execution_candidates_latest.csv
 execution_candidates_latest.json
 logs/
 execution_log.jsonl
+analytics/spread_output/
 __pycache__/
 .cursor/
 .claude/

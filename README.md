@@ -10,8 +10,12 @@ See [CONTEXT.md](CONTEXT.md) for the full strategy spec, headline numbers, and d
 |---|---|
 | `curve_pipeline.py` | Data ingestion: Gamma API → universe with metadata; CLOB → hourly panel. |
 | `spread_strategy.py` | Strategy: filter, spread panel, rolling z, signals, trade builder. |
-| `analytics/spread_backtest.py` | End-to-end runner with segmentation report. |
+| `analytics/spread_backtest.py` | End-to-end backtest runner with segmentation report. |
 | `analytics/spread_output/` | Generated trades parquet + reports. |
+| `live_execution.py` | Live trading loop: signals → order-book sizing → paired FOK orders; persistent cooldowns/positions. |
+| `telegram_bot.py` | Telegram fill/exit alerts. |
+| `daily_status.py` | Daily status report (realized PnL, open positions). |
+| `analytics/market_graph.py`, `analytics/hierarchical_graph.py` | Standalone research tooling: semantic cross-market linkage graphs (not part of the trading path). |
 | `config/.env.example` | Env template; copy to `config/.env` and fill for live trading. |
 | `requirements.txt` | Python deps. |
 
@@ -39,4 +43,9 @@ First run builds and caches `universe` + `panel` parquets in `.cache/` (~140s). 
 
 ## Live execution
 
-Not currently wired up. The previous `live_execution.py` was built for the curve-residual strategy and is incompatible with the new pipeline; needs to be rewritten against `spread_strategy.py` before deployment.
+`live_execution.py` runs the rolling-z strategy live against `spread_strategy.py`: it takes signals at the latest bar, sizes each trade by walking both legs' order books (keeping edge ≥ 2× cost), and submits paired FOK market orders. Cooldowns and open positions persist under `logs/`; fills/exits are pushed to Telegram via `telegram_bot.py`.
+
+```bash
+python live_execution.py            # dry-run, single shot
+python live_execution.py --execute  # send orders
+```

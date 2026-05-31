@@ -28,7 +28,9 @@ Reuses build_market_universe / Embedder / blend scoring from market_graph.py.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -128,9 +130,82 @@ def collapse_negrisk(uni: pd.DataFrame) -> pd.DataFrame:
     return pd.concat([rest, pd.DataFrame(reps)], ignore_index=True)
 
 
+# ── Calendar collapse: merge "same question, different deadline" into one node ──
+# Many markets are the SAME resolution criteria scored on a different day
+# ("Will SpaceX IPO by March 31?" / "by April 30?" / …). The deadline dimension is
+# the calendar-spread axis and should live INSIDE one node, not as N near-duplicate
+# nodes that swamp the cross-market graph. We strip the date from each question; markets
+# whose date-stripped stem (within a tag) matches are merged into one representative.
+
+_MON = r"(?:jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec)[a-z]*\.?"
+_DATECORE = (r"(?:%s\s+\d{1,2}(?:st|nd|rd|th)?(?:\s*,?\s*20\d{2})?"
+             r"|%s\s+20\d{2}|q[1-4]\s*20\d{2}|\d{1,2}/\d{1,2}(?:/\d{2,4})?|20\d{2})") % (_MON, _MON)
+_DATECORE_BARE = (r"(?:%s\s+\d{1,2}(?:st|nd|rd|th)?(?:\s*,?\s*20\d{2})?"
+                  r"|%s\s+20\d{2}|q[1-4]\s*20\d{2}|\d{1,2}/\d{1,2}(?:/\d{2,4})?"
+                  r"|(?<![\d$,.])20\d{2})\b") % (_MON, _MON)
+_PREP = r"(?:by end of|by|in|on|before|after|as of|end of|through|until|til)"
+_DATE_PREP_RE = re.compile(r"\b%s\s+(?:%s|%s)" % (_PREP, _DATECORE, _MON), re.I)
+_DATE_BARE_RE = re.compile(_DATECORE_BARE, re.I)
+_TRAIL_PREP_RE = re.compile(r"\b%s\s*$" % _PREP, re.I)
+
+
+def _strip_dates(q: str, lower: bool = True) -> str:
+    s = str(q)
+    s = _DATE_PREP_RE.sub(" ", s)
+    s = _DATE_BARE_RE.sub(" ", s)
+    s = re.sub(r"\s+", " ", s).strip()
+    s = _TRAIL_PREP_RE.sub("", s).strip(" ?.,-")
+    s = re.sub(r"\s+", " ", s)
+    return s.lower() if lower else s
+
+
+def collapse_calendar(uni: pd.DataFrame) -> tuple[pd.DataFrame, dict[str, str]]:
+    """Merge markets that are the same question on a different day. Returns
+    (collapsed_universe, mapping {original_market_id -> representative_market_id})."""
+    u = uni.copy()
+    u["_stem"] = u["question"].map(lambda q: _strip_dates(q, True))
+    # Key on the date-stripped stem alone. Tag-based guards split true ladders when
+    # Polymarket tags date-variants inconsistently; stems are specific enough that
+    # cross-topic collisions are negligible among retained (non-excluded) markets.
+    u["_key"] = u["_stem"]
+    mapping: dict[str, str] = {}
+    rows: list[dict] = []
+    for key, g in u.groupby("_key", sort=False):
+        g = g.reset_index(drop=True)
+        stem = g["_stem"].iloc[0]
+        if len(g) == 1 or not stem:
+            for _, r in g.iterrows():
+                rr = r.to_dict(); rr["n_dates"] = 1
+                mapping[str(rr["market_id"])] = str(rr["market_id"])
+                rows.append(rr)
+            continue
+        rep_id = "cal::" + hashlib.md5(key.encode()).hexdigest()[:10]
+        rep_q = _strip_dates(max(g["question"], key=lambda x: len(str(x))), lower=False)
+        crit = max((c for c in g["resolution_criteria"].fillna("")), key=len, default="")
+        rep = g.iloc[0].to_dict()
+        rep.update({"market_id": rep_id, "slug": "cal-" + rep_id.split("::")[1],
+                    "question": rep_q or str(g["question"].iloc[0]),
+                    "resolution_criteria": crit, "n_dates": int(len(g))})
+        for mid in g["market_id"].astype(str):
+            mapping[mid] = rep_id
+        rows.append(rep)
+    out = pd.DataFrame(rows).drop(columns=["_stem", "_key"], errors="ignore").reset_index(drop=True)
+    return out, mapping
+
+
 def prepared_universe(max_events: int, include_closed: bool) -> pd.DataFrame:
-    """Full universe with negRisk events collapsed to equivalence-class nodes."""
-    return collapse_negrisk(build_market_universe(max_events=max_events, include_closed=include_closed))
+    """Full universe: negRisk events collapsed to equivalence-class nodes, then
+    same-question-different-day markets merged (calendar collapse)."""
+    uni = collapse_negrisk(build_market_universe(max_events=max_events, include_closed=include_closed))
+    uni, _ = collapse_calendar(uni)
+    return uni
+
+
+def calendar_mapping(max_events: int, include_closed: bool) -> dict[str, str]:
+    """The {original_market_id -> representative_market_id} map (post-negRisk ids)."""
+    uni = collapse_negrisk(build_market_universe(max_events=max_events, include_closed=include_closed))
+    _, mapping = collapse_calendar(uni)
+    return mapping
 
 
 def partition_universe(uni: pd.DataFrame) -> pd.DataFrame:
@@ -324,6 +399,7 @@ def build_tight_graph(uni: pd.DataFrame, out_dir: Path = OUT_DIR) -> nx.DiGraph:
     q = dict(zip(u["market_id"], u["question"]))
     slug = dict(zip(u["market_id"], u["slug"]))
     cat_of = dict(zip(u["market_id"], u.get("category", pd.Series(index=u.index, dtype=object))))
+    t["question"] = t["market_id"].map(q).fillna(t["market_id"].astype(str))
 
     cos: dict[frozenset, float] = {}
     hp = out_dir / "hier_graph_edges.csv"

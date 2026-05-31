@@ -38,7 +38,6 @@ from curve_pipeline import (
 )
 from spread_strategy import (
     apply_universe_filter, build_spread_panel, compute_rolling_z, generate_signals,
-    generate_cheap_optionality_signals,
 )
 from telegram_bot import (
     TelegramBot, TelegramConfig, plan_id_for, format_fill_message,
@@ -78,17 +77,6 @@ MIN_FREE_BALANCE_DOLLARS = 15.0   # skip entries if free USDC collateral below t
 # ── Exit ─────────────────────────────────────────────────────────
 MAX_HOLD_HOURS = 240           # 10 days, matches backtest
 EXIT_Z_THRESHOLD = 0.0         # close when z reverts past this (mean-reverted)
-
-# ── cheap_opt strategy knobs ─────────────────────────────────────
-# BUY spreads where S ≤ 2¢ and gap (long_dd − short_dd) ≈ 30 days. Cheap
-# optionality on the calendar window.
-CHEAP_OPT_MAX_SPREAD       = 0.02     # entry: S ≤ 2¢
-CHEAP_OPT_TARGET_GAP_DAYS  = 30.0     # one month
-CHEAP_OPT_GAP_TOLERANCE_DAYS = 5.0    # 25-35 days inclusive
-CHEAP_OPT_MIN_TAU_DAYS     = 5.0      # short leg must have ≥5d to resolution
-CHEAP_OPT_EXIT_TARGET      = 0.06     # take profit when S ≥ 6¢ (~3× entry cost)
-CHEAP_OPT_MAX_HOLD_HOURS   = 60 * 24  # 60 days max hold
-CHEAP_OPT_TAU_FORCE_EXIT_DAYS = 1.0   # force close if short_dd within 1 day
 
 
 @dataclass
@@ -132,7 +120,7 @@ class Plan:
     # Each tuple: (cost_per_spread_share, marginal_depth_shares, notional_$)
     entry_ladder: list = field(default_factory=list)
 
-    # Which strategy generated this plan ("rolling_z" or "cheap_opt").
+    # Which strategy generated this plan (currently always "rolling_z").
     # Used for exit-logic dispatch and Telegram message labelling.
     strategy: str = "rolling_z"
 
@@ -168,7 +156,7 @@ class OpenPosition:
     # Strategy that opened this position; routes exit logic. Backward-compatible
     # default treats positions from before this field existed as rolling_z.
     strategy: str = "rolling_z"
-    # For cheap_opt: the spread value at entry, used to compute take-profit gain.
+    # Spread value at entry (retained in saved position records).
     entry_spread: float = 0.0
 
 
@@ -594,36 +582,19 @@ def _combined_entry_ladder(
 # ── Plan construction ────────────────────────────────────────────
 
 def latest_signals(spread_z: pd.DataFrame) -> pd.DataFrame:
-    """Generate signals from ALL enabled strategies on the latest panel snapshot.
+    """Generate rolling-z signals on the latest panel snapshot.
 
-    Each signal carries a `strategy` column for downstream dispatch. Currently:
-      - "rolling_z" : mean-reversion on rolling z-score (default knobs)
-      - "cheap_opt" : BUY cheap one-month-out spreads (S ≤ 2¢, gap 25-35d)
+    Signals carry a `strategy` column ("rolling_z") for downstream dispatch.
     """
     if spread_z.empty:
         return spread_z
     latest_ts = spread_z["timestamp"].max()
     snap = spread_z[spread_z["timestamp"] == latest_ts]
 
-    sig_rz = generate_signals(
+    return generate_signals(
         snap, z_enter=Z_ENTER, d_min=D_MIN,
         s_min=S_MIN, s_max=S_MAX, tau_min_days=TAU_MIN_DAYS,
-    )
-    sig_co = generate_cheap_optionality_signals(
-        snap,
-        max_spread=CHEAP_OPT_MAX_SPREAD,
-        target_gap_days=CHEAP_OPT_TARGET_GAP_DAYS,
-        gap_tolerance_days=CHEAP_OPT_GAP_TOLERANCE_DAYS,
-        min_tau_short_days=CHEAP_OPT_MIN_TAU_DAYS,
-        exit_target_spread=CHEAP_OPT_EXIT_TARGET,
-    )
-    if sig_rz.empty and sig_co.empty:
-        return sig_rz
-    if sig_rz.empty:
-        return sig_co.reset_index(drop=True)
-    if sig_co.empty:
-        return sig_rz.reset_index(drop=True)
-    return pd.concat([sig_rz, sig_co], ignore_index=True, sort=False)
+    ).reset_index(drop=True)
 
 
 def build_plans(
@@ -1013,27 +984,6 @@ def evaluate_exits(
             entry_ts = entry_ts.tz_localize("UTC")
         hold_hours = (now - entry_ts).total_seconds() / 3600.0
         row = lookup.get((str(pos.event_id), sd, ld))
-        # Dispatch on strategy. Positions written before this field existed
-        # default to rolling_z via the dataclass default.
-        if pos.strategy == "cheap_opt":
-            # Strategy-specific max-hold (60d default vs rolling_z's 10d).
-            if hold_hours >= CHEAP_OPT_MAX_HOLD_HOURS:
-                out.append((pos, "T"))
-                continue
-            if row is None:
-                continue
-            tau_short = float(row.get("tau_short", 999.0))
-            if tau_short <= CHEAP_OPT_TAU_FORCE_EXIT_DAYS:
-                # Force-close before short leg resolves to avoid redemption mess.
-                out.append((pos, "R"))
-                continue
-            s_now = float(row.get("spread", 0.0))
-            if s_now >= CHEAP_OPT_EXIT_TARGET:
-                # Take profit.
-                out.append((pos, "P"))
-                continue
-            # else: keep holding — optionality not yet realized
-            continue
 
         # Default: rolling_z exit logic (z-revert + max-hold).
         if hold_hours >= max_hold_hours:
