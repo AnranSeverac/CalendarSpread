@@ -1,22 +1,28 @@
-"""Live execution for the rolling-z calendar spread strategy.
+"""Live execution for the differenced-z reversion calendar-spread strategy.
+
+Strategy: fade an abnormally fast 24h move in a calendar spread (z of ΔS over a
+168h window, |z| ≥ 3) on TIGHT (≤1¢) legs as a TAKER; hold a fixed ~24h, close.
 
 Pipeline:
     1. Refresh universe + panel (cached on disk).
-    2. Compute spread panel + rolling z. Take signals at the latest bar.
+    2. Compute spread panel + differenced-z. Take signals at the latest bar.
     3. For each candidate, fetch live order books for both legs.
-    4. For each signal, walk both books in parallel, accumulating shares while
-       the marginal edge per share (mu vs executable spread) clears the cost
-       threshold. Stop at the per-trade notional cap.
-    5. Submit each plan as two MARKET (FOK) BUYs — atomic, no naked-leg risk.
+    4. Walk both books in parallel, accumulating shares while the marginal edge
+       per share (mu vs executable spread) clears EDGE_COST_RATIO_MIN × the
+       round-trip cost. Stop at the per-trade notional cap (or wallet × frac).
+    5. Submit each plan as two MARKET (FAK) BUYs — atomic, no naked-leg risk.
        For steepener: BUY YES_long + BUY NO_short.
        For flattener: BUY NO_long  + BUY YES_short.
+    6. Exit at the fixed 24h hold: SELL both legs (FAK). Entries are AUTONOMOUS
+       (no approval gate); Telegram, if configured, is notifications-only.
 
-Cooldowns persist across restarts at logs/cooldowns.json.
+Cooldowns + open positions persist across restarts under logs/.
 
 Usage:
-    python live_execution.py             # dry-run, single shot
-    python live_execution.py --execute   # send orders
-    python live_execution.py --loop-seconds 600 --execute   # production loop
+    python live_execution.py                                  # dry-run, single shot
+    python live_execution.py --execute                        # send orders
+    python live_execution.py --loop-seconds 600 --execute \\
+        --size-from-wallet --wallet-frac 0.10                 # production loop
 """
 from __future__ import annotations
 
@@ -37,7 +43,8 @@ from curve_pipeline import (
     build_deadline_market_universe, build_history_panel,
 )
 from spread_strategy import (
-    apply_universe_filter, build_spread_panel, compute_rolling_z, generate_signals,
+    apply_universe_filter, build_spread_panel, compute_diff_rolling_z,
+    generate_diff_z_reversion_signals,
 )
 from telegram_bot import (
     TelegramBot, TelegramConfig, plan_id_for, format_fill_message,
@@ -55,16 +62,18 @@ CLOB_BOOK_URL = "https://clob.polymarket.com/book"
 load_dotenv(_ROOT / "config" / ".env", override=True)
 
 # ── Strategy knobs (must match analytics/spread_backtest.py) ─────
-WINDOW_HOURS = 168
-MIN_OBS = 72
-Z_ENTER = 1.75              # symmetric magnitude (≤ −1.75 = steepener, ≥ +1.75 = flattener)
-D_MIN = 0.07
-S_MIN = 0.0
-S_MAX = 1.0
-TAU_MIN_DAYS = 3.0
-EDGE_COST_RATIO_MIN = 2.0
-MAX_LEG_SPREAD = 0.05            # tightened — 5-10¢ bucket is empty in current universe
-MAX_MARKET_SPREAD = 0.05         # universe-build pre-filter; skips wide markets entirely
+# Fade an abnormally fast 24h move in the calendar spread on TIGHT legs, hold ~24h.
+WINDOW_HOURS = 168          # rolling z window for the differenced spread (hours)
+H_HOURS = 24                # measurement = HOLD horizon: ΔS over the last 24h
+MIN_OBS = 72                # min ΔS observations in the window
+Z_ENTER = 3.0               # FADE when |z| ≥ 3 (z ≤ −3 → BUY/steepen, z ≥ +3 → SELL/flatten)
+Z_MAX = 15.0                # drop |z| > 15 (σ-collapse / regime-break guard)
+REVERSION_FRAC = 0.25       # expected reverting fraction of the move (edge estimate for sizing)
+SIGMA_FLOOR = 0.005         # min σ(ΔS); kills degenerate z on stale/flat spreads
+TAU_MIN_DAYS = 3.0          # avoid pairs whose near leg resolves within 3 days
+EDGE_COST_RATIO_MIN = 2.0   # require expected reversion ≥ 2× round-trip cost; book-walk climbs the book to this margin (backtest: +3.6¢/74% hit vs +2.9¢/71% at 1×)
+MAX_LEG_SPREAD = 0.01       # ≤1¢ legs — the edge ONLY survives at this tightness
+MAX_MARKET_SPREAD = 0.02    # universe pre-filter (a touch looser than the 1¢ trade gate, for z continuity)
 
 # ── Sizing ───────────────────────────────────────────────────────
 MAX_POSITION_DOLLARS = 500.0   # notional cap per trade ($)
@@ -75,8 +84,7 @@ SUBMISSION_COOLDOWN_HOURS = 12
 MIN_FREE_BALANCE_DOLLARS = 15.0   # skip entries if free USDC collateral below this
 
 # ── Exit ─────────────────────────────────────────────────────────
-MAX_HOLD_HOURS = 240           # 10 days, matches backtest
-EXIT_Z_THRESHOLD = 0.0         # close when z reverts past this (mean-reverted)
+MAX_HOLD_HOURS = 24            # FIXED hold — close ≈24h after entry (matches the diff-z backtest)
 
 
 @dataclass
@@ -120,19 +128,18 @@ class Plan:
     # Each tuple: (cost_per_spread_share, marginal_depth_shares, notional_$)
     entry_ladder: list = field(default_factory=list)
 
-    # Which strategy generated this plan (currently always "rolling_z").
+    # Which strategy generated this plan (currently always "diff_z_reversion").
     # Used for exit-logic dispatch and Telegram message labelling.
-    strategy: str = "rolling_z"
+    strategy: str = "diff_z_reversion"
 
 
 @dataclass
 class OpenPosition:
     """A position we've opened and need to close.
 
-    Persisted to logs/positions.json. Matches the backtest's exit semantics:
-      - close when z reverts past EXIT_Z_THRESHOLD (z ≥ 0 for BUY, z ≤ 0 for SELL)
-      - force-close at MAX_HOLD_HOURS regardless of z
-      - close by SELLing both legs at top-of-book bid (FOK), mirroring the
+    Persisted to logs/positions.json. Exit semantics (diff-z reversion):
+      - close at the FIXED hold (~MAX_HOLD_HOURS after entry)
+      - close by SELLing both legs at top-of-book bid (FAK), mirroring the
         backtest's round-trip cost model.
     """
     event_id: str
@@ -297,9 +304,9 @@ def _write_closed_pnl(pos, leg_results: list, reason: str) -> None:
 
     realized = exit_proceeds − entry_cost, where:
       • entry_cost   = the position's known entry premium (entry_leg_*_dollars,
-                       the USDC actually spent — FOK fills fully, so accurate)
+                       the USDC actually spent — FAK fills fully, so accurate)
       • exit_proceeds = Σ shares × min_price over the OK exit legs (min_price is
-                       the bid we FOK-sold at; conservative, real fill ≥ that)
+                       the bid we FAK-sold at; conservative, real fill ≥ that)
 
     This is the *only* source the daily PnL should trust — it pairs each exit to
     its own entry instead of trying to reconstruct round-trips from the raw fill
@@ -582,18 +589,18 @@ def _combined_entry_ladder(
 # ── Plan construction ────────────────────────────────────────────
 
 def latest_signals(spread_z: pd.DataFrame) -> pd.DataFrame:
-    """Generate rolling-z signals on the latest panel snapshot.
+    """Generate differenced-z reversion signals on the latest panel snapshot.
 
-    Signals carry a `strategy` column ("rolling_z") for downstream dispatch.
+    Signals carry a `strategy` column ("diff_z_reversion") for downstream dispatch.
     """
     if spread_z.empty:
         return spread_z
     latest_ts = spread_z["timestamp"].max()
     snap = spread_z[spread_z["timestamp"] == latest_ts]
 
-    return generate_signals(
-        snap, z_enter=Z_ENTER, d_min=D_MIN,
-        s_min=S_MIN, s_max=S_MAX, tau_min_days=TAU_MIN_DAYS,
+    return generate_diff_z_reversion_signals(
+        snap, z_enter=Z_ENTER, z_max=Z_MAX, reversion_frac=REVERSION_FRAC,
+        tau_min_days=TAU_MIN_DAYS, sigma_floor=SIGMA_FLOOR,
     ).reset_index(drop=True)
 
 
@@ -809,7 +816,7 @@ def write_plans_jsonl(plans: list[Plan], path: Path) -> None:
             }) + "\n")
 
 
-# ── Submission (market orders, FOK) ──────────────────────────────
+# ── Submission (market orders, FAK) ──────────────────────────────
 
 def _round_tick(price: float, tick: float) -> float:
     """Round price to the market's tick size (0.01 / 0.001 / 0.0001)."""
@@ -954,50 +961,23 @@ def best_bid(book: Optional[dict]) -> tuple[float, float]:
 
 def evaluate_exits(
     positions: list[OpenPosition],
-    spread_z: pd.DataFrame,
+    spread_z: Optional[pd.DataFrame] = None,
     max_hold_hours: int = MAX_HOLD_HOURS,
-    exit_z: float = EXIT_Z_THRESHOLD,
 ) -> list[tuple[OpenPosition, str]]:
-    """Return [(position, reason), ...] for positions whose exit criteria are met.
-
-    reason ∈ {"Z", "T"} matching backtest exit codes.
+    """Close each position at the FIXED hold (~24h after entry) — matches the
+    differenced-z reversion backtest (fixed-h hold; no z-revert early exit).
+    `spread_z` is accepted for call-site compatibility but unused.
     """
-    if not positions or spread_z.empty:
+    if not positions:
         return []
-    latest_ts = spread_z["timestamp"].max()
-    snap = spread_z[spread_z["timestamp"] == latest_ts]
-    # Key the latest-bar lookup on the generic leg identity (ladder_label string),
-    # which matches how positions store short_dd/long_dd. Works for both calendar
-    # date-strings and strike threshold-labels — no date parsing (which would
-    # crash on "$2.8T").
-    lookup = {
-        (str(r["event_id"]), str(r["short_dd"]), str(r["long_dd"])): r
-        for _, r in snap.iterrows()
-    }
     now = pd.Timestamp.now(tz="UTC")
     out = []
     for pos in positions:
-        sd = str(pos.short_dd)
-        ld = str(pos.long_dd)
         entry_ts = pd.Timestamp(pos.entry_ts)
         if entry_ts.tzinfo is None:
             entry_ts = entry_ts.tz_localize("UTC")
-        hold_hours = (now - entry_ts).total_seconds() / 3600.0
-        row = lookup.get((str(pos.event_id), sd, ld))
-
-        # Default: rolling_z exit logic (z-revert + max-hold).
-        if hold_hours >= max_hold_hours:
+        if (now - entry_ts).total_seconds() / 3600.0 >= max_hold_hours:
             out.append((pos, "T"))
-            continue
-        if row is None:
-            continue
-        z = row.get("z")
-        if z is None or pd.isna(z):
-            continue
-        if pos.direction == "BUY" and z >= exit_z:
-            out.append((pos, "Z"))
-        elif pos.direction == "SELL" and z <= -exit_z:
-            out.append((pos, "Z"))
     return out
 
 
@@ -1043,7 +1023,7 @@ def print_exits(exits: list[ExitOrder]) -> None:
 
 
 def submit_exits(exits: list[ExitOrder], client) -> tuple[list[dict], set[tuple]]:
-    """Submit SELL FOK on both legs of each open position.
+    """Submit SELL FAK on both legs of each open position.
 
     Returns (results_log, closed_keys). closed_keys identifies positions whose
     BOTH legs reported OK; caller drops these from `positions`.
@@ -1114,8 +1094,8 @@ def _filter_by_cooldown(plans: list[Plan], submitted: dict, now_ts: pd.Timestamp
 def run_once(args, client=None, state: Optional[dict] = None) -> int:
     state = {} if state is None else state
     t0 = time.time()
-    # Calendar deadline markets only. Strike ladders were removed — the live
-    # book runs just the calendar curve strategy (rolling_z) + cheap-optionality.
+    # Calendar deadline markets only — the live book runs just the
+    # differenced-z reversion strategy on tight (≤1¢) calendar legs.
     universe_full = build_deadline_market_universe(
         max_events=1200, min_distinct_dates=2, include_closed=True,
     )
@@ -1133,7 +1113,7 @@ def run_once(args, client=None, state: Optional[dict] = None) -> int:
     if state.get("panel_key") != panel_key:
         t1 = time.time()
         spread_panel = build_spread_panel(panel)
-        spread_z = compute_rolling_z(spread_panel, window_hours=WINDOW_HOURS, min_obs=MIN_OBS)
+        spread_z = compute_diff_rolling_z(spread_panel, h_bars=H_HOURS, window_bars=WINDOW_HOURS, min_obs=MIN_OBS)
         state["panel_key"] = panel_key
         state["spread_z"] = spread_z
         _log(f"Spread panel + rolling z rebuilt ({time.time()-t1:.1f}s)")
@@ -1142,16 +1122,12 @@ def run_once(args, client=None, state: Optional[dict] = None) -> int:
         _log("Spread panel + rolling z reused from cache")
 
     _log(f"Latest bar: {spread_z['timestamp'].max()}  "
-         f"(rolling-z window = last {WINDOW_HOURS}h)")
+         f"(diff-z: ΔS over {H_HOURS}h, window {WINDOW_HOURS}h, fade |z|≥{Z_ENTER})")
 
     # ── Open positions: evaluate exits ──────────────────────────
     positions: list[OpenPosition] = state.setdefault("positions", _load_positions())
-    exits_due = evaluate_exits(positions, spread_z,
-                                max_hold_hours=MAX_HOLD_HOURS,
-                                exit_z=EXIT_Z_THRESHOLD)
-    _log(f"Open positions: {len(positions)}.  Exits due: {len(exits_due)} "
-         f"(Z={sum(1 for _,r in exits_due if r=='Z')}, "
-         f"T={sum(1 for _,r in exits_due if r=='T')}).")
+    exits_due = evaluate_exits(positions, spread_z, max_hold_hours=MAX_HOLD_HOURS)
+    _log(f"Open positions: {len(positions)}.  Exits due (24h hold): {len(exits_due)}.")
 
     # ── Entry signals ───────────────────────────────────────────
     sigs = latest_signals(spread_z)
@@ -1197,9 +1173,23 @@ def run_once(args, client=None, state: Optional[dict] = None) -> int:
     # ── Build entry + exit orders (re-using fetched books) ─────
     plans: list[Plan] = []
     if not sigs.empty:
+        # Per-trade notional cap. With --size-from-wallet, this is the live free
+        # USDC (× wallet_frac), re-fetched each cycle — so aggregate spend can
+        # never exceed the wallet, while the 2× edge book-walk + book depth do
+        # the real per-trade sizing under this ceiling.
+        max_notional = args.max_notional
+        if getattr(args, "size_from_wallet", False) and client is not None:
+            from telegram_bot import fetch_wallet_balance
+            bal = fetch_wallet_balance(client)
+            if bal is not None and bal > 0:
+                max_notional = bal * getattr(args, "wallet_frac", 1.0)
+                _log(f"Sizing from wallet: free ${bal:,.2f} × {getattr(args,'wallet_frac',1.0):g} "
+                     f"→ ${max_notional:,.2f}/trade ceiling")
+            else:
+                _log(f"⚠ wallet balance unavailable — falling back to --max-notional ${max_notional:,.2f}")
         plans = build_plans(
             sigs, universe,
-            max_position_dollars=args.max_notional,
+            max_position_dollars=max_notional,
             edge_cost_ratio_min=args.ratio,
             max_leg_spread=MAX_LEG_SPREAD,
             max_shares=args.max_shares,
@@ -1269,20 +1259,18 @@ def run_once(args, client=None, state: Optional[dict] = None) -> int:
     elif tg == "disabled":
         tg = None
 
-    # ── SAFETY GATE ─────────────────────────────────────────────
-    # If Telegram is configured but the bot object is unavailable for any reason,
-    # refuse to submit entries autonomously. Exits (closing positions) are still
-    # permitted — those are de-risking actions.
-    if plans and tg is None and token_set:
-        _log("⛔ SAFETY GATE: TELEGRAM_BOT_TOKEN configured but bot unavailable.")
-        _log(f"   Dropping {len(plans)} entry plan(s) — will not submit without approval.")
-        plans = []
+    # Telegram (if configured) is used for NOTIFICATIONS ONLY — the per-plan
+    # approval/execution gate has been REMOVED for fully-autonomous execution.
+    # Automated risk controls remain in force: the edge≥2×cost book-walk (sizes
+    # each trade to real book depth), ≤1¢ leg-width gate, ≥50%-of-level cap,
+    # τ≥3d resolution guard, cooldowns, held-position filter, per-trade notional
+    # cap (--max-notional), and the underfunded balance guard below.
 
     all_results = []
 
     # Submit EXITS first — frees up capital, reduces position before adding more.
     if exits:
-        _log("\nSubmitting EXIT orders (market FOK SELL)...")
+        _log("\nSubmitting EXIT orders (market FAK SELL)...")
         exit_results, closed_keys = submit_exits(exits, client)
         all_results.extend(exit_results)
         # Write an accurate per-round-trip realized-PnL record for each position
@@ -1309,57 +1297,24 @@ def run_once(args, client=None, state: Optional[dict] = None) -> int:
             state["positions"] = positions
             _save_positions(positions)
 
-    # Submit ENTRIES — with Telegram approval per plan, sized via user tap.
-    if plans and tg:
-        # Fetch wallet balance once per cycle so size buttons are based on
-        # the freshest bankroll figure.
+    # Submit ENTRIES — AUTONOMOUS (no per-plan approval). Plans are already
+    # sized by the edge≥2×cost book-walk; only the automated underfunded guard
+    # can drop them this cycle.
+    if plans:
         from telegram_bot import fetch_wallet_balance
         bankroll = fetch_wallet_balance(client)
         if bankroll is not None:
-            _log(f"[telegram] wallet balance for sizing: ${bankroll:,.2f} USDC")
+            _log(f"Wallet balance: ${bankroll:,.2f} USDC")
+            if bankroll < MIN_FREE_BALANCE_DOLLARS:
+                _log(f"⛔ Underfunded: free balance ${bankroll:.2f} < "
+                     f"${MIN_FREE_BALANCE_DOLLARS:.0f} floor — skipping {len(plans)} "
+                     f"entry plan(s) this cycle (exits still allowed).")
+                plans = []
         else:
-            _log(f"[telegram] wallet balance unknown — falling back to dollar cap only")
-
-        # ── UNDERFUNDED GUARD ───────────────────────────────────────
-        # If free collateral can't fund even a floor-size trade, skip entries
-        # entirely rather than spamming unfundable approval requests. Resumes
-        # automatically once the wallet is topped up.
-        if bankroll is not None and bankroll < MIN_FREE_BALANCE_DOLLARS:
-            _log(f"⛔ Underfunded: free balance ${bankroll:.2f} < "
-                 f"${MIN_FREE_BALANCE_DOLLARS:.0f} floor — skipping {len(plans)} "
-                 f"entry plan(s) this cycle (exits still allowed).")
-            plans = []
-
-        approved_plans = []
-        for p in plans:
-            pid = plan_id_for(p)
-            msg_id, recommended = tg.send_plan(
-                p, pid,
-                bankroll=bankroll,
-                max_position_dollars=args.max_notional,
-            )
-            if msg_id is None:
-                _log(f"[telegram] failed to send plan, skipping {p.event_question[:40]}")
-                continue
-            _log(f"[telegram] awaiting approval for {p.event_question[:40]} "
-                 f"(plan_id={pid}, recommended={recommended})…")
-            decision, chosen_shares = tg.wait_for_response(pid, msg_id)
-            _log(f"[telegram] decision: {decision} shares={chosen_shares}")
-            if decision == "approve" and chosen_shares >= 1:
-                # Scale the plan to the user's chosen size. The Plan was built
-                # at p.shares (the executable max for the edge-positive book
-                # walk); chosen_shares ≤ p.shares by button construction.
-                if chosen_shares < p.shares:
-                    ratio = chosen_shares / p.shares
-                    p.leg_a_dollars = round(p.leg_a_dollars * ratio, 4)
-                    p.leg_b_dollars = round(p.leg_b_dollars * ratio, 4)
-                    p.notional = round(p.notional * ratio, 4)
-                    p.shares = chosen_shares
-                approved_plans.append(p)
-        plans = approved_plans
+            _log("Wallet balance unknown — proceeding on the --max-notional cap only.")
 
     if plans:
-        _log(f"\nSubmitting ENTRY orders (market FOK BUY)... ({len(plans)} plan(s))")
+        _log(f"\nSubmitting ENTRY orders (market FAK BUY)... ({len(plans)} plan(s))")
         entry_results = submit_plans(plans, client)
         all_results.extend(entry_results)
         # Lean book snapshot for each ATTEMPTED trade (decision-moment book for
@@ -1375,7 +1330,7 @@ def run_once(args, client=None, state: Optional[dict] = None) -> int:
                 r_b = entry_results[2 * i + 1] if 2 * i + 1 < len(entry_results) else {}
                 tg.send_text(format_fill_message(p, [r_a, r_b]))
         # Record new positions for any plan whose BOTH legs reported OK.
-        # Only set cooldown on actually-submitted trades — failed FOK shouldn't lock the pair.
+        # Only set cooldown on actually-submitted trades — failed FAK shouldn't lock the pair.
         # submit_plans logs results in pairs (2 rows per plan, leg A then leg B in order).
         expiry = now_ts + pd.Timedelta(hours=SUBMISSION_COOLDOWN_HOURS)
         for i, p in enumerate(plans):
@@ -1421,7 +1376,7 @@ def run_once(args, client=None, state: Optional[dict] = None) -> int:
 def main() -> None:
     parser = argparse.ArgumentParser(description="Live execution for spread strategy")
     parser.add_argument("--execute", action="store_true",
-                        help="Submit MARKET (FOK) orders. Without this flag, dry-run only.")
+                        help="Submit MARKET (FAK) orders. Without this flag, dry-run only.")
     parser.add_argument("--max-notional", type=float, default=MAX_POSITION_DOLLARS,
                         help=f"USD notional cap per trade (default {MAX_POSITION_DOLLARS}).")
     parser.add_argument("--max-shares", type=int, default=MAX_SHARES_PER_TRADE,
@@ -1431,6 +1386,14 @@ def main() -> None:
     parser.add_argument("--loop-seconds", type=int, default=0,
                         help="If > 0, run continuously, sleeping this many seconds "
                              "between iterations. Default 0 = single-shot.")
+    parser.add_argument("--size-from-wallet", action="store_true",
+                        help="Per-trade notional cap = live free USDC × --wallet-frac "
+                             "(overrides --max-notional). The 2× edge book-walk and book "
+                             "depth do the real sizing under that ceiling. Re-fetched each "
+                             "cycle, so aggregate spend never exceeds the wallet.")
+    parser.add_argument("--wallet-frac", type=float, default=1.0,
+                        help="Fraction of free wallet balance to cap each trade at "
+                             "(default 1.0 = full wallet).")
     args = parser.parse_args()
 
     mode = "DRY-RUN" if not args.execute else "LIVE — orders will be submitted"
@@ -1438,7 +1401,10 @@ def main() -> None:
     _log(f"LIVE EXECUTION  ({mode})")
     if args.loop_seconds > 0:
         _log(f"Looping every {args.loop_seconds}s. Ctrl-C to stop.")
-    _log(f"Per-trade notional cap: ${args.max_notional:.0f}  |  edge/cost ≥ {args.ratio}")
+    if args.size_from_wallet:
+        _log(f"Per-trade cap: WALLET BALANCE × {args.wallet_frac:g}  |  edge/cost ≥ {args.ratio}")
+    else:
+        _log(f"Per-trade notional cap: ${args.max_notional:.0f}  |  edge/cost ≥ {args.ratio}")
     _log("=" * 70)
 
     client = get_clob_client() if args.execute else None

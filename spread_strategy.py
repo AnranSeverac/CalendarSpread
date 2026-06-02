@@ -183,6 +183,84 @@ def compute_rolling_z(
     return df
 
 
+def compute_diff_rolling_z(
+    spread_panel: pd.DataFrame,
+    h_bars: int = 24,
+    window_bars: int = 168,
+    min_obs: int = 72,
+) -> pd.DataFrame:
+    """Per-pair z-score of the DIFFERENCED spread (the h-bar change), shift-then-roll
+    so z_t excludes the current change (no look-ahead). On a 1h-bar panel, h_bars
+    and window_bars are hours.
+
+    Adds: dS (= S_t − S_{t−h}), sigma (rolling std of dS), z = (dS − μ_dS)/σ_dS.
+    The reversion strategy fades a large |z| (an abnormally fast recent move).
+    """
+    if spread_panel.empty:
+        return spread_panel.assign(dS=np.nan, sigma=np.nan, z=np.nan)
+    df = spread_panel.copy()
+    if "ladder_type" not in df.columns:
+        df["ladder_type"] = "calendar"
+    keys = [df["event_id"], df["ladder_type"], df["short_dd"], df["long_dd"]]
+    df["dS"] = df.groupby(keys, sort=False)["spread"].transform(
+        lambda s: s - s.shift(h_bars))
+    shifted = df.groupby(keys, sort=False)["dS"].shift(1)          # exclude dS_t
+    rolled = shifted.groupby(keys, sort=False)
+    mu_dS = rolled.transform(lambda s: s.rolling(window_bars, min_periods=min_obs).mean())
+    df["sigma"] = rolled.transform(
+        lambda s: s.rolling(window_bars, min_periods=min_obs).std(ddof=1))
+    df["z"] = (df["dS"] - mu_dS) / df["sigma"]
+    return df
+
+
+def generate_diff_z_reversion_signals(
+    spread_z_diff: pd.DataFrame,
+    z_enter: float = 3.0,
+    z_max: float = 15.0,
+    reversion_frac: float = 0.25,
+    tau_min_days: float = 3.0,
+    sigma_floor: float = 0.005,
+) -> pd.DataFrame:
+    """FADE an abnormally fast recent spread move (differenced-z reversion).
+
+        z ≤ −z_enter : spread dropped abnormally → BUY  (steepener; expect bounce up)
+        z ≥ +z_enter : spread surged  abnormally → SELL (flattener; expect revert down)
+
+    Guards: σ(dS) ≥ sigma_floor (kills σ-collapse z's), |z| ≤ z_max (drops regime
+    breaks), spread ≥ 0 (drops inverted/stale mids), tau_short ≥ tau_min_days.
+
+    `mu` = expected reverting EXIT spread = S − reversion_frac·dS, so the downstream
+    edge/cost gate sizes on the expected reverting move (edge ≈ reversion_frac·|dS|).
+    Output schema matches generate_signals (adds direction, mu, strategy).
+    """
+    base_cols = ["direction", "mu", "strategy"]
+
+    def _empty():
+        out = spread_z_diff.iloc[:0].copy()
+        for c, dt in zip(base_cols, [str, float, str]):
+            out[c] = pd.Series(dtype=dt)
+        return out
+
+    if spread_z_diff.empty:
+        return _empty()
+    df = spread_z_diff.dropna(subset=["z", "dS", "sigma"])
+    keep = (
+        (df["sigma"] >= sigma_floor)
+        & (df["z"].abs() <= z_max)
+        & (df["spread"] >= 0.0)
+        & (df["tau_short"] >= tau_min_days)
+    )
+    df = df[keep]
+    buy = df[df["z"] <= -z_enter].copy(); buy["direction"] = "BUY"
+    sell = df[df["z"] >= z_enter].copy(); sell["direction"] = "SELL"
+    res = pd.concat([buy, sell])
+    if res.empty:
+        return _empty()
+    res["mu"] = res["spread"] - reversion_frac * res["dS"]
+    res["strategy"] = "diff_z_reversion"
+    return res.sort_values("timestamp").reset_index(drop=True)
+
+
 # ── Signals ──────────────────────────────────────────────────────
 
 def generate_signals(

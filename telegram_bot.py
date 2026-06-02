@@ -339,8 +339,8 @@ def format_plan_message(p, bankroll: Optional[float], recommended: int) -> str:
     rec_gain   = gain_per_sh * recommended          # max gain at recommended size
     rec_outlay = cost_per * recommended             # cash outlay (collateral) at rec size
 
-    # Signal-summary header (rolling_z mean-reversion).
-    strategy_tag = "📈 <b>Strategy:</b> rolling_z (mean-reversion)"
+    # Signal-summary header (differenced-z reversion).
+    strategy_tag = "📈 <b>Strategy:</b> diff-z reversion (fade fast 24h move)"
     signal_line = (
         f"z = <code>{p.z:.2f}</code>   "
         f"μ = <code>{p.mu:.3f}</code>   "
