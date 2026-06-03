@@ -163,8 +163,11 @@ class OpenPosition:
     # Strategy that opened this position; routes exit logic. Backward-compatible
     # default treats positions from before this field existed as rolling_z.
     strategy: str = "rolling_z"
-    # Spread value at entry (retained in saved position records).
+    # Spread value at entry (retained in saved position records). Under P2
+    # accumulation this is the share-weighted blended entry spread.
     entry_spread: float = 0.0
+    # P2: number of accumulation clips that built this position (1 = single shot).
+    n_adds: int = 1
 
 
 @dataclass
@@ -999,6 +1002,48 @@ def _save_positions(positions: list[OpenPosition]) -> None:
         json.dump([asdict(p) for p in positions], f, indent=2)
 
 
+def _position_key(event_id, short_dd, long_dd, direction) -> tuple:
+    return (str(event_id), str(short_dd), str(long_dd), str(direction))
+
+
+def _upsert_position(positions: list[OpenPosition], p, entry_ts_iso: str,
+                     accumulate: bool) -> str:
+    """Record a filled entry plan. Returns "add" or "new"; mutates `positions`.
+
+    P2 accumulation: if `accumulate` and an open position on the same
+    (event, short, long, direction) already exists, UPSIZE it in place — sum
+    shares + leg cost, share-weight the entry spread (so worst-case-loss stays
+    accurate), bump n_adds, and KEEP the original entry_ts so the whole position
+    still exits ~MAX_HOLD_HOURS after the FIRST clip (later clips ride the same
+    deadline — a deliberate, accepted consequence). Otherwise append a new one.
+    """
+    key = _position_key(p.event_id, p.short_dd, p.long_dd, p.direction)
+    if accumulate:
+        for pos in positions:
+            if _position_key(pos.event_id, pos.short_dd, pos.long_dd, pos.direction) == key:
+                tot = pos.shares + p.shares
+                if tot > 0:
+                    pos.entry_spread = (pos.entry_spread * pos.shares
+                                        + p.spread_at_signal * p.shares) / tot
+                pos.shares = tot
+                pos.entry_leg_a_dollars = round(pos.entry_leg_a_dollars + p.leg_a_dollars, 4)
+                pos.entry_leg_b_dollars = round(pos.entry_leg_b_dollars + p.leg_b_dollars, 4)
+                pos.n_adds += 1
+                return "add"
+    positions.append(OpenPosition(
+        event_id=p.event_id, event_question=p.event_question, direction=p.direction,
+        short_dd=str(p.short_dd), long_dd=str(p.long_dd),
+        leg_a_token=p.leg_a_token, leg_b_token=p.leg_b_token,
+        leg_a_label=p.leg_a_label, leg_b_label=p.leg_b_label,
+        leg_a_tick=p.leg_a_tick, leg_b_tick=p.leg_b_tick,
+        leg_a_neg_risk=p.leg_a_neg_risk, leg_b_neg_risk=p.leg_b_neg_risk,
+        shares=p.shares, entry_ts=entry_ts_iso, entry_z=p.z,
+        entry_leg_a_dollars=p.leg_a_dollars, entry_leg_b_dollars=p.leg_b_dollars,
+        strategy=p.strategy, entry_spread=p.spread_at_signal, n_adds=1,
+    ))
+    return "new"
+
+
 def best_bid(book: Optional[dict]) -> tuple[float, float]:
     if not book:
         return 0.0, 0.0
@@ -1260,26 +1305,43 @@ def run_once(args, client=None, state: Optional[dict] = None) -> int:
 
     submitted = state.setdefault("submitted", _load_cooldowns())
     now_ts = pd.Timestamp.now(tz="UTC")
-    plans, blocked = _filter_by_cooldown(plans, submitted, now_ts)
-    if blocked:
-        _log(f"  {len(blocked)} entry plan(s) skipped — within "
-             f"{SUBMISSION_COOLDOWN_HOURS}h submission cooldown")
+    accumulate = bool(getattr(args, "accumulate", False))
+    # P2: in accumulation mode the same pair re-fires every cycle BY DESIGN to
+    # add while the edge persists, so the submission cooldown is bypassed — the
+    # global worst-case-loss budget + the 2×-cost book-walk are the controls.
+    if not accumulate:
+        plans, blocked = _filter_by_cooldown(plans, submitted, now_ts)
+        if blocked:
+            _log(f"  {len(blocked)} entry plan(s) skipped — within "
+                 f"{SUBMISSION_COOLDOWN_HOURS}h submission cooldown")
 
     # Hard filter: never propose a trade we already hold (regardless of cooldown).
     # Matches on (event_id, short_dd, long_dd, direction). Without this, the
     # cooldown expiring would let us double-up on still-open positions.
     if plans and positions:
         held_keys = {
-            (str(p.event_id), str(p.short_dd), str(p.long_dd), str(p.direction))
+            _position_key(p.event_id, p.short_dd, p.long_dd, p.direction)
             for p in positions
         }
-        kept, dropped = [], []
-        for p in plans:
-            key = (str(p.event_id), str(p.short_dd), str(p.long_dd), str(p.direction))
-            (dropped if key in held_keys else kept).append(p)
-        if dropped:
-            _log(f"  {len(dropped)} entry plan(s) skipped — already in open positions")
-        plans = kept
+        if not accumulate:
+            # One-shot: never propose a trade we already hold.
+            kept, dropped = [], []
+            for p in plans:
+                key = _position_key(p.event_id, p.short_dd, p.long_dd, p.direction)
+                (dropped if key in held_keys else kept).append(p)
+            if dropped:
+                _log(f"  {len(dropped)} entry plan(s) skipped — already in open positions")
+            plans = kept
+        else:
+            # P2: KEEP plans that match open positions — they are ADD clips. The
+            # global wcl budget (open tail already netted out) + the 2×-cost walk
+            # size them; a budget-exhausted pair simply yields no shares.
+            n_add = sum(
+                1 for p in plans
+                if _position_key(p.event_id, p.short_dd, p.long_dd, p.direction) in held_keys
+            )
+            if n_add:
+                _log(f"  accumulation: {n_add} of {len(plans)} plan(s) ADD to open positions")
 
     exits = build_exit_orders(exits_due, books)
     print_exits(exits)
@@ -1397,29 +1459,11 @@ def run_once(args, client=None, state: Optional[dict] = None) -> int:
             r_a = entry_results[2 * i] if 2 * i < len(entry_results) else {"status": "MISSING"}
             r_b = entry_results[2 * i + 1] if 2 * i + 1 < len(entry_results) else {"status": "MISSING"}
             if r_a.get("status") == "OK" and r_b.get("status") == "OK":
-                positions.append(OpenPosition(
-                    event_id=p.event_id,
-                    event_question=p.event_question,
-                    direction=p.direction,
-                    short_dd=str(p.short_dd),
-                    long_dd=str(p.long_dd),
-                    leg_a_token=p.leg_a_token,
-                    leg_b_token=p.leg_b_token,
-                    leg_a_label=p.leg_a_label,
-                    leg_b_label=p.leg_b_label,
-                    leg_a_tick=p.leg_a_tick,
-                    leg_b_tick=p.leg_b_tick,
-                    leg_a_neg_risk=p.leg_a_neg_risk,
-                    leg_b_neg_risk=p.leg_b_neg_risk,
-                    shares=p.shares,
-                    entry_ts=now_ts.isoformat(),
-                    entry_z=p.z,
-                    entry_leg_a_dollars=p.leg_a_dollars,
-                    entry_leg_b_dollars=p.leg_b_dollars,
-                    strategy=p.strategy,
-                    entry_spread=p.spread_at_signal,
-                ))
-                submitted[(p.event_id, str(p.short_dd), str(p.long_dd), p.direction)] = expiry
+                kind = _upsert_position(positions, p, now_ts.isoformat(), accumulate)
+                submitted[_position_key(p.event_id, p.short_dd, p.long_dd, p.direction)] = expiry
+                if accumulate:
+                    _log(f"  position {kind.upper()}: {p.direction} {p.short_dd}/{p.long_dd} "
+                         f"+{p.shares} sh (entry ${p.leg_a_dollars + p.leg_b_dollars:.2f})")
         state["positions"] = positions
         _save_positions(positions)
         _save_cooldowns(submitted)
@@ -1454,6 +1498,11 @@ def main() -> None:
     parser.add_argument("--wallet-frac", type=float, default=1.0,
                         help="Fraction of free wallet balance to cap each trade at "
                              "(default 1.0 = full wallet).")
+    parser.add_argument("--accumulate", action="store_true",
+                        help="P2: keep adding to an open position each cycle while the "
+                             "signal persists and the live book clears the 2× edge gate, "
+                             "bounded by the global worst-case-loss budget. Bypasses the "
+                             "per-pair cooldown + held-position filter. Off = one-shot.")
     args = parser.parse_args()
 
     mode = "DRY-RUN" if not args.execute else "LIVE — orders will be submitted"
@@ -1465,6 +1514,7 @@ def main() -> None:
         _log(f"Per-trade cap: WALLET BALANCE × {args.wallet_frac:g}  |  edge/cost ≥ {args.ratio}")
     else:
         _log(f"Per-trade notional cap: ${args.max_notional:.0f}  |  edge/cost ≥ {args.ratio}")
+    _log(f"Accumulation (P2): {'ON — adds while edge persists, capped by wcl budget' if args.accumulate else 'OFF (one-shot per pair)'}")
     _log("=" * 70)
 
     client = get_clob_client() if args.execute else None
