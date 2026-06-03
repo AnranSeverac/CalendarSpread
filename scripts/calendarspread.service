@@ -1,19 +1,27 @@
 [Unit]
-Description=CalendarSpread rolling-z live trading loop
+Description=CalendarSpread diff-z reversion live trading loop (autonomous)
 After=network-online.target
 Wants=network-online.target
+# Crash-loop guard MUST live in [Unit] — in [Service] systemd ignores it
+# (that's the "Unknown key name 'StartLimitIntervalSec'" warning in journald).
+StartLimitIntervalSec=600
+StartLimitBurst=5
 
 [Service]
 Type=simple
-User=ubuntu
-WorkingDirectory=/home/ubuntu/CalendarSpread
-ExecStart=/home/ubuntu/CalendarSpread/.venv/bin/python3 live_execution.py --execute --loop-seconds 600 --max-shares 50 --max-notional 50
+User=ec2-user
+WorkingDirectory=/home/ec2-user/CalendarSpread
+# Create the log dir before any file/journal handle opens (fixes the past
+# 209/STDOUT crash when logs/ was missing on a fresh boot).
+ExecStartPre=/usr/bin/mkdir -p /home/ec2-user/CalendarSpread/logs
+# Autonomous diff-z reversion. --size-from-wallet sizes each trade off the live
+# free USDC × --wallet-frac (Kelly), which ALSO activates the P1 worst-case-loss
+# budget. Start small at 0.10; ratchet up as closed_pnl confirms.
+ExecStart=/home/ec2-user/CalendarSpread/.venv/bin/python3 live_execution.py --execute --loop-seconds 600 --size-from-wallet --wallet-frac 0.10
 
-# Restart on crash, but not too aggressively
-Restart=on-failure
+# A trading loop should never stay down — restart on ANY exit.
+Restart=always
 RestartSec=30
-StartLimitIntervalSec=600
-StartLimitBurst=5
 
 # Output to journald (view with `journalctl -u calendarspread -f`)
 StandardOutput=journal

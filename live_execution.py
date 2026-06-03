@@ -357,6 +357,33 @@ def fetch_books_parallel(token_ids: list[str], max_workers: int = 16) -> dict[st
     return out
 
 
+# ── Worst-case-loss (hold-to-resolution) — direction-aware tail ──
+
+def worst_case_loss_per_share(direction: str, spread_s: float) -> float:
+    """Hold-to-resolution worst-case loss per spread-share ($), direction-aware.
+
+    A calendar spread is only a PARTIAL hedge, so the tail is asymmetric:
+      • BUY/steepener  (YES_long + NO_short): the legs can never both lose
+        ("event by short_dd" ⇒ "by long_dd"), so worst case is S resolving to 0
+        → loses S per share.
+      • SELL/flattener (NO_long + YES_short): if the event lands in (short, long]
+        BOTH legs go to zero → loses the full (1 − S) per share.
+    Mirror of wide_maker.SpreadPosition.worst_case_loss. For one loss budget this
+    auto-throttles flatteners to far fewer shares than steepeners.
+    """
+    s = min(max(float(spread_s), 0.0), 1.0)
+    return s if direction == "BUY" else (1.0 - s)
+
+
+def _open_positions_wcl(positions) -> float:
+    """Σ hold-to-resolution worst-case loss ($) across open positions — the
+    aggregate tail the global budget must keep ≤ wallet × wallet_frac."""
+    return float(sum(
+        p.shares * worst_case_loss_per_share(p.direction, getattr(p, "entry_spread", 0.0))
+        for p in positions
+    ))
+
+
 # ── Book-walking sizer ───────────────────────────────────────────
 
 def _walk_books(
@@ -368,6 +395,8 @@ def _walk_books(
     max_position_dollars: float,
     max_book_take_frac: float,
     max_shares: int = MAX_SHARES_PER_TRADE,
+    wcl_budget: float = float("inf"),
+    spread_s: float = 0.0,
     fee_long: tuple[float, float] = (0.0, 0.0),
     fee_short: tuple[float, float] = (0.0, 0.0),
 ) -> Optional[dict]:
@@ -446,6 +475,13 @@ def _walk_books(
     worst_p_short = p_short
     weighted_edge_num = 0.0  # sum(marginal_edge × shares)
 
+    # Direction-aware worst-case-loss ceiling: translate the remaining $ loss
+    # budget into a share cap at this spread level. Flatteners (wcl/share = 1−S)
+    # get far fewer shares than steepeners (wcl/share = S) for the same budget.
+    wcl_ps = worst_case_loss_per_share(direction, spread_s)
+    max_shares_wcl = (wcl_budget / wcl_ps) if wcl_ps > 1e-9 else float("inf")
+    eff_max_shares = min(float(max_shares), max_shares_wcl)
+
     while True:
         if direction == "BUY":
             marginal_exec_spread = p_long - p_short
@@ -473,7 +509,7 @@ def _walk_books(
 
         # How many shares can we still afford under the notional + share caps?
         remaining_dollars = max_position_dollars - (leg_a_dollars + leg_b_dollars)
-        remaining_shares = max_shares - cum_shares
+        remaining_shares = eff_max_shares - cum_shares
         if remaining_dollars <= 0 or remaining_shares <= 0:
             break
         afford = remaining_dollars / marginal_pair_cost
@@ -526,6 +562,8 @@ def _walk_books(
         "top_edge": round(top_edge, 4),
         "top_cost": round(full_cost, 4),
         "avg_edge_per_share": round(avg_edge, 4),
+        "wcl_per_share": round(wcl_ps, 4),
+        "wcl_consumed": round(shares_int * wcl_ps, 4),
     }
 
 
@@ -611,6 +649,7 @@ def build_plans(
     edge_cost_ratio_min: float = EDGE_COST_RATIO_MIN,
     max_leg_spread: float = MAX_LEG_SPREAD,
     max_shares: int = MAX_SHARES_PER_TRADE,
+    wcl_budget: float = float("inf"),
     books: Optional[dict] = None,
     client=None,
 ) -> list[Plan]:
@@ -660,6 +699,11 @@ def build_plans(
         t0 = time.time()
         books = fetch_books_parallel(list(needed))
         _log(f"  fetched in {time.time() - t0:.1f}s")
+
+    # Global worst-case-loss budget, shared first-come across this cycle's plans:
+    # each plan consumes from the pool so concurrent entries can't blow past the
+    # aggregate tail ceiling (wallet × wallet_frac, net of open positions).
+    wcl_remaining = wcl_budget
 
     plans: list[Plan] = []
     for s in signals.itertuples():
@@ -721,14 +765,19 @@ def build_plans(
             max_position_dollars=max_position_dollars,
             max_book_take_frac=MAX_BOOK_TAKE_FRAC,
             max_shares=max_shares,
+            wcl_budget=wcl_remaining,
+            spread_s=float(s.spread),
             fee_long=fee_long,
             fee_short=fee_short,
         )
         if walk is None:
             _log(f"  REJECT [{evq}] {direction} {sd}/{ld}: no shares cleared "
-                 f"edge ≥ {edge_cost_ratio_min}× cost (fees: "
+                 f"edge ≥ {edge_cost_ratio_min}× cost / wcl budget "
+                 f"(${wcl_remaining:,.2f} left; fees: "
                  f"long={fee_long[0]*100:.2f}%, short={fee_short[0]*100:.2f}%)")
             continue
+        # Consume this plan's worst-case loss from the shared pool.
+        wcl_remaining = max(0.0, wcl_remaining - float(walk.get("wcl_consumed", 0.0)))
 
         ladder = _combined_entry_ladder(direction, book_long, book_short,
                                          max_rungs=5,
@@ -1178,13 +1227,23 @@ def run_once(args, client=None, state: Optional[dict] = None) -> int:
         # never exceed the wallet, while the 2× edge book-walk + book depth do
         # the real per-trade sizing under this ceiling.
         max_notional = args.max_notional
+        # Global worst-case-loss budget (hold-to-resolution tail). The aggregate
+        # tail across ALL open positions + this cycle's new entries must stay
+        # ≤ wallet × wallet_frac (the Kelly fraction). Shared first-come pool.
+        wcl_budget = float("inf")
         if getattr(args, "size_from_wallet", False) and client is not None:
             from telegram_bot import fetch_wallet_balance
             bal = fetch_wallet_balance(client)
             if bal is not None and bal > 0:
-                max_notional = bal * getattr(args, "wallet_frac", 1.0)
-                _log(f"Sizing from wallet: free ${bal:,.2f} × {getattr(args,'wallet_frac',1.0):g} "
+                frac = getattr(args, "wallet_frac", 1.0)
+                max_notional = bal * frac
+                b_global = bal * frac
+                open_wcl = _open_positions_wcl(positions)
+                wcl_budget = max(0.0, b_global - open_wcl)
+                _log(f"Sizing from wallet: free ${bal:,.2f} × {frac:g} "
                      f"→ ${max_notional:,.2f}/trade ceiling")
+                _log(f"WCL budget (hold-to-resolution tail): ${b_global:,.2f} global "
+                     f"− ${open_wcl:,.2f} open = ${wcl_budget:,.2f} headroom (shared pool)")
             else:
                 _log(f"⚠ wallet balance unavailable — falling back to --max-notional ${max_notional:,.2f}")
         plans = build_plans(
@@ -1193,6 +1252,7 @@ def run_once(args, client=None, state: Optional[dict] = None) -> int:
             edge_cost_ratio_min=args.ratio,
             max_leg_spread=MAX_LEG_SPREAD,
             max_shares=args.max_shares,
+            wcl_budget=wcl_budget,
             books=books,
             client=client,
         )
