@@ -12,6 +12,7 @@ from __future__ import annotations
 import glob
 import json
 import os
+import re
 import subprocess
 import sys
 from concurrent.futures import ThreadPoolExecutor
@@ -278,6 +279,82 @@ def aws_cost_summary() -> tuple[float, float, str]:
     return round(cumulative, 4), round(daily_rate, 4), instance_type
 
 
+def pipeline_funnel() -> list[str]:
+    """Gate-by-gate funnel for the most recent run_once iteration, parsed from
+    journald (the bot already logs every gate). No re-running the pipeline.
+
+    Funnel: universe → leg-spread prefilter → diff-z signals → book fetch →
+    per-reason rejects → executable plans, plus the wallet sizing line (which
+    immediately surfaces an underfunded wallet).
+    """
+    try:
+        r = subprocess.run(
+            ["journalctl", "-u", "calendarspread", "-n", "500", "--no-pager", "-o", "cat"],
+            capture_output=True, text=True, timeout=10,
+        )
+        lines = r.stdout.splitlines()
+    except Exception:
+        return []
+    if not lines:
+        return []
+
+    # Split into iteration blocks; use the most recent one that reached signals.
+    idxs = [i for i, ln in enumerate(lines) if "── iteration" in ln]
+    blocks = ([lines[a:b] for a, b in zip(idxs, idxs[1:] + [len(lines)])]
+              if idxs else [lines])
+    block = next((b for b in reversed(blocks)
+                  if any("Signals at latest bar" in ln for ln in b)), None)
+    if block is None:
+        return []
+    text = "\n".join(block)
+
+    def last(pat, grp=1):
+        m = re.findall(pat, text)
+        return m[-1] if m else None
+
+    uni = re.findall(r"Universe:\s*([\d,]+)\s*→\s*([\d,]+)\s*markets after max_market_spread ≤ ([\d.]+)", text)
+    sig = re.findall(r"Signals at latest bar:\s*(\d+)(?:\s*\((\d+) BUY, (\d+) SELL\))?", text)
+    books = last(r"Fetching (\d+) order books")
+    plans = last(r"Plans surviving capacity filter:\s*(\d+)")
+    free = re.findall(r"free \$([\d.,]+) × ([\d.]+) → \$([\d.,]+)/trade", text)
+    bar = last(r"Latest bar:\s*([\d:\- ]+\+00:00|\S+ \S+)")
+
+    rej = {"leg too wide": 0, "edge<2×cost / budget": 0,
+           "missing token": 0, "book/empty": 0}
+    for ln in block:
+        if "REJECT" not in ln:
+            continue
+        if "leg spread too wide" in ln:
+            rej["leg too wide"] += 1
+        elif "no shares cleared" in ln:
+            rej["edge<2×cost / budget"] += 1
+        elif "missing token" in ln:
+            rej["missing token"] += 1
+        elif "book fetch failed" in ln or "empty book" in ln:
+            rej["book/empty"] += 1
+    n_rej = sum(rej.values())
+
+    out = ["", "<b>Pipeline — last cycle</b>"]
+    if uni:
+        f, t, cap = uni[-1]
+        out.append(f"  Universe:   <code>{f} → {t}</code>  (legs ≤ {float(cap)*100:g}%)")
+    if sig:
+        n, nb, ns = sig[-1]
+        tail = f"  ({nb} BUY / {ns} SELL)" if nb else ""
+        out.append(f"  Signals:    <code>{n}</code>{tail}  (|z|≥3 fade)")
+    if books:
+        out.append(f"  Books:      <code>{books}</code> fetched")
+    if n_rej:
+        out.append(f"  Rejected:   <code>{n_rej}</code>")
+        out += [f"     • {k}: <code>{v}</code>" for k, v in rej.items() if v]
+    if plans is not None:
+        out.append(f"  <b>Executable plans: <code>{plans}</code></b>")
+    if free:
+        bal, frac, ceil = free[-1]
+        out.append(f"  Sizing:     free <code>${bal}</code> × {frac} → <code>${ceil}</code>/trade")
+    return out
+
+
 def send(text: str) -> None:
     """Send via Telegram bot, no parse_mode."""
     import requests
@@ -332,6 +409,7 @@ def main() -> int:
         f"  Since bot start: <code>${cum_aws:.4f}</code>",
         f"  Daily rate:      <code>${daily_aws:.4f}/day</code>  (~${daily_aws*30:.2f}/mo)",
     ]
+    msg_lines += pipeline_funnel()
     if positions:
         msg_lines.append("")
         msg_lines.append("<b>Open positions:</b>")
