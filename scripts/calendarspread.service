@@ -14,10 +14,10 @@ WorkingDirectory=/home/ec2-user/CalendarSpread
 # Create the log dir before any file/journal handle opens (fixes the past
 # 209/STDOUT crash when logs/ was missing on a fresh boot).
 ExecStartPre=/usr/bin/mkdir -p /home/ec2-user/CalendarSpread/logs
-# Autonomous diff-z reversion. --size-from-wallet sizes each trade off the live
-# free USDC × --wallet-frac (Kelly), which ALSO activates the P1 worst-case-loss
-# budget. Start small at 0.10; ratchet up as closed_pnl confirms.
-ExecStart=/home/ec2-user/CalendarSpread/.venv/bin/python3 live_execution.py --execute --loop-seconds 600 --size-from-wallet --wallet-frac 0.10
+# Autonomous diff-z reversion with P2 accumulation. --size-from-wallet sizes off
+# live free USDC × --wallet-frac, which sets the PER-EVENT worst-case-loss cap
+# (5% of free wallet per event). Ratchet --wallet-frac up as closed_pnl confirms.
+ExecStart=/home/ec2-user/CalendarSpread/.venv/bin/python3 live_execution.py --execute --loop-seconds 600 --size-from-wallet --wallet-frac 0.05 --accumulate
 
 # A trading loop should never stay down — restart on ANY exit.
 Restart=always
