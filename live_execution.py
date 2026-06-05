@@ -665,6 +665,7 @@ def build_plans(
     max_leg_spread: float = MAX_LEG_SPREAD,
     max_shares: int = MAX_SHARES_PER_TRADE,
     wcl_per_event: float = float("inf"),
+    wcl_global: float = float("inf"),
     open_wcl_by_event: Optional[dict] = None,
     books: Optional[dict] = None,
     client=None,
@@ -716,11 +717,13 @@ def build_plans(
         books = fetch_books_parallel(list(needed))
         _log(f"  fetched in {time.time() - t0:.1f}s")
 
-    # Per-EVENT worst-case-loss budget: each event's total hold-to-resolution
-    # tail (already-open positions in that event + this cycle's clips) must stay
-    # ≤ wcl_per_event (= wallet × wallet_frac). Tracked per event — NOT one global
-    # pool and NOT per trade — so the cap binds by event no matter how many fire.
+    # Worst-case-loss budget, enforced at TWO levels (both hold-to-resolution):
+    #   • global  — total tail across ALL events ≤ wcl_global (the wallet ceiling)
+    #   • per-event — each event's tail ≤ wcl_per_event
+    # Each clip is sized to the tighter of the two remaining headrooms; both are
+    # seeded from the open book so adds respect what's already on.
     event_wcl_used: dict = dict(open_wcl_by_event or {})
+    global_wcl_used: float = float(sum(event_wcl_used.values()))
 
     plans: list[Plan] = []
     for s in signals.itertuples():
@@ -775,13 +778,15 @@ def build_plans(
         fee_long  = get_token_fee(client, leg_a_token) if client else (0.0, 0.0)
         fee_short = get_token_fee(client, leg_b_token) if client else (0.0, 0.0)
 
-        # Headroom under THIS EVENT's worst-case-loss cap (open tail in the event
-        # + clips already added to it this cycle).
+        # Headroom = tighter of the per-event cap and the GLOBAL wallet ceiling.
         eid = str(s.event_id)
-        wcl_head = wcl_per_event - event_wcl_used.get(eid, 0.0)
+        ev_head = wcl_per_event - event_wcl_used.get(eid, 0.0)
+        gl_head = wcl_global - global_wcl_used
+        wcl_head = min(ev_head, gl_head)
         if wcl_head <= 0:
-            _log(f"  REJECT [{evq}] {direction} {sd}/{ld}: event worst-case-loss "
-                 f"cap reached (${wcl_per_event:,.2f}/event)")
+            which = "global" if gl_head <= ev_head else "event"
+            _log(f"  REJECT [{evq}] {direction} {sd}/{ld}: worst-case-loss cap "
+                 f"reached ({which}: ${wcl_global:,.2f} global / ${wcl_per_event:,.2f} event)")
             continue
 
         walk = _walk_books(
@@ -802,8 +807,10 @@ def build_plans(
                  f"(${wcl_head:,.2f} left of ${wcl_per_event:,.2f}/event; fees: "
                  f"long={fee_long[0]*100:.2f}%, short={fee_short[0]*100:.2f}%)")
             continue
-        # Consume this clip's worst-case loss from THIS EVENT's budget.
-        event_wcl_used[eid] = event_wcl_used.get(eid, 0.0) + float(walk.get("wcl_consumed", 0.0))
+        # Consume this clip's worst-case loss from BOTH the event and global tallies.
+        consumed = float(walk.get("wcl_consumed", 0.0))
+        event_wcl_used[eid] = event_wcl_used.get(eid, 0.0) + consumed
+        global_wcl_used += consumed
 
         ladder = _combined_entry_ladder(direction, book_long, book_short,
                                          max_rungs=5,
@@ -1295,10 +1302,12 @@ def run_once(args, client=None, state: Optional[dict] = None) -> int:
         # never exceed the wallet, while the 2× edge book-walk + book depth do
         # the real per-trade sizing under this ceiling.
         max_notional = args.max_notional
-        # Per-EVENT worst-case-loss cap (hold-to-resolution tail). Each event's
-        # total tail (its open positions + this cycle's entries) must stay
-        # ≤ wallet × wallet_frac — capped BY EVENT, not globally and not per trade.
+        # Worst-case-loss caps (hold-to-resolution tail), both = wallet × wallet_frac:
+        #   • GLOBAL  — total tail across ALL events ≤ wallet × wallet_frac (the
+        #               firm "max loss = X% of wallet" ceiling).
+        #   • per-event — each event's tail ≤ the same, so no single event hogs it.
         wcl_per_event = float("inf")
+        wcl_global = float("inf")
         open_by_event: dict = {}
         if getattr(args, "size_from_wallet", False) and client is not None:
             from telegram_bot import fetch_wallet_balance
@@ -1306,13 +1315,16 @@ def run_once(args, client=None, state: Optional[dict] = None) -> int:
             if bal is not None and bal > 0:
                 frac = getattr(args, "wallet_frac", 1.0)
                 max_notional = bal * frac
+                wcl_global = bal * frac
                 wcl_per_event = bal * frac
                 open_by_event = _open_wcl_by_event(positions)
+                open_total = _open_positions_wcl(positions)
                 _log(f"Sizing from wallet: free ${bal:,.2f} × {frac:g} "
                      f"→ ${max_notional:,.2f}/trade ceiling")
-                _log(f"WCL cap (hold-to-resolution): ${wcl_per_event:,.2f} PER EVENT "
-                     f"(wallet ${bal:,.2f} × {frac:g}); open tail "
-                     f"${_open_positions_wcl(positions):,.2f} across {len(open_by_event)} event(s)")
+                _log(f"WCL cap (hold-to-resolution): ${wcl_global:,.2f} GLOBAL total "
+                     f"(wallet ${bal:,.2f} × {frac:g}), ${wcl_per_event:,.2f}/event; "
+                     f"open tail ${open_total:,.2f} across {len(open_by_event)} event(s) "
+                     f"→ ${max(0.0, wcl_global - open_total):,.2f} free")
             else:
                 _log(f"⚠ wallet balance unavailable — falling back to --max-notional ${max_notional:,.2f}")
         plans = build_plans(
@@ -1322,6 +1334,7 @@ def run_once(args, client=None, state: Optional[dict] = None) -> int:
             max_leg_spread=MAX_LEG_SPREAD,
             max_shares=args.max_shares,
             wcl_per_event=wcl_per_event,
+            wcl_global=wcl_global,
             open_wcl_by_event=open_by_event,
             books=books,
             client=client,

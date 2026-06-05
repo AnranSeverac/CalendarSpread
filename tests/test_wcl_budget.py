@@ -67,6 +67,17 @@ def test_open_wcl_by_event_groups():
     assert _open_wcl_by_event(positions) == {"e1": 55.0, "e2": 10.0}
 
 
+def test_global_seed_equals_sum_of_events():
+    # the global tally seeds from the same open book as the per-event tallies,
+    # so the global ceiling = Σ per-event open tail. Keep them consistent.
+    positions = [
+        _pos("BUY", 100, 0.10, event="e1"),
+        _pos("SELL", 50, 0.10, event="e1"),
+        _pos("BUY", 200, 0.05, event="e2"),
+    ]
+    assert _open_positions_wcl(positions) == sum(_open_wcl_by_event(positions).values())
+
+
 # ── budget → share ceiling inside the book-walk ───────────────────────────────
 
 def test_walk_unbounded_budget_depth_limited():
