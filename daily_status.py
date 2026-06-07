@@ -139,6 +139,17 @@ def realized_pnl_summary() -> tuple[int, float]:
     return n, round(net, 2)
 
 
+def event_pnl_summary() -> dict:
+    """Strategy (paper) PnL from the event ledger — based on the EVENTS the bot
+    identified, not the trades it executed (so manual closes / failed fills don't
+    corrupt it). ¢/share."""
+    try:
+        import event_pnl
+        return event_pnl.summary(event_pnl.load_ledger())
+    except Exception:
+        return {"n": 0, "total_c": 0.0, "mean_c": 0.0, "hit": 0.0, "open": 0}
+
+
 # ── Open-position MTM ──────────────────────────────────────────
 
 def _book_bid(token_id: str) -> float:
@@ -382,13 +393,9 @@ def main() -> int:
     active = service_active()
     age = last_iteration_age()
     positions = load_positions()
-    n_closed, realized = realized_pnl_summary()           # closed round-trips only
+    ev = event_pnl_summary()                              # event-based (paper) PnL
     open_value, open_cost, per_pos = open_position_mtm(positions)
     open_pnl = round(open_value - open_cost, 2)            # unrealized (bid mark)
-    # True MTM PnL = realized (closed trades) + unrealized (open positions).
-    # `realized` no longer includes open positions' entry costs, so we add the
-    # open *unrealized* PnL, not the gross open value.
-    total_mtm = round(realized + open_pnl, 2)
     cum_aws, daily_aws, instance_type = aws_cost_summary()
     today = datetime.now(ZoneInfo("Europe/London")).strftime("%Y-%m-%d %H:%M %Z")
 
@@ -400,10 +407,11 @@ def main() -> int:
         f"Last iteration: <code>{age}</code>",
         f"Open positions: <code>{len(positions)}</code>",
         "",
-        f"<b>PnL (bot-only, MTM)</b>",
-        f"  Realized:   <code>${realized:+,.2f}</code>  ({n_closed} closed round-trips)",
-        f"  Unrealized: <code>${open_pnl:+,.2f}</code>  (open mark ${open_value:,.2f} vs cost ${open_cost:,.2f}, at bid)",
-        f"  <b>Total:      ${total_mtm:+,.2f}</b>",
+        f"<b>Strategy PnL (events identified)</b>",
+        f"  <b><code>{ev['total_c']:+.1f}¢/share</code></b> over {ev['n']} events  •  hit {ev['hit']:.0%}",
+        f"  <code>{ev['open']}</code> open (marking to 24h hold)",
+        f"  <i>paper PnL on signals — independent of manual closes/fills</i>",
+        f"  Open-pos mark: <code>${open_pnl:+,.2f}</code>  (bid vs cost, info only)",
         "",
         f"<b>AWS cost</b>  ({instance_type}, eu-west-1)",
         f"  Since bot start: <code>${cum_aws:.4f}</code>",

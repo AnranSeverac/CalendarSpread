@@ -85,6 +85,7 @@ MIN_FREE_BALANCE_DOLLARS = 15.0   # skip entries if free USDC collateral below t
 
 # ── Exit ─────────────────────────────────────────────────────────
 MAX_HOLD_HOURS = 24            # FIXED hold — close ≈24h after entry (matches the diff-z backtest)
+MAX_EXIT_ATTEMPTS = 3          # abandon a position after this many failed closes (manual-close desync guard)
 
 
 @dataclass
@@ -168,6 +169,10 @@ class OpenPosition:
     entry_spread: float = 0.0
     # P2: number of accumulation clips that built this position (1 = single shot).
     n_adds: int = 1
+    # Desync guard: consecutive cycles where the 24h close was DUE but the SELL
+    # failed (most often because the position was closed MANUALLY → no shares).
+    # After MAX_EXIT_ATTEMPTS strikes the bot abandons it instead of retrying forever.
+    exit_attempts: int = 0
 
 
 @dataclass
@@ -1215,6 +1220,18 @@ def _filter_by_cooldown(plans: list[Plan], submitted: dict, now_ts: pd.Timestamp
 
 # ── Main loop ────────────────────────────────────────────────────
 
+def _latest_spread_map(spread_z) -> dict:
+    """{(event_id, short_dd, long_dd): latest spread S} from the diff-z panel —
+    the live mark used to close event-PnL ledger rows at the hold horizon."""
+    out: dict = {}
+    if spread_z is None or len(spread_z) == 0:
+        return out
+    df = spread_z.sort_values("timestamp")
+    for (eid, sd, ld), g in df.groupby(["event_id", "short_dd", "long_dd"], sort=False):
+        out[(str(eid), str(sd), str(ld))] = float(g["spread"].iloc[-1])
+    return out
+
+
 def run_once(args, client=None, state: Optional[dict] = None) -> int:
     state = {} if state is None else state
     t0 = time.time()
@@ -1386,6 +1403,24 @@ def run_once(args, client=None, state: Optional[dict] = None) -> int:
     print_plans(plans)
     write_plans_jsonl(plans, _LOG_DIR / "plans_latest.jsonl")
 
+    # ── Event-based (paper) PnL ledger — strategy performance, execution-
+    # independent (immune to manual closes / failed fills). Records each identified
+    # signal at its entry spread, marks it to the live spread at the 24h hold.
+    try:
+        import event_pnl
+        led = event_pnl.load_ledger()
+        n_closed = event_pnl.mark_to_market(
+            led, _latest_spread_map(spread_z), now_ts, hold_hours=MAX_HOLD_HOURS)
+        n_new = event_pnl.record_signals(led, sigs.itertuples(), now_ts.isoformat()) \
+            if not sigs.empty else 0
+        if n_closed or n_new:
+            event_pnl.save_ledger(led)
+        es = event_pnl.summary(led)
+        _log(f"Event PnL ledger: {es['n']} closed ({es['total_c']:+.1f}¢/sh, "
+             f"hit {es['hit']:.0%}), {es['open']} open  (+{n_new} new, {n_closed} marked)")
+    except Exception as e:
+        _log(f"[event_pnl] skipped: {e}")
+
     if not plans and not exits:
         return 0
 
@@ -1454,6 +1489,35 @@ def run_once(args, client=None, state: Optional[dict] = None) -> int:
         if closed_keys:
             positions = [p for p in positions
                          if (p.event_id, p.short_dd, p.long_dd, p.direction) not in closed_keys]
+            state["positions"] = positions
+            _save_positions(positions)
+
+        # Desync guard: positions that were DUE this cycle but did NOT close — the
+        # SELL failed, almost always because they were closed MANUALLY (no shares
+        # to sell). Count strikes; after MAX_EXIT_ATTEMPTS, abandon them so the bot
+        # stops retrying a phantom forever and the PnL is left to the event ledger.
+        attempted = {(e.position.event_id, e.position.short_dd, e.position.long_dd,
+                      e.position.direction) for e in exits}
+        failed = attempted - closed_keys
+        if failed:
+            abandoned = []
+            for p in positions:
+                k = (p.event_id, p.short_dd, p.long_dd, p.direction)
+                if k in failed:
+                    p.exit_attempts = int(getattr(p, "exit_attempts", 0)) + 1
+                    if p.exit_attempts >= MAX_EXIT_ATTEMPTS:
+                        abandoned.append(k)
+            if abandoned:
+                positions = [p for p in positions
+                             if (p.event_id, p.short_dd, p.long_dd, p.direction) not in abandoned]
+                _log(f"  ⚠ abandoned {len(abandoned)} position(s) after "
+                     f"{MAX_EXIT_ATTEMPTS} failed closes — likely closed manually "
+                     f"(desync). Removed from positions.json.")
+                if tg:
+                    tg.send_text(
+                        f"⚠️ Abandoned {len(abandoned)} stuck position(s) after "
+                        f"{MAX_EXIT_ATTEMPTS} failed closes (likely manual close / desync). "
+                        f"They no longer block the bot.")
             state["positions"] = positions
             _save_positions(positions)
 
