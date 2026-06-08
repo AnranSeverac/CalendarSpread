@@ -1267,6 +1267,36 @@ def run_once(args, client=None, state: Optional[dict] = None) -> int:
 
     # ── Open positions: evaluate exits ──────────────────────────
     positions: list[OpenPosition] = state.setdefault("positions", _load_positions())
+
+    # Strategy-scoped reconciliation vs on-chain holdings (shared wallet): adopt
+    # orphaned calendar spreads (with an entry_ts in the past so they close this
+    # cycle) and drop phantoms closed by hand. Strictly calendar-matched (opposite
+    # outcomes on two deadlines) — manual ladders/singles are NEVER touched.
+    if getattr(args, "reconcile", False) and client is not None:
+        try:
+            import reconcile as _rec
+            funder = os.environ.get("POLYMARKET_FUNDER_ADDRESS", "").strip()
+            held = _rec.fetch_onchain(funder) if funder else {}
+            if held:
+                detected = _rec.detect_bot_positions(held, _rec.build_event_legs(universe))
+                adopt, drop = _rec.plan_reconcile(detected, [asdict(p) for p in positions])
+                if adopt or drop:
+                    drop_keys = {_position_key(p["event_id"], p["short_dd"], p["long_dd"], p["direction"])
+                                 for p in drop}
+                    positions = [p for p in positions
+                                 if _position_key(p.event_id, p.short_dd, p.long_dd, p.direction)
+                                 not in drop_keys]
+                    entry_ts = (pd.Timestamp.now(tz="UTC")
+                                - pd.Timedelta(hours=MAX_HOLD_HOURS + 1)).isoformat()
+                    for d in adopt:
+                        positions.append(OpenPosition(**_rec._adopted_record(d, entry_ts)))
+                    state["positions"] = positions
+                    _save_positions(positions)
+                    _log(f"  reconcile: adopted {len(adopt)} orphan(s) (will close this cycle), "
+                         f"dropped {len(drop)} phantom(s); {len(detected)} bot spreads held on-chain")
+        except Exception as e:
+            _log(f"[reconcile] skipped: {e}")
+
     exits_due = evaluate_exits(positions, spread_z, max_hold_hours=MAX_HOLD_HOURS)
     _log(f"Open positions: {len(positions)}.  Exits due (24h hold): {len(exits_due)}.")
 
@@ -1605,6 +1635,12 @@ def main() -> None:
                              "signal persists and the live book clears the 2× edge gate, "
                              "bounded by the global worst-case-loss budget. Bypasses the "
                              "per-pair cooldown + held-position filter. Off = one-shot.")
+    parser.add_argument("--reconcile", action="store_true",
+                        help="Each cycle, sync positions.json to on-chain holdings: adopt "
+                             "orphaned calendar spreads (close them) + drop hand-closed "
+                             "phantoms. Strictly calendar-matched — never touches manual "
+                             "ladders/singles in a shared wallet. Verify `python reconcile.py` "
+                             "(dry-run) first.")
     args = parser.parse_args()
 
     mode = "DRY-RUN" if not args.execute else "LIVE — orders will be submitted"
@@ -1617,6 +1653,7 @@ def main() -> None:
     else:
         _log(f"Per-trade notional cap: ${args.max_notional:.0f}  |  edge/cost ≥ {args.ratio}")
     _log(f"Accumulation (P2): {'ON — adds while edge persists, capped by wcl budget' if args.accumulate else 'OFF (one-shot per pair)'}")
+    _log(f"Reconcile on-chain: {'ON — adopt orphan calendar spreads / drop phantoms' if args.reconcile else 'OFF'}")
     _log("=" * 70)
 
     client = get_clob_client() if args.execute else None
