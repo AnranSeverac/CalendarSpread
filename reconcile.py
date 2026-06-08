@@ -33,6 +33,9 @@ ROOT = Path(__file__).resolve().parent
 POSITIONS_FILE = ROOT / "logs" / "positions.json"
 DATA_API = "https://data-api.polymarket.com/positions"
 SIZE_MIN = 1.0                 # ignore dust legs
+BALANCE_FRAC = 0.5             # a real bot spread has ~equal legs (walk takes min); reject
+                               # unbalanced overlaps (a coincidental pairing with a manual
+                               # directional position, e.g. 1 share against a 92-share leg)
 HOLD_HOURS = 24                # mirror live_execution.MAX_HOLD_HOURS
 
 
@@ -96,6 +99,9 @@ def detect_bot_positions(held: dict, legs_by_event: dict) -> list[dict]:
                     ha, hb = held.get(tok_a), held.get(tok_b)
                     if not (ha and hb and ha["size"] >= SIZE_MIN and hb["size"] >= SIZE_MIN):
                         continue
+                    small, large = min(ha["size"], hb["size"]), max(ha["size"], hb["size"])
+                    if large <= 0 or small / large < BALANCE_FRAC:
+                        continue                # unbalanced → manual overlap, not a bot spread
                     shares = int(min(ha["size"], hb["size"]))
                     found.append({
                         "event_id": eid, "short_dd": lo["label"], "long_dd": hi["label"],

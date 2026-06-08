@@ -59,6 +59,16 @@ def test_single_leg_not_matched():
     assert detect_bot_positions(_held("Y1", 300), LEGS) == []
 
 
+def test_unbalanced_legs_not_matched():
+    # opposite outcomes but wildly unbalanced (1.3 vs 92) = a coincidental overlap
+    # with a manual directional position, NOT a balanced bot spread → must reject.
+    held = {**_held("N2", 1.3), **_held("Y1", 92.0)}
+    assert detect_bot_positions(held, LEGS) == []
+    # but a balanced pair (234 vs 251) still matches
+    held2 = {**_held("N2", 234), **_held("Y1", 251)}
+    assert len(detect_bot_positions(held2, LEGS)) == 1
+
+
 def test_token_consumed_once():
     # a 3-deadline event must not double-count a shared token across pairs.
     legs = {"e": [_leg(1, "A", "YA", "NA"), _leg(2, "B", "YB", "NB"), _leg(3, "C", "YC", "NC")]}
